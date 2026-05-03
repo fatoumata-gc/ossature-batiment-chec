@@ -1,0 +1,362 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 9 — MUR DE SOUS-SOL
+% ════════════════════════════════════════════════════════════
+\seance{9}{Mur de sous-sol}
+
+\subsection{Présentation du mur étudié}
+
+Dans cette étude, nous nous intéressons au \textbf{mur situé au droit de la file C}. Ce mur assure \textbf{deux fonctions} :
+\begin{itemize}
+  \item équilibrer les \textbf{poussées des terres} dans le sens transversal ;
+  \item \textbf{répartir les charges ponctuelles} des poteaux entre les niveaux de sous-sol.
+\end{itemize}
+
+Le dimensionnement comportera donc deux parties : une étude du mur en \textbf{flexion} sous la poussée des terres et de la surcharge en surface, puis une étude de la \textbf{poutre cloison} qui répartit les charges des poteaux par le biais d'un modèle de bielles et tirants.
+
+\figureplaceholder{mur-sous-sol-coupe}{Coupe verticale du mur de sous-sol avec données géotechniques (file C)}
+
+\subsection{Données géotechniques et géométrie}
+
+Les données du sol et la géométrie du mur sont :
+
+\begin{itemize}
+  \item Poids volumique de la terre : $\gamma = 18$~kN/m\textsuperscript{3}
+  \item Angle de frottement interne : $\varphi = 30^\circ$
+  \item Cohésion : $c = 0$ (sol pulvérulent)
+  \item Surcharge en surface : $q = 10$~kN/m\textsuperscript{2}
+  \item Niveaux : $+0{,}00$ (sol) ; $-2{,}70$ (1\textsuperscript{er} sous-sol) ; $-5{,}40$ (radier)
+  \item Hauteur totale du mur : $H = 5{,}40$~m, formant deux travées verticales de $L = 2{,}70$~m
+\end{itemize}
+
+\subsection{Calcul du soutènement}
+
+\subsubsection{Coefficient de poussée des terres}
+
+Le mur de sous-sol est encastré entre les planchers : il est \textbf{empêché de se déplacer}. La poussée à considérer est donc la \textbf{poussée au repos} et non la poussée active de Rankine. Les deux coefficients usuels sont :
+
+\[
+K_a = \tan^2\!\left(\frac{\pi}{4} - \frac{\varphi}{2}\right)
+\quad ; \quad
+K_0 = 1 - \sin \varphi
+\]
+
+Pour $\varphi = 30^\circ$, on obtient $K_a = 0{,}333$ et $K_0 = 0{,}500$. C'est cette dernière valeur qui sera retenue pour la suite des calculs :
+
+\encadre{$K = K_0 = 0{,}50$}
+
+\subsubsection{Diagrammes de poussée}
+
+\paragraph{Poussée des terres (action permanente \texorpdfstring{$G$}{G})}
+
+La poussée latérale due aux terres varie linéairement avec la profondeur $z$ :
+
+\[
+p_G(z) = K_0 \cdot \gamma \cdot z
+\]
+
+Aux trois niveaux caractéristiques :
+\[
+p_G(0) = 0 \quad ; \quad p_G(2{,}70) = 0{,}5 \times 18 \times 2{,}70 = \mathbf{24{,}3~\text{kN/m}^2} \quad ; \quad p_G(5{,}40) = 0{,}5 \times 18 \times 5{,}40 = \mathbf{48{,}6~\text{kN/m}^2}
+\]
+
+\paragraph{Poussée de la surcharge en surface (action variable \texorpdfstring{$Q$}{Q})}
+
+La surcharge $q = 10$~kN/m\textsuperscript{2} en surface engendre une poussée \textbf{rectangulaire} et constante sur toute la hauteur du mur :
+
+\[
+p_Q(z) = K_0 \cdot q = 0{,}5 \times 10 = \mathbf{5~\text{kN/m}^2}
+\]
+
+\paragraph{Diagramme de poussée à l'ELU}
+
+À l'ELU, on combine les deux actions par $1{,}35\,G + 1{,}5\,Q$ :
+
+\[
+p_u(z) = 1{,}35 \cdot p_G(z) + 1{,}5 \cdot p_Q(z)
+\]
+
+\begin{center}
+\begin{tabularx}{0.85\linewidth}{cccc}
+\toprule
+\textbf{Niveau} & \textbf{$p_G$ (kN/m²)} & \textbf{$p_Q$ (kN/m²)} & \textbf{$p_u$ ELU (kN/m²)} \\
+\midrule
+$+0{,}00$ & 0    & 5 & $1{,}35 \times 0 + 1{,}5 \times 5 = \mathbf{7{,}5}$  \\
+$-2{,}70$ & 24{,}3 & 5 & $1{,}35 \times 24{,}3 + 1{,}5 \times 5 = \mathbf{40{,}3}$ \\
+$-5{,}40$ & 48{,}6 & 5 & $1{,}35 \times 48{,}6 + 1{,}5 \times 5 = \mathbf{73{,}1}$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\figureplaceholder{mur-sous-sol-diagramme-poussee}{Diagrammes de poussée : terre seule, surcharge seule, et combinaison ELU}
+
+\subsubsection{Méthode de calcul des moments}
+
+Le mur étant assimilable à une dalle continue verticale sur deux travées de même longueur ($L = 2{,}70$~m) avec une charge d'exploitation modérée, on applique la \textbf{méthode forfaitaire} (FDP 18-717). Les conditions d'application sont vérifiées :
+\begin{itemize}
+  \item travées de même longueur : $L_1 = L_2 = 2{,}70$~m \checkmark
+  \item charges d'exploitation faibles devant les charges permanentes \checkmark
+\end{itemize}
+
+Les notations :
+\begin{itemize}
+  \item $M_0$ : moment isostatique sur la travée considérée ;
+  \item $M_t$ : moment maximal en travée ;
+  \item $M_w, \, M_e$ : moments sur les appuis (« \textit{west} » et « \textit{east} »), soit ici les moments en haut et en bas de chaque travée ;
+  \item $\alpha = \dfrac{q}{g + q}$ avec $g$ et $q$ pris à la \textbf{moyenne sur la travée} considérée.
+\end{itemize}
+
+Sur les appuis intermédiaires, on prend forfaitairement :
+
+\encadre{$M_{appui} = 0{,}6 \, M_0$}
+
+\subsubsection{Calcul des moments isostatiques \texorpdfstring{$M_0$}{M₀}}
+
+Pour chaque travée, $M_0$ est calculé à partir de la pression moyenne ELU :
+
+\textbf{Travée 1 (basse, entre $-2{,}70$ et $-5{,}40$) :}
+
+\[
+\bar{p}_{u,1} = \frac{40{,}3 + 73{,}1}{2} = 56{,}7~\text{kN/m}^2
+\quad\Longrightarrow\quad
+M_{0,1} = \frac{\bar{p}_{u,1} \cdot L^2}{8} = \frac{56{,}7 \times 2{,}70^2}{8} \approx \mathbf{51{,}7~\text{kN.m/ml}}
+\]
+
+\textbf{Travée 2 (haute, entre $0$ et $-2{,}70$) :}
+
+\[
+\bar{p}_{u,2} = \frac{7{,}5 + 40{,}3}{2} = 23{,}9~\text{kN/m}^2
+\quad\Longrightarrow\quad
+M_{0,2} = \frac{\bar{p}_{u,2} \cdot L^2}{8} = \frac{23{,}9 \times 2{,}70^2}{8} \approx \mathbf{21{,}8~\text{kN.m/ml}}
+\]
+
+\subsubsection{Calcul des coefficients \texorpdfstring{$\alpha$}{α}}
+
+Le rapport $\alpha = q/(g+q)$ est calculé séparément pour chaque travée à partir des poussées caractéristiques moyennes :
+
+\textbf{Travée 1 :}
+\[
+\bar{g}_1 = \frac{24{,}3 + 48{,}6}{2} = 36{,}45~\text{kN/m}^2
+\quad ; \quad
+\bar{q}_1 = 5~\text{kN/m}^2
+\]
+\[
+\alpha_1 = \frac{5}{36{,}45 + 5} = \mathbf{0{,}121}
+\]
+
+\textbf{Travée 2 :}
+\[
+\bar{g}_2 = \frac{0 + 24{,}3}{2} = 12{,}15~\text{kN/m}^2
+\quad ; \quad
+\bar{q}_2 = 5~\text{kN/m}^2
+\]
+\[
+\alpha_2 = \frac{5}{12{,}15 + 5} = \mathbf{0{,}29}
+\]
+
+\subsubsection{Calcul des moments en travée}
+
+Les moments en travée doivent satisfaire les deux conditions de la méthode forfaitaire :
+
+\[
+M_t + \frac{M_w + M_e}{2} \;\geq\; \max\!\left\{(1 + 0{,}3\,\alpha) \, M_0 \,;\, 1{,}05 \, M_0\right\}
+\]
+\[
+M_t \;\geq\; \frac{1{,}2 + 0{,}3\,\alpha}{2} \, M_0
+\]
+
+\paragraph{Travée 1 (basse)}
+
+\[
+1 + 0{,}3 \times 0{,}121 = 1{,}036 \;<\; 1{,}05
+\quad\Longrightarrow\quad
+\text{on retient le coefficient } 1{,}05
+\]
+
+Avec $M_w = 3{,}1$~kN.m/ml (appui supérieur) et $M_e = 0{,}6 \, M_{0,1} = 31$~kN.m/ml (encastrement bas) :
+
+\[
+M_t \;\geq\; 1{,}05 \times 51{,}7 - \frac{3{,}1 + 31}{2} = 54{,}29 - 17{,}05 \approx \mathbf{38{,}8~\text{kN.m/ml}}
+\]
+
+\paragraph{Travée 2 (haute)}
+
+\[
+1 + 0{,}3 \times 0{,}29 = 1{,}087 \;>\; 1{,}05
+\quad\Longrightarrow\quad
+\text{on retient le coefficient } 1{,}087
+\]
+
+\[
+M_t \;\geq\; \frac{1{,}2 + 0{,}3 \times 0{,}29}{2} \times 21{,}8 \approx \mathbf{14{,}03~\text{kN.m/ml}}
+\]
+
+\figureplaceholder{mur-sous-sol-diagramme-moments}{Diagramme des moments fléchissants sur les deux travées du mur}
+
+\subsection{Calcul des armatures principales}
+
+Les armatures sont déterminées en \textbf{flexion simple} avec les hypothèses suivantes : béton C25/30, acier B500B, hauteur utile $d = 0{,}17$~m. Les détails du calcul à la flexion ne sont pas reproduits ici ; seuls les résultats sont donnés :
+
+\begin{center}
+\begin{tabularx}{0.7\linewidth}{Xc}
+\toprule
+\textbf{Section} & \textbf{Armature requise (cm²/ml)} \\
+\midrule
+Travée 1 (basse)        & 5{,}40 \\
+Travée 2 (haute)        & 1{,}90 \\
+Appui intermédiaire     & 4{,}34 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Dispositions constructives}
+
+\subsubsection{Direction principale}
+
+La section minimale d'armatures dans la direction principale est :
+
+\[
+A_{s,min} = 0{,}26 \cdot \frac{f_{ctm}}{f_{yk}} \cdot b_t \cdot d \approx 1{,}6~\text{cm}^2/\text{ml}
+\]
+
+avec, en complément (Eurocode \S{}9.3.1.1) :
+
+\[
+A_{s,min} \;\geq\; 0{,}0013 \cdot b_t \cdot d \approx 2{,}21~\text{cm}^2/\text{ml}
+\]
+
+L'espacement maximal des armatures principales est :
+
+\[
+s_{max} = \min\{2h \,;\, 25~\text{cm}\} = \mathbf{25~\text{cm}}
+\]
+
+\subsubsection{Direction secondaire}
+
+La section minimale en direction secondaire vaut $20\%$ de la section principale :
+
+\[
+A_{s,min}^{sec} \;\geq\; 0{,}20 \, A_{principale}
+\]
+
+\begin{itemize}
+  \item Travée 2 : $A_{s,min}^{sec} = 0{,}20 \times 1{,}90 = 0{,}38$~cm\textsuperscript{2}/ml
+  \item Travée 1 : $A_{s,min}^{sec} = 0{,}20 \times 5{,}40 = 1{,}08$~cm\textsuperscript{2}/ml
+\end{itemize}
+
+L'espacement maximal des armatures secondaires est :
+
+\[
+s_{max}^{sec} = \min\{3h \,;\, 40~\text{cm}\} = \mathbf{40~\text{cm}}
+\]
+
+\figureplaceholder{mur-sous-sol-ferraillage}{Schéma de ferraillage du mur de sous-sol (sections principales)}
+
+\subsection{Calcul de la poutre cloison}
+
+La poutre cloison assure la \textbf{seconde fonction} du mur de file C : elle reprend et répartit les charges concentrées des poteaux. Le calcul est mené selon la \textbf{méthode des bielles-tirants} simplifiée.
+
+\subsubsection{Schéma statique et propriétés géométriques}
+
+La poutre cloison est sollicitée par :
+\begin{itemize}
+  \item deux \textbf{charges concentrées} issues des poteaux supérieurs : $N_1 = 1\,018{,}5$~kN et $N_2 = 1\,023{,}5$~kN (situées aux quarts de la travée) ;
+  \item une \textbf{réaction d'appui} de $G = 1\,120$~kN et $Q = 350$~kN au niveau du radier ;
+  \item une charge répartie ELU appliquée sur la longueur de la travée, calculée à partir des charges du poteau :
+\end{itemize}
+
+\[
+p_u = \frac{1{,}35 \, G + 1{,}5 \, Q}{L} = \frac{1{,}35 \times 1\,120 + 1{,}5 \times 350}{6{,}5} \approx \mathbf{313{,}8~\text{kN/ml}}
+\]
+
+\figureplaceholder{poutre-cloison-schema-statique}{Schéma statique de la poutre cloison avec charges concentrées et réactions}
+
+Les caractéristiques géométriques de la poutre cloison sont :
+\begin{itemize}
+  \item Hauteur : $H = 6{,}00$~m $= H_c$
+  \item Longueur de travée : $L = 6{,}50$~m
+  \item Bras de levier interne : $Z = \min\{0{,}8 \, H_c \,;\, 0{,}72 + 0{,}4 \, H_c\} \approx 3{,}70~\text{m}$
+\end{itemize}
+
+L'angle d'inclinaison de la bielle est :
+
+\[
+\theta = \arctan\!\left(\frac{Z}{L/2 - L/4}\right) = \arctan\!\left(\frac{3{,}70}{3{,}25 - 1{,}625}\right) \approx \mathbf{66{,}3^\circ}
+\]
+
+\subsubsection{Détermination des forces de bielle et de tirant}
+
+En se basant sur la méthode des bielles-tirants, l'effort dans la bielle (compression) et l'effort dans le tirant (traction) s'obtiennent par projection :
+
+\[
+F_b = \frac{N}{\sin \theta} = \frac{1\,018{,}5}{\sin 66{,}3^\circ} \approx \mathbf{1\,112~\text{kN}}
+\quad ; \quad
+F_t = \frac{N}{\tan \theta} = \frac{1\,018{,}5}{\tan 66{,}3^\circ} \approx \mathbf{447~\text{kN}}
+\]
+
+\figureplaceholder{poutre-cloison-bielles-tirants}{Modèle de bielles et tirants de la poutre cloison}
+
+\subsubsection{Section d'armatures du tirant}
+
+\[
+A_t = \frac{F_t}{f_{yd}} = \frac{447 \times 10}{434{,}78} \approx \mathbf{10{,}3~\text{cm}^2}
+\]
+
+\subsubsection{Vérification de la bielle}
+
+La condition à satisfaire est :
+
+\[
+\sigma_b = \frac{F_b}{b \cdot a_b} \;\leq\; \sigma_{Rd,max} = k \cdot \nu' \cdot f_{cd}
+\]
+
+avec $b = 0{,}20$~m (épaisseur du voile), $k = 0{,}85$, $\nu' = 1 - \dfrac{f_{ck}}{250} = 0{,}90$ et $f_{cd} = \dfrac{f_{ck}}{\gamma_c} = \dfrac{25}{1{,}5} \approx 16{,}67$~MPa.
+
+\[
+\sigma_{Rd,max} = 0{,}85 \times 0{,}90 \times 16{,}67 \approx \mathbf{12{,}75~\text{MPa}}
+\]
+
+Le calcul de $\sigma_b$ avec une bielle unique donne :
+
+\[
+\sigma_b = 22{,}24~\text{MPa} \;>\; 12{,}75~\text{MPa}
+\quad\Longrightarrow\quad
+\text{il faut considérer \textbf{2 bielles}}
+\]
+
+Avec deux bielles, $\sigma_b = 22{,}24 / 2 = 11{,}12~\text{MPa} \leq 12{,}75~\text{MPa}$ \checkmark.
+
+\subsubsection{Aciers anti-éclatement}
+
+L'effort d'éclatement transversal est calculé par :
+
+\[
+T = 0{,}25 \cdot F_b \cdot \left(1 - 0{,}7 \, \frac{a}{H}\right)^2 \approx \mathbf{94{,}18~\text{kN}}
+\]
+
+avec $F_b = 1\,112$~kN, $a$ : longueur de la bielle à l'about, $H$ : longueur de la bielle.
+
+\subsubsection{Aciers de répartition}
+
+\[
+A_{vertical} = \frac{2 \, T \, \cos \alpha}{f_{yd}} \approx \mathbf{0{,}86~\text{cm}^2}
+\quad ; \quad
+A_h = \frac{2 \, T \, \sin \alpha}{f_{yd}} \approx \mathbf{0{,}59~\text{cm}^2}
+\]
+
+\subsubsection{Dispositions constructives de la poutre cloison}
+
+\begin{itemize}
+  \item $A_{s,min} \;\geq\; \max\{2\text{\textperthousand} \times \text{aire totale par direction} \,;\, 1{,}5~\text{cm}^2/\text{m par face et par direction}\}$
+  \item $A_{s,min} \;\geq\; 1{,}5$~cm\textsuperscript{2}/ml par face et par direction
+  \item Espacement : $s = \min\{2e \,;\, 30~\text{cm}\} = \mathbf{30~\text{cm}}$, où $e$ est l'épaisseur de la poutre cloison.
+\end{itemize}
+
+\subsection{Conclusion de la séance}
+
+Le mur de sous-sol situé sur la file C a été dimensionné en deux temps :
+
+\begin{itemize}
+  \item Le \textbf{soutènement} a été traité par la méthode forfaitaire FDP 18-717 sur deux travées de $2{,}70$~m. Les armatures principales sont $5{,}4$~cm\textsuperscript{2}/ml en travée 1 (basse), $1{,}9$~cm\textsuperscript{2}/ml en travée 2 (haute) et $4{,}34$~cm\textsuperscript{2}/ml sur l'appui intermédiaire, complétées par des armatures secondaires et une vérification des dispositions constructives (espacement maximal $25$ cm dans le sens principal, $40$ cm dans le sens secondaire).
+  \item La \textbf{poutre cloison} a été dimensionnée par la méthode des bielles et tirants : tirant principal de $A_t = 10{,}3$~cm\textsuperscript{2}, vérification d'une bielle dédoublée pour respecter $\sigma_{Rd,max} = 12{,}75$~MPa, et armatures anti-éclatement de répartition.
+\end{itemize}
+

@@ -1,0 +1,342 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 10 — CALCUL AU FEU DE LA POUTRE
+% ════════════════════════════════════════════════════════════
+\seance{10}{Calcul au feu de la poutre}
+
+\subsection{Présentation et contexte}
+
+Dans cette dernière partie, nous vérifions la \textbf{résistance au feu} de la poutre principale (section $30 \times 70$~cm), étudiée précédemment en Séances 5 \& 6, ainsi que celle de la \textbf{dalle nervurée} d'épaisseur $12$~cm de la superstructure (Séance 4). L'objectif est de garantir que ces éléments peuvent tenir pendant \textbf{2 heures} d'incendie, soit la classe de résistance au feu \textbf{R120}.
+
+Cette vérification est menée selon deux approches complémentaires :
+\begin{itemize}
+  \item le respect des \textbf{dispositions constructives} (enrobage, distance aux aciers) ;
+  \item le \textbf{calcul au feu} proprement dit, par la méthode des isothermes 500°C ou la méthode tabulée, pour vérifier la stabilité après échauffement.
+\end{itemize}
+
+Cette partie de l'étude est particulièrement importante : elle implique directement la \textbf{sécurité des personnes} et engage la \textbf{responsabilité pénale} du bureau d'études et de l'entreprise. Aucune approximation n'est tolérée.
+
+\subsection{Hypothèses et matériaux à chaud}
+
+Les coefficients partiels de sécurité en situation accidentelle d'incendie sont pris égaux à 1 (NF EN 1992-1-2) :
+
+\[
+\sigma_{s,fi} = \frac{f_{yk}}{\gamma_{s,fi}} = \frac{500}{1{,}00} = \mathbf{500~\text{MPa}}
+\quad ; \quad
+\sigma_{c,fi} = \frac{f_{ck}}{\gamma_{c,fi}} = \frac{25}{1{,}00} = \mathbf{25~\text{MPa}}
+\]
+
+Les aciers conservent leur résistance, mais le coefficient de réduction $K_s(\theta)$ traduit la \textbf{perte de résistance} due à l'échauffement, en fonction de la température $\theta$ atteinte par chaque lit d'armatures. Ces valeurs sont lues dans des \textbf{tables normalisées} (NF EN 1992-1-2) en fonction de la largeur de la section et de la distance à la face exposée au feu.
+
+\subsection{Vérification de la poutre principale 30\texorpdfstring{$\times$}{x}70 (R120)}
+
+Pour rappel, le ferraillage de la poutre est :
+\begin{itemize}
+  \item \textbf{En travée} : 6 HA 25 répartis sur 2 lits inférieurs (3 HA 25 par lit), enrobages $c_1 = 3{,}25$~cm et $c_2 = 5{,}75$~cm ;
+  \item \textbf{Sur appui B2} (continuité) : 6 HA 25 dans la fibre supérieure ;
+  \item \textbf{Sur appui B1} (rive) : 3 HA 25 dans la fibre supérieure.
+\end{itemize}
+
+\figureplaceholder{poutre-feu-coupes-ferraillage}{Coupes de ferraillage de la poutre 30$\times$70 : section en travée (gauche) et sur appui B2 (droite)}
+
+\subsubsection{Section en travée — détermination de la section d'acier réduite}
+
+Les valeurs $\theta$ et $K_s(\theta)$ sont lues par interpolation dans les tables normalisées entre $b = 28$~cm et $b = 32$~cm, pour notre largeur $b = 30$~cm.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{cccccccc}
+\toprule
+\textbf{N\textsuperscript{o}} & \textbf{Désignation} & \textbf{$A$ (cm²)} & \textbf{$\theta$ (°C)} & \textbf{$K_s(\theta)$} & \textbf{$A \cdot K_s(\theta)$} & \textbf{$C$ (cm)} & \textbf{$A \cdot K_s(\theta) \cdot C$} \\
+\midrule
+1 & 3 HA 25 (lit inf.) & 14{,}73 & 717{,}5 & 0{,}08 & 1{,}18 & 3{,}25 & 3{,}84 \\
+2 & 3 HA 25 (lit sup.) & 14{,}73 & 622{,}5 & 0{,}10 & 1{,}473 & 5{,}75 & 8{,}47 \\
+\midrule
+$\Sigma$ & --- & 29{,}46 & --- & --- & \textbf{2{,}653} & --- & \textbf{12{,}31} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+La position du \textbf{centre de gravité de l'armature équivalente} se déduit par :
+
+\[
+C = \frac{\sum A \cdot K_s(\theta) \cdot C}{\sum A \cdot K_s(\theta)} = \frac{12{,}31}{2{,}653} \approx \mathbf{4{,}64~\text{cm}}
+\]
+
+D'où la \textbf{hauteur utile à chaud} :
+
+\[
+d = h - C = 70 - 4{,}64 = \mathbf{65{,}36~\text{cm}}
+\]
+
+\subsubsection{Section en travée — équilibre des forces}
+
+L'équilibre s'écrit, en considérant un diagramme rectangulaire simplifié :
+
+\[
+b_0 \cdot x \cdot \sigma_{c,fi} = A_e \cdot \sigma_{s,fi}
+\quad\Longrightarrow\quad
+x = \frac{A_e \cdot \sigma_{s,fi}}{b_0 \cdot \sigma_{c,fi}}
+\]
+
+avec :
+\begin{itemize}
+  \item $A_e = \sum A \cdot K_s(\theta) = 2{,}653$~cm\textsuperscript{2} (section d'acier réduite) ;
+  \item $b_0 = 30$~cm ; $\sigma_{c,fi} = 25$~MPa ; $\sigma_{s,fi} = 500$~MPa.
+\end{itemize}
+
+\[
+x \approx \mathbf{0{,}018~\text{m}}
+\]
+
+Le \textbf{bras de levier} est :
+
+\[
+z = d - \frac{x}{2} = 65{,}36 - \frac{1{,}8}{2} = \mathbf{64{,}46~\text{cm} = 0{,}6445~\text{m}}
+\]
+
+\subsubsection{Moment résistant en travée}
+
+\encadre{$M_{Rt} = A_e \cdot \sigma_{s,fi} \cdot z = 2{,}653 \times 10^{-4} \times 500 \times 0{,}6445 \approx \mathbf{85{,}55~\text{kN.m}}$}
+
+\subsubsection{Vérification sur appui B2 (appui de continuité)}
+
+Sur l'appui B2, la section d'armatures supérieures est $A = 6 \, \text{HA}\,25 = 14{,}73 \times 2 = 29{,}46$~cm\textsuperscript{2}. L'effort de bielle équilibrant la traction des aciers vaut :
+
+\[
+F_b = F_s = A \cdot \sigma_{s,fi} = 29{,}46 \times 500 \times 10^{-1} = \mathbf{1\,473~\text{kN}}
+\]
+
+L'aire de béton comprimé nécessaire est :
+
+\[
+B = \frac{F_b}{\sigma_{c,fi}} = \frac{1\,473 \times 10}{25} = \mathbf{589{,}2~\text{cm}^2}
+\]
+
+Pour $B = 589{,}2$~cm\textsuperscript{2} et $b = 30$~cm, l'aire de comparaison $B_{20}$ (interpolée pour $b = 30$ entre $b = 28$ et $b = 32$) vaut $B_{20} = 363$~cm\textsuperscript{2}.
+
+\[
+B = 589{,}2 \;>\; B_{20} = 363
+\quad\Longrightarrow\quad
+\text{calcul des paramètres par interpolation}
+\]
+
+Les paramètres lus et calculés sont :
+\begin{itemize}
+  \item $b_c = 23{,}65$~cm (interpolé entre 21,4 cm pour $b=28$ et 25,5 cm pour $b=32$)
+  \item $\Delta x = 8{,}48$~cm
+  \item $x = 20 + \Delta x = 28{,}48$~cm
+  \item $C = 40{,}51$~cm (interpolation à partir de $C_{20} = 11{,}7$~cm)
+  \item $z = 47{,}49$~cm
+\end{itemize}
+
+\encadre{$M_{Ra}(B_2) = A \cdot \sigma_{s,fi} \cdot z = 29{,}46 \times 10^{-4} \times 500 \times 0{,}4749 \approx \mathbf{699{,}52~\text{kN.m}}$}
+
+\subsubsection{Vérification sur appui B1 (appui de rive)}
+
+Sur l'appui de rive, la section est $A = 3 \, \text{HA}\,25 = 14{,}73$~cm\textsuperscript{2}.
+
+\[
+F_b = 14{,}73 \times 500 \times 10^{-1} = 736{,}5~\text{kN}
+\quad ; \quad
+B = \frac{736{,}5 \times 10}{25} = \mathbf{294{,}6~\text{cm}^2}
+\]
+
+\[
+B = 294{,}6 \;<\; B_{20} = 363
+\quad\Longrightarrow\quad
+\text{on retient les paramètres } B_{20}
+\]
+
+\begin{itemize}
+  \item $x = 20$~cm
+  \item $C = 11{,}7$~cm
+  \item $z = 53{,}3$~cm
+\end{itemize}
+
+\encadre{$M_{Ra}(B_1) = 14{,}73 \times 10^{-4} \times 500 \times 0{,}533 \approx \mathbf{392{,}55~\text{kN.m}}$}
+
+\subsubsection{Vérification de l'équilibre global}
+
+La condition à satisfaire à chaud (poutre continue) est :
+
+\[
+M_{Rt} + \frac{M_{Re} + M_{Rw}}{2} \;\geq\; M_0
+\]
+
+avec $M_{Rw} = M_{Ra}(B_1)$ (rive), $M_{Re} = M_{Ra}(B_2)$ (continuité) et $M_0$ le moment isostatique sollicitant à chaud, calculé pour la combinaison accidentelle d'incendie ($M_0 = M_G + 0{,}8 \, M_Q = 413$~kN.m).
+
+\[
+M_{Rt} + \frac{M_{Re} + M_{Rw}}{2} = 85{,}55 + \frac{392{,}55 + 699{,}52}{2} = 85{,}55 + 546{,}04 \approx 631{,}59~\text{kN.m}
+\]
+
+\encadre{$631{,}59~\text{kN.m} \;\geq\; M_0 = 413~\text{kN.m} \quad \checkmark$}
+
+\textbf{La poutre principale 30$\times$70 cm résiste à un incendie de durée R120.}
+
+\subsection{Calcul au feu de la dalle nervurée (h = 12 cm, R120)}
+
+La dalle nervurée d'épaisseur $h = 12$~cm de la superstructure (étudiée en Séance 4) doit également être vérifiée au feu pour 2 heures (R120). Pour rappel, le plan de ferraillage de la dalle est donné dans la Séance 4 (voir pages correspondantes du rapport).
+
+\figureplaceholder{dalle-feu-ferraillage}{Plan de ferraillage de la dalle nervurée — sections d'acier dans les deux sens}
+
+\subsubsection{Températures et coefficients \texorpdfstring{$K_s(\theta)$}{Ks(θ)}}
+
+Les températures atteintes au niveau des aciers sont déterminées par lecture dans les tables normalisées (NF EN 1992-1-2) en fonction de la position des armatures par rapport à la face exposée au feu :
+
+\begin{itemize}
+  \item Sens $x$ : $u(x) = 3$~cm $\Longrightarrow$ $\theta(x) = 590$°C $\Longrightarrow$ $K_s(\theta) = 0{,}09$
+  \item Sens $y$ : $u(y) = 4$~cm $\Longrightarrow$ $\theta(y) = 550$°C $\Longrightarrow$ $K_s(\theta) = 0{,}10$
+\end{itemize}
+
+\subsubsection{Section d'acier réduite}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{cccccccc}
+\toprule
+\textbf{Sens} & \textbf{Désignation} & \textbf{$A$ (cm²/ml)} & \textbf{$\theta$ (°C)} & \textbf{$K_s(\theta)$} & \textbf{$A \cdot K_s$} & \textbf{$C$ (cm)} & \textbf{$A \cdot K_s \cdot C$} \\
+\midrule
+$x$ & $A_{tx}$ & 3{,}29 & 590 & 0{,}09 & 0{,}296 & 3 & 0{,}888 \\
+$y$ & $A_{ty}$ & 2{,}25 & 550 & 0{,}10 & 0{,}225 & 4 & 0{,}900 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsubsection{Moment résistant en travée}
+
+L'équilibre des efforts normaux donne $x = (A \cdot K_s \cdot \sigma_{s,fi}) / (b_0 \cdot \sigma_{c,fi})$ :
+
+\[
+x(x) \approx 0{,}000\,592~\text{m}
+\quad ; \quad
+z(x) \approx 8{,}94~\text{cm}
+\quad\Longrightarrow\quad
+\mathbf{m_{Rt}(x) \approx 1{,}323~\text{kN.m/ml}}
+\]
+
+\[
+x(y) \approx 0{,}000\,45~\text{m}
+\quad ; \quad
+z(y) \approx 8{,}95~\text{cm}
+\quad\Longrightarrow\quad
+\mathbf{m_{Rt}(y) \approx 1{,}00~\text{kN.m/ml}}
+\]
+
+\subsubsection{Moment résistant en appui}
+
+Le moment résistant sur appui prend en compte une contribution additionnelle due au confinement :
+
+\[
+M_{Ra} = M_\alpha + M_{ce} - K \cdot c_R
+\]
+
+\paragraph{Calcul de \texorpdfstring{$M_\alpha$}{Mα}}
+
+\[
+M_\alpha = A \cdot \sigma_{s,fi} \cdot 0{,}9 \cdot d \approx 10{,}65~\text{kN.m/ml}
+\]
+
+\paragraph{Calcul de \texorpdfstring{$M_{ce}$}{Mce}}
+
+Avec $\Delta\sigma \approx 586$°C (lu dans le tableau pour $h = 12$~cm et 2~heures), $E = 22\,000 \cdot (f_{cm}/10)^{0{,}3} \approx 31\,475{,}8$~MPa, et $I = b h'^3 / 12$ avec $h' = 6{,}44$~cm pour R120 :
+
+\[
+M_{ce} = \frac{3 \, d \cdot \Delta\sigma \cdot EI}{2h} \approx 797{,}74~\text{kN.m/ml}
+\]
+
+\paragraph{Charge de référence $p$ et coefficient $\beta$}
+
+La charge de calcul à l'incendie est :
+
+\[
+p = g + \psi_2 \cdot q = 0{,}12 \times 25 + 0{,}8 \times 10 = \mathbf{11~\text{kN/ml}}
+\]
+
+avec $g = 0{,}12 \times 25 = 3$~kN/m\textsuperscript{2} (poids propre dalle) et $\psi_2 = 0{,}8$ pour la combinaison accidentelle.
+
+\[
+M_a = \beta \cdot p \cdot l_n^2
+\quad ; \quad
+\frac{l_y}{l_x} = 1{,}920
+\]
+
+D'où :
+
+\[
+\beta_x = 0{,}822
+\quad ; \quad
+\beta_y = 0{,}571
+\]
+
+\[
+M_a(x) = 8{,}41~\text{kN.m/ml}
+\quad ; \quad
+M_a(y) = 5{,}843~\text{kN.m/ml}
+\]
+
+\paragraph{Calcul de $K$ et de $c_R$}
+
+\[
+K = \frac{0{,}32 \cdot EI}{\beta \, (l_w + l_e)}
+\quad\Longrightarrow\quad
+K_x = 4{,}76 \quad ; \quad K_y = 6{,}85
+\]
+
+\[
+c_R = \frac{M_\alpha + M_{ce} - M_{Ra}}{K}
+\]
+
+\[
+c_R(x) = 0{,}167 \;>\; 0{,}1 \quad\Longrightarrow\quad M_{Ra}(x) \approx 0
+\]
+\[
+c_R(y) = 0{,}115 \;>\; 0{,}1 \quad\Longrightarrow\quad M_{Ra}(y) \approx 0
+\]
+
+\subsubsection{Moments résistants totaux}
+
+\[
+M_{Rx} = m_{Rt}(x) + \frac{M_{Re} + M_{Rw}}{2} \approx \mathbf{11{,}97~\text{kN.m/ml}}
+\]
+\[
+M_{Ry} \approx \mathbf{11{,}65~\text{kN.m/ml}}
+\]
+
+\subsubsection{Calcul de la force portante totale}
+
+La méthode des lignes de rupture (\textit{yield line}) est appliquée pour déterminer la force portante de la dalle à chaud :
+
+\[
+\alpha = \frac{l_x}{l_y} = \frac{3{,}05}{5{,}87} = 0{,}521
+\quad ; \quad
+\eta = \frac{M_{Ry}}{M_{Rx}} = \frac{11{,}65}{11{,}97} = 0{,}973
+\]
+
+\[
+\lambda = -2\eta + \sqrt{4\eta^2 + 3\eta} + 1 = 1{,}275
+\]
+
+Les charges portantes ultimes dans chaque sens :
+
+\[
+\bar{p}_x = \frac{24 \, M_{Rx}}{l_n^2} \cdot \frac{1 + 2\eta/\lambda}{3 - 2\eta} \approx \mathbf{17{,}31~\text{kN/ml}}
+\]
+\[
+\bar{p}_y = \frac{24 \, M_{Ry}}{l_n^2} \cdot \frac{1 + 2\eta/\lambda}{3 - 2\eta} \approx \mathbf{16{,}65~\text{kN/ml}}
+\]
+
+\subsubsection{Vérification finale}
+
+\encadre{$\bar{p}_x = 17{,}31~\text{kN/ml} \;\geq\; p = 11~\text{kN/ml} \quad \checkmark$}
+\encadre{$\bar{p}_y = 16{,}65~\text{kN/ml} \;\geq\; p = 11~\text{kN/ml} \quad \checkmark$}
+
+\textbf{La dalle nervurée résiste à un incendie de durée R120.}
+
+\subsection{Conclusion de la séance}
+
+Le calcul au feu confirme la stabilité au feu R120 des deux éléments structurels critiques étudiés :
+\begin{itemize}
+  \item \textbf{poutre principale 30$\times$70} : moment équilibrant total de $631{,}59$~kN.m, supérieur au moment isostatique sollicitant à chaud $M_0 = 413$~kN.m. Les armatures principales (6 HA 25 en travée et appuis intermédiaires, 3 HA 25 sur les appuis de rive) suffisent à reprendre les efforts pendant 2 heures d'incendie ;
+  \item \textbf{dalle nervurée 12 cm} : capacités portantes de $17{,}31$~kN/ml et $16{,}65$~kN/ml dans les sens $x$ et $y$ respectivement, à comparer à la charge sollicitante à chaud $p = 11$~kN/ml. Les marges sont confortables.
+\end{itemize}
+
+L'enrobage des armatures (3 cm dans le sens $x$, 4 cm dans le sens $y$ pour la dalle, et $3{,}25$/$5{,}75$~cm pour les lits inférieurs de la poutre) est conforme aux exigences de la NF EN 1992-1-2 pour la classe de résistance R120.
+

@@ -1,0 +1,293 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 4 — DALLE SUR 4 CÔTÉS
+% ════════════════════════════════════════════════════════════
+\seance{4}{Dalle sur 4 côtés}
+
+\subsection{Dalle étudiée et caractéristiques géométriques}
+
+Pour le dimensionnement des dalles en infrastructure, on considère la dalle située au \textbf{1\textsuperscript{er} sous-sol}. Ce choix est motivé par la plus grande charge d'exploitation supportée à ce niveau (10\,kN/m\textsuperscript{2}, locaux d'archives) ; les caractéristiques géométriques et le plan de ferraillage adoptés seront étendus aux autres dalles en infrastructure.
+
+Cette dalle est appuyée sur ses quatre côtés, d'épaisseur $h = 12$~cm (déterminée en Séance~1).
+
+\figureplaceholder{dalle-sur-4-cotes}{Dalle sur 4 côtés au 1\textsuperscript{er} sous-sol --- vue en plan avec dimensions $l_x = 3{,}05$~m et $l_y = 5{,}85$~m}
+
+\subsection{Élancement et nature de la dalle}
+
+Le rapport des portées vaut :
+\[
+  \alpha = \frac{l_x}{l_y} = \frac{3{,}05}{5{,}85} = 0{,}52
+\]
+
+Selon la valeur de cet élancement, on distingue deux cas :
+\begin{itemize}
+  \item Si $\alpha < 0{,}40$ : la dalle travaille principalement dans une seule direction (calcul comme dalle sur 2 appuis)~;
+  \item Si $\alpha \geq 0{,}40$ : la dalle travaille \textbf{dans les deux directions} et on applique la \textbf{méthode de Pigeaud}.
+\end{itemize}
+
+Comme $\alpha = 0{,}52 \geq 0{,}40$, la dalle porte dans les deux sens et le calcul des moments fléchissants est conduit par la méthode de Pigeaud.
+
+\subsection{Principe de la méthode de Pigeaud}
+
+La méthode de Pigeaud permet de calculer les moments fléchissants au centre de la dalle, où ils sont maximaux. Pour une dalle articulée sur son contour, elle utilise deux coefficients $M_1$ et $M_2$ qui sont lus graphiquement sur des abaques en fonction de l'élancement $\alpha$ (et, pour les charges concentrées, des dimensions de la surface d'impact diffusée au feuillet moyen).
+
+Les moments fléchissants au centre s'écrivent alors :
+\[
+  M_{ox} = (M_1 + \nu\,M_2)\,P
+  \qquad ; \qquad
+  M_{oy} = (\nu\,M_1 + M_2)\,P
+\]
+
+avec $\nu = 0$ (coefficient de Poisson du béton fissuré, EN~1992-1-1 §3.1.3(4)) et $P$ la charge totale appliquée sur la dalle. Ces formules se simplifient donc en :
+\[
+  M_{ox} = M_1 \cdot P
+  \qquad ; \qquad
+  M_{oy} = M_2 \cdot P
+\]
+
+Dans le cadre de ce dimensionnement, la note d'hypothèses du projet impose deux cas de chargement à étudier pour les locaux d'archives :
+\begin{itemize}
+  \item une charge d'exploitation surfacique $q = 10$~kN/m\textsuperscript{2}~;
+  \item \emph{ou} une charge concentrée $Q = 20$~kN appliquée sur une surface d'impact $u_0 \times v_0 = 10 \times 10$~cm.
+\end{itemize}
+
+Les deux cas sont étudiés et le plus défavorable est retenu dans chaque direction.
+
+\subsection{Cas 1 --- Charges uniformément réparties}
+
+\paragraph{Lecture des abaques.} Pour $\alpha = 0{,}52$, on lit sur les abaques de Pigeaud (cas de charges réparties) :
+\[
+  M_1 = 0{,}0475 \qquad ; \qquad M_2 = 0{,}01
+\]
+
+\paragraph{Calcul des charges totales.} La charge permanente correspond au poids propre seul de la dalle :
+\[
+  g = 0{,}12 \times 25 = 3~\text{kN/m}^2
+\]
+\[
+  P_g = g \times l_x \times l_y = 3 \times 3{,}05 \times 5{,}85 = 53{,}5~\text{kN}
+\]
+
+La charge d'exploitation :
+\[
+  q = 10~\text{kN/m}^2 \quad \Rightarrow \quad
+  P_q = q \times l_x \times l_y = 10 \times 3{,}05 \times 5{,}85 = 178{,}4~\text{kN}
+\]
+
+\paragraph{Moments fléchissants.}
+\[
+\begin{aligned}
+  M_{ox,g} &= M_1 \cdot P_g = 0{,}0475 \times 53{,}5 = 2{,}54~\text{kN}\cdot\text{m/ml} \\
+  M_{oy,g} &= M_2 \cdot P_g = 0{,}01 \times 53{,}5 = 0{,}54~\text{kN}\cdot\text{m/ml} \\
+  M_{ox,q} &= M_1 \cdot P_q = 0{,}0475 \times 178{,}4 = 8{,}48~\text{kN}\cdot\text{m/ml} \\
+  M_{oy,q} &= M_2 \cdot P_q = 0{,}01 \times 178{,}4 = 1{,}78~\text{kN}\cdot\text{m/ml}
+\end{aligned}
+\]
+
+\subsection{Cas 2 --- Charge concentrée \texorpdfstring{$Q = 20$~kN}{Q = 20 kN}}
+
+\paragraph{Diffusion de la charge au feuillet moyen.} La charge concentrée appliquée en surface, sur une aire $u_0 \times v_0 = 10 \times 10$~cm, se diffuse à $45^\circ$ jusqu'au feuillet moyen de la dalle. Les dimensions diffusées sont :
+\[
+  u = u_0 + h = 10 + 12 = 22~\text{cm}
+  \qquad ; \qquad
+  v = v_0 + h = 10 + 12 = 22~\text{cm}
+\]
+
+\figureplaceholder{dalle-diffusion-45}{Diffusion à $45^{\circ}$ de la charge concentrée sur le feuillet moyen --- $u = u_0 + h$, $v = v_0 + h$}
+
+\paragraph{Lecture des abaques (charge concentrée).} Avec $\alpha = 0{,}52$ et :
+\[
+  \frac{u}{l_x} = \frac{0{,}22}{3{,}05} = 0{,}072
+  \qquad ; \qquad
+  \frac{v}{l_y} = \frac{0{,}22}{5{,}85} = 0{,}038
+\]
+
+on lit sur les abaques de Pigeaud (charges concentrées) :
+\[
+  M_1 = 0{,}28 \qquad ; \qquad M_2 = 0{,}21
+\]
+
+\paragraph{Moments fléchissants.}
+\[
+\begin{aligned}
+  M_{ox,Q} &= M_1 \cdot Q = 0{,}28 \times 20 = 5{,}60~\text{kN}\cdot\text{m/ml} \\
+  M_{oy,Q} &= M_2 \cdot Q = 0{,}21 \times 20 = 4{,}20~\text{kN}\cdot\text{m/ml}
+\end{aligned}
+\]
+
+\subsection{Combinaison à l'ELU --- Moments isostatiques}
+
+Les charges $q$ (répartie) et $Q$ (concentrée) ne pouvant pas être simultanément maximales au même endroit, on retient le \textbf{maximum} entre $M_{o,q}$ et $M_{o,Q}$ dans chaque direction.
+
+\paragraph{Direction $x$ :}
+\[
+  M_{ox} = 1{,}35\,M_{ox,g} + 1{,}5\,\max\{M_{ox,q} ;\, M_{ox,Q}\}
+         = 1{,}35 \times 2{,}54 + 1{,}5 \times \max\{8{,}48 ;\, 5{,}60\}
+\]
+\[
+  M_{ox} = 3{,}43 + 1{,}5 \times 8{,}48 = \mathbf{16{,}15~\text{kN}\cdot\text{m/ml}}
+\]
+
+\paragraph{Direction $y$ :}
+\[
+  M_{oy} = 1{,}35\,M_{oy,g} + 1{,}5\,\max\{M_{oy,q} ;\, M_{oy,Q}\}
+         = 1{,}35 \times 0{,}54 + 1{,}5 \times \max\{1{,}78 ;\, 4{,}20\}
+\]
+\[
+  M_{oy} = 0{,}72 + 1{,}5 \times 4{,}20 = \mathbf{7{,}02~\text{kN}\cdot\text{m/ml}}
+\]
+
+On remarque que le \textbf{cas réparti dimensionne le sens $x$} (petite portée) tandis que le \textbf{cas concentré dimensionne le sens $y$} (grande portée).
+
+\subsection{Moments avec continuité (FDP 18-717 §5.6.1)}
+
+Le panneau étudié n'est pas isolé : il appartient à un plancher continu. On applique des coefficients de redistribution pour tenir compte de la continuité avec les panneaux voisins.
+
+\paragraph{Moments en travée.}
+\[
+  M_{tx} = 0{,}75 \cdot M_{ox} = 0{,}75 \times 16{,}15 = \mathbf{12{,}11~\text{kN}\cdot\text{m/ml}}
+\]
+\[
+  M_{ty} = 0{,}85 \cdot M_{oy} = 0{,}85 \times 7{,}02 = \mathbf{5{,}97~\text{kN}\cdot\text{m/ml}}
+\]
+
+\paragraph{Moments sur appuis (continuité).}
+\[
+  M_w = M_e = M_s = 0{,}50 \cdot M_{ox} = 0{,}50 \times 16{,}15 = \mathbf{8{,}08~\text{kN}\cdot\text{m/ml}}
+\]
+
+\paragraph{Moment sur appui de rive (Nord).}
+\[
+  M_n = 0{,}15 \cdot M_{ox} = 0{,}15 \times 16{,}15 = \mathbf{2{,}42~\text{kN}\cdot\text{m/ml}}
+\]
+
+\figureplaceholder{dalle-repartition-moments}{Répartition des moments en travée et sur appuis --- diagrammes en X et en Y}
+
+\subsection{Vérifications obligatoires}
+
+La somme des moments en travée et sur appuis doit satisfaire la condition réglementaire suivante (FDP~18-717) :
+
+\paragraph{Sens $x$ :}
+\[
+  M_{tx} + \frac{M_w + M_e}{2} \geq 1{,}25\,M_{ox}
+\]
+\[
+  12{,}11 + \frac{8{,}08 + 8{,}08}{2} = 20{,}19 \geq 1{,}25 \times 16{,}15 = 20{,}19 \quad\checkmark
+\]
+
+\paragraph{Sens $y$ :}
+\[
+  M_{ty} + \frac{M_n + M_s}{2} \geq 1{,}25\,M_{oy}
+\]
+\[
+  5{,}97 + \frac{2{,}42 + 8{,}08}{2} = 11{,}22 \geq 1{,}25 \times 7{,}02 = 8{,}78 \quad\checkmark
+\]
+
+Les deux conditions sont vérifiées ; le sens $x$ est tout juste à la limite.
+
+\subsection{Détermination des armatures de flexion}
+
+Les armatures sont déterminées en flexion simple selon l'Eurocode~2. La section minimale réglementaire (\S{}9.3.1.1 EC2) pour les dalles est :
+\[
+  A_{s,\min} = \max\left\{0{,}26\,\frac{f_{ctm}}{f_{yk}}\,b_t\,d \;;\; 0{,}0013\,b_t\,d\right\}
+\]
+
+Avec $f_{ctm} = 2{,}6$~MPa pour le C25/30 et $f_{yk} = 500$~MPa, on obtient pour $b_t = 1$~m :
+\begin{itemize}
+  \item Pour $d = 90$~mm : $A_{s,\min} = 1{,}22$~cm\textsuperscript{2}/ml
+  \item Pour $d = 80$~mm : $A_{s,\min} = 1{,}08$~cm\textsuperscript{2}/ml
+\end{itemize}
+
+\paragraph{Tableau de synthèse.}
+
+\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrrrl}
+\toprule
+\textbf{Zone} & \textbf{$M$} & \textbf{$d$} & \textbf{$A_s$ calc.} & \textbf{$A_s$ retenue} & \textbf{Choix} \\
+              & (kN$\cdot$m/ml) & (mm) & (cm\textsuperscript{2}/ml) & (cm\textsuperscript{2}/ml) & \\
+\midrule
+Travée sens $x$       & 12,11 & 90 & 3,25 & 3,25 & HA\,10 / $e = 20$~cm = 3,93 \\
+Travée sens $y$       & 5,97  & 80 & 1,77 & 1,77 & HA\,8 / $e = 20$~cm = 2,52 \\
+Appuis $W$, $E$, $S$  & 8,08  & 80 & 2,42 & 2,42 & HA\,8 / $e = 20$~cm = 2,52 \\
+Appui $N$ (rive)      & 2,42  & 90 & 0,62 & \textbf{1,22}\textsuperscript{*} & HA\,6 / $e = 20$~cm = 1,41 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textsuperscript{*}\,Section minimale Eurocode imposée car $A_s$ calculée $<$ $A_{s,\min}$.
+\vspace{4pt}
+
+\figureplaceholder{dalle-plan-ferraillage}{Plan de ferraillage de la dalle --- disposition des armatures dans les deux directions}
+
+\subsection{Vérification à l'effort tranchant}
+
+\paragraph{Calcul de la résistance $V_{Rd,c}$ (béton seul, EC2 §6.2.2).}
+\[
+  V_{Rd,c} = \max\left\{C_{Rd,c}\,k\,(100\,\rho_l\,f_{ck})^{1/3} \;;\; v_{\min} = 0{,}035\,k^{3/2}\,\sqrt{f_{ck}}\right\} \cdot b_w \cdot d
+\]
+
+\textbf{Calcul des paramètres.}
+\[
+  C_{Rd,c} = \frac{0{,}18}{\gamma_c} = \frac{0{,}18}{1{,}5} = 0{,}12
+\]
+\[
+  k = \min\left\{1 + \sqrt{\frac{200}{d}} = 1 + \sqrt{\frac{200}{90}} = 2{,}49 \;;\; 2\right\} \quad\Longrightarrow\quad k = 2
+\]
+
+Le pourcentage d'armatures longitudinales $\rho_l$ se calcule comme la moyenne géométrique entre les deux directions, à partir des sections retenues en travée :
+\[
+  \rho_l = \sqrt{\rho_{lx} \cdot \rho_{ly}}
+        = \sqrt{\frac{3{,}93 \times 2{,}52}{(100 \times 9{,}0)^2}}
+        \approx 0{,}302~\%
+\]
+
+\textbf{Application numérique.}
+\[
+  C_{Rd,c}\,k\,(100\,\rho_l\,f_{ck})^{1/3} \cdot b_w\,d
+  = 0{,}12 \times 2 \times (100 \times 0{,}00302 \times 25)^{1/3} \times 1 \times 0{,}09
+\]
+\[
+  = 0{,}24 \times (7{,}55)^{1/3} \times 0{,}09 = \mathbf{302~\text{kN/ml}}
+\]
+
+\[
+  v_{\min}\,b_w\,d = 0{,}035 \times 2^{3/2} \times \sqrt{25} \times 1 \times 0{,}09 \times 10^3 = \mathbf{233{,}3~\text{kN/ml}}
+\]
+
+D'où :
+\[
+  V_{Rd,c} = \max\{302 \;;\; 233{,}3\} = \mathbf{302~\text{kN/ml}}
+\]
+
+\paragraph{Calcul de l'effort tranchant sollicitant $V_{Ed}$.}
+Deux cas de chargement sont examinés :
+
+\textbf{Cas 1 --- Charge répartie :}
+\[
+  P_u = 1{,}35\,g + 1{,}5\,q = 1{,}35 \times 3 + 1{,}5 \times 10 = 19{,}05~\text{kN/m}^2
+\]
+\[
+  V_{Ed,1} = \frac{P_u \cdot l_x \cdot l_y}{2 \cdot l_y \cdot l_x \cdot \alpha} \cdot \alpha
+        = \frac{P_u \cdot l_x}{2}
+        \approx \mathbf{23{,}1~\text{kN/ml}}
+\]
+
+\textbf{Cas 2 --- Charge concentrée :}
+\[
+  P_u = 1{,}35\,g = 1{,}35 \times 3 = 4{,}05~\text{kN/m}^2
+  \qquad ; \qquad
+  Q_u = 1{,}5 \times 20 = 30~\text{kN}
+\]
+\[
+  V_{Ed,2} = \frac{P_u \cdot l_x \cdot l_y}{2\,l_y + l_x} + \frac{Q_u}{3 \cdot u}
+           = \frac{4{,}05 \times 3{,}05 \times 5{,}85}{2 \times 5{,}85 + 3{,}05} + \frac{30}{3 \times 0{,}22}
+           \approx \mathbf{50{,}4~\text{kN/ml}}
+\]
+
+\paragraph{Vérification.}
+\[
+  V_{Ed,\max} = 50{,}4~\text{kN/ml} \leq V_{Rd,c} = 302~\text{kN/ml} \quad\checkmark
+\]
+
+\encadre{$V_{Ed} \leq V_{Rd,c}$ : pas d'armatures d'effort tranchant nécessaires.}
+

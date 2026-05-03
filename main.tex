@@ -1,0 +1,70 @@
+% ============================================================
+% Rapport du projet – Ossatures de bâtiments
+% CHEBAP/TS – Fatoumata Bineta SALL – 2025-2026
+% Chargé de TD : M. Bodet
+% ============================================================
+%
+% Document principal : ce fichier sert d'orchestrateur.
+% Tout le contenu est réparti dans :
+%   - preambule.tex                       : packages et commandes
+%   - meta/page-de-garde.tex              : page de titre
+%   - meta/enonce.tex                     : énoncé du projet (à compléter)
+%   - seances/seance-XX-*/seance-XX.tex   : contenu de chaque séance
+%   - meta/synthese-resultats.tex         : synthèse finale
+%
+% Pour ajouter une image dans une séance :
+%   1. Placer l'image dans seances/seance-XX-*/images/
+%   2. Dans seance-XX.tex, remplacer \figureplaceholder{nom}{légende} par :
+%        \begin{figure}[H]\centering
+%          \includegraphics[width=0.7\linewidth]{nom.png}
+%          \caption{légende}\label{fig:nom}
+%        \end{figure}
+% ============================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\input{preambule.tex}
+
+% Le \graphicspath couvre tous les sous-dossiers images/ des séances.
+\graphicspath{%
+  {meta/}%
+  {seances/seance-01-predimensionnement/images/}%
+  {seances/seance-02-descente-charges/images/}%
+  {seances/seance-03-semelles/images/}%
+  {seances/seance-04-dalle-4-cotes/images/}%
+  {seances/seances-05-06-poutre/images/}%
+  {seances/seance-07-escalier/images/}%
+  {seances/seance-08-mur-pignon/images/}%
+  {seances/seance-09-mur-sous-sol/images/}%
+  {seances/seance-10-calcul-feu/images/}%
+  {seances/seances-11-12-plancher-dalle/images/}%
+}
+
+\begin{document}
+
+% ════════════════ PAGE DE GARDE ══════════════════════════════
+\input{meta/page-de-garde.tex}
+
+% ════════════════ TABLE DES MATIÈRES ═════════════════════════
+\tableofcontents
+\newpage
+
+% ════════════════ ÉNONCÉ DU PROJET ═══════════════════════════
+\input{meta/enonce.tex}
+
+% ════════════════ SÉANCES 1 À 12 ═════════════════════════════
+\input{seances/seance-01-predimensionnement/seance-01.tex}
+\input{seances/seance-02-descente-charges/seance-02.tex}
+\input{seances/seance-03-semelles/seance-03.tex}
+\input{seances/seance-04-dalle-4-cotes/seance-04.tex}
+\input{seances/seances-05-06-poutre/seances-05-06.tex}
+\input{seances/seance-07-escalier/seance-07.tex}
+\input{seances/seance-08-mur-pignon/seance-08.tex}
+\input{seances/seance-09-mur-sous-sol/seance-09.tex}
+\input{seances/seance-10-calcul-feu/seance-10.tex}
+\input{seances/seances-11-12-plancher-dalle/seances-11-12.tex}
+
+% ════════════════ SYNTHÈSE DES RÉSULTATS ═════════════════════
+\input{meta/synthese-resultats.tex}
+
+\end{document}

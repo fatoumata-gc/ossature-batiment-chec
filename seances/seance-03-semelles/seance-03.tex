@@ -1,0 +1,279 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 3 — SEMELLES DE FONDATIONS
+% ════════════════════════════════════════════════════════════
+\seance{3}{Semelles de fondations}
+
+\subsection{Définition et choix du type de fondation}
+
+Les fondations sont les éléments de la structure qui assurent la transmission au sol des charges issues de la superstructure et de l'infrastructure. Leur dimensionnement est une étape critique du projet : elles doivent à la fois reprendre l'effort normal cumulé issu de la descente de charges, limiter les tassements à des valeurs compatibles avec le bon fonctionnement de l'ouvrage, et résister aux sollicitations particulières (excentrement, poinçonnement, glissement).
+
+On distingue classiquement deux grandes familles :
+\begin{itemize}
+  \item les \textbf{fondations superficielles} (semelles isolées, filantes ou radiers), utilisées lorsque le sol porteur est rencontré à faible profondeur et que sa contrainte admissible est suffisante~;
+  \item les \textbf{fondations profondes} (pieux, barrettes, micropieux), utilisées lorsque le bon sol est situé en profondeur, ou lorsque les charges sont trop importantes pour une fondation superficielle.
+\end{itemize}
+
+Pour le présent projet, le rapport géotechnique fournit deux contraintes admissibles, correspondant aux deux solutions envisageables :
+\begin{itemize}
+  \item solution sur \textbf{semelles superficielles} : $q_a = 0{,}75$\,MPa à l'ELU~;
+  \item solution sur \textbf{pieux} : $\sigma_{ELS} = 5{,}0$\,MPa à l'ELS.
+\end{itemize}
+
+Le bâtiment sera \textbf{fondé sur deux pieux} sous chaque poteau de la file B. Ce choix est motivé par les charges importantes transmises par le poteau B2 (le plus chargé du bâtiment) et par la volonté de limiter les tassements différentiels. Le dimensionnement de cette solution est détaillé en premier ci-après. À titre de comparaison, la solution alternative sur semelle superficielle isolée est ensuite présentée.
+
+\paragraph{Rappel des charges au pied du poteau B2.} Issues de la Séance~2 :
+
+\encadre{$\Sigma G = 2\,460~\text{kN}$ \qquad $\Sigma Q_\text{réduit} = 1\,238~\text{kN}$}
+
+% ─────────────────────────────────────────────────────────────
+\subsection{Solution retenue --- Fondation sur deux pieux}
+% ─────────────────────────────────────────────────────────────
+
+\figureplaceholder{semelle-deux-pieux-principe}{Principe d'une semelle sur deux pieux --- vue en plan et coupe en élévation}
+
+\subsubsection{Justification du choix de deux pieux}
+
+Le poteau B2 pourrait théoriquement être fondé sur un seul pieu. Cependant, le risque d'\textbf{excentrement} entre l'effort normal du poteau et l'axe du pieu est très probable lors de l'exécution. Cet excentrement engendrerait une sollicitation parasite en flexion du pieu, qui n'est ni adaptée à ce type d'élément, ni économique à reprendre par armatures. Pour cette raison, le bâtiment sera fondé sur \textbf{deux pieux} reliés par une semelle de liaison rigide.
+
+\subsubsection{Effort normal repris par chaque pieu et diamètre des pieux}
+
+L'effort normal majoré transmis par le poteau, à reprendre par l'ensemble \emph{semelle + pieux}, s'écrit, en majorant de 5\,\% pour tenir compte du poids propre de la semelle de liaison et des incertitudes :
+\[
+  N_{Ed} = 1{,}05\,(\Sigma G + \Sigma Q_\text{réd}) = 1{,}05 \times (2\,460 + 1\,238) = \mathbf{3\,883~\text{kN}}
+\]
+
+Comme le montre le schéma précédent, l'effort normal repris par chaque pieu correspond à la réaction $R$ telle que :
+\[
+  R = \frac{N_{Ed}}{2} = \frac{3\,883}{2} = \mathbf{1\,941{,}5~\text{kN}}
+\]
+
+\paragraph{Diamètre des pieux.} La condition à respecter est :
+\[
+  \sigma_\text{pieux} = \frac{R}{S_\text{pieux}} \leq \sigma_{ELS}
+  \quad\Longrightarrow\quad
+  S_\text{pieux} \geq \frac{R}{\sigma_{ELS}} = \frac{1{,}9415}{5} = 0{,}3883~\text{m}^2
+\]
+
+Le pieu étant de section circulaire :
+\[
+  S_\text{pieux} = \frac{\pi\,D_\text{pieux}^{2}}{4}
+  \quad\Longrightarrow\quad
+  D_\text{pieux} = \sqrt{\frac{4 \times 0{,}3883}{\pi}} = 0{,}703~\text{m}
+\]
+
+\encadre{$D_\text{pieux} = 0{,}70$~m}
+
+\subsubsection{Géométrie de la semelle de liaison}
+
+\paragraph{Entraxe et longueur.} L'entraxe des pieux est usuellement pris égal à $2{,}5\,D_\text{pieux}$ pour assurer une bonne diffusion des charges et limiter l'effet de groupe :
+\[
+  l_t = 2{,}5 \times 0{,}70 = \mathbf{1{,}75~\text{m}}
+\]
+
+La longueur $L$ de la semelle est déduite en débordant de chaque côté d'une demi-section de pieu plus 5\,cm de débord :
+\[
+  L = l_t + D_\text{pieux} + 10~\text{cm} = 1{,}75 + 0{,}70 + 0{,}10 = \mathbf{2{,}55~\text{m}}
+\]
+
+\paragraph{Largeur.} La largeur $b_0$ de la semelle est prise comme la plus grande dimension entre le poteau et le pieu, augmentée d'un débord de 10\,cm :
+\[
+  b_0 = \max\{b_\text{poteau} ;\, D_\text{pieux}\} + 10~\text{cm} = \max\{0{,}60 ;\, 0{,}70\} + 0{,}10 = \mathbf{0{,}80~\text{m}}
+\]
+
+\paragraph{Hauteur utile et hauteur totale.} La hauteur utile est calculée par la méthode des bielles avec un angle d'inclinaison de bielle $\theta = 55^\circ$ :
+\[
+  d = \left(\frac{l_t}{2} - \frac{a}{4}\right)\,\tan\theta
+    = \left(\frac{1{,}75}{2} - \frac{0{,}60}{4}\right) \tan 55^\circ
+    = 0{,}725 \times 1{,}4281 = \mathbf{1{,}035~\text{m}}
+\]
+
+avec $a$ = côté du poteau (60\,cm). La hauteur totale est obtenue en ajoutant l'enrobage et le rayon des armatures :
+\[
+  h = d + 5~\text{cm} = \mathbf{1{,}10~\text{m}}
+\]
+
+\figureplaceholder{semelle-pieux-cote-bielle}{Demi-coupe transversale --- méthode des bielles : effort N, bielle inclinée à $\theta = 55^{\circ}$, hauteur utile $d$}
+
+\subsubsection{Vérification du coffrage}
+
+Sous l'effort à l'ELU, la condition à satisfaire pour les bielles courtes en compression confinée est :
+\[
+  \max\left\{\dfrac{N_{Ed}}{B\,\sin^2\theta} \,;\, \dfrac{N_{Ed}}{2\,B_1\,\sin^2\theta}\right\} \leq 0{,}9\,f_{ck}
+\]
+
+avec :
+\begin{itemize}
+  \item $B$ = aire du poteau $= 0{,}6 \times 0{,}6 = 0{,}36$~m\textsuperscript{2}~;
+  \item $B_1$ = aire d'un pieu $= \pi \times 0{,}7^2 / 4 = 0{,}3848$~m\textsuperscript{2}~;
+  \item $\sin^{2}(55^\circ) = 0{,}6710$.
+\end{itemize}
+
+\paragraph{Effort normal à l'ELU :}
+\[
+  N_{Ed} = 1{,}35\,\Sigma G + 1{,}5\,\Sigma Q_\text{réd}
+         = 1{,}35 \times 2\,460 + 1{,}5 \times 1\,238
+         = \mathbf{5\,178~\text{kN}}
+\]
+
+\paragraph{Côté poteau :}
+\[
+  \frac{N_{Ed}}{B\,\sin^2\theta}
+  = \frac{5{,}178}{0{,}36 \times 0{,}6710}
+  = 21{,}43~\text{MPa} \leq 0{,}9 \times 25 = 22{,}5~\text{MPa} \quad\checkmark
+\]
+
+\paragraph{Côté pieux :}
+\[
+  \frac{N_{Ed}}{2\,B_1\,\sin^2\theta}
+  = \frac{5{,}178}{2 \times 0{,}3848 \times 0{,}6710}
+  = 10{,}03~\text{MPa} \leq 22{,}5~\text{MPa} \quad\checkmark
+\]
+
+\encadre{Le coffrage convient : $0{,}80 \times 2{,}55 \times 1{,}10$~m}
+
+\subsubsection{Détermination des armatures}
+
+\paragraph{Armatures inférieures (tirant principal).}
+La force de traction dans les armatures inférieures, calculée par la méthode des bielles, vaut :
+\[
+  F_S = 1{,}15 \cdot \frac{N_{Ed} \cdot l_t}{4 \cdot d}\left(1 - \frac{a}{2 l_t}\right)
+\]
+
+Application numérique avec $N_{Ed} = 5{,}178$~MN, $l_t = 1{,}75$~m, $d = 1{,}035$~m, $a = 0{,}60$~m :
+\[
+  F_S = 1{,}15 \times \frac{5{,}178 \times 1{,}75}{4 \times 1{,}035}\left(1 - \frac{0{,}60}{2 \times 1{,}75}\right)
+      = 1{,}15 \times 2{,}1888 \times 0{,}8286
+      = \mathbf{2{,}085~\text{MN}}
+\]
+
+La section d'armatures inférieures s'en déduit :
+\[
+  A_\text{inf} = \frac{F_S}{f_{yd}} = \frac{2{,}085}{500/1{,}15} \times 10^{4}
+              = \mathbf{48{,}0~\text{cm}^2}
+\]
+
+\paragraph{Armatures supérieures.}
+Les armatures supérieures, qui reprennent les efforts de traction parasites en partie haute, sont prises dans l'intervalle :
+\[
+  \frac{A_\text{inf}}{8} \leq A_\text{sup} \leq \frac{A_\text{inf}}{5}
+  \quad\Longrightarrow\quad
+  6{,}00~\text{cm}^2 \leq A_\text{sup} \leq 9{,}60~\text{cm}^2
+\]
+
+On retient :
+\encadre{$A_\text{sup} = 7{,}80~\text{cm}^2$}
+
+\paragraph{Armatures verticales (cadres).}
+La réaction d'appui à l'ELU est $R_{ELU} = N_{Ed}/2 = 2{,}589$~MN.
+
+Comme $R_{ELU} \geq 1{,}10$~MN, on applique la formule majorée :
+\[
+  A_v = 6{,}55 \times \frac{R_{ELU}}{1{,}1}
+      = 6{,}55 \times \frac{2{,}589}{1{,}1}
+      = \mathbf{15{,}42~\text{cm}^2/\text{ml}}
+\]
+
+\encadre{$A_v = $ HA\,14, $e = 10$~cm $= 15{,}4$~cm\textsuperscript{2}/ml}
+
+\paragraph{Armatures horizontales.}
+Les armatures horizontales reprennent 10\,\% de la section d'armatures inférieures :
+\[
+  A_h = 0{,}10 \times A_\text{inf} = 0{,}10 \times 48{,}0 = \mathbf{4{,}80~\text{cm}^2}
+\]
+
+\figureplaceholder{semelle-pieux-ferraillage}{Coupe en élévation du plan de ferraillage de la semelle sur deux pieux : armatures inférieures, supérieures, verticales et horizontales}
+
+% ─────────────────────────────────────────────────────────────
+\subsection{Solution alternative --- Semelle superficielle isolée}
+% ─────────────────────────────────────────────────────────────
+
+Bien que la solution retenue soit celle des deux pieux, le bâtiment pourrait également être fondé sur une fondation superficielle. Le dimensionnement de cette alternative est détaillé ci-dessous.
+
+\subsubsection{Bilan des charges et coffrage}
+
+À l'ELU, en majorant de 5\,\% pour tenir compte du poids propre de la semelle :
+\[
+  N'_{Ed} = 1{,}05\,[1{,}35\,\Sigma G + 1{,}5\,\Sigma Q_\text{réd}]
+          = 1{,}05 \times 5\,178 = \mathbf{5\,437~\text{kN}}
+\]
+
+La surface de la semelle doit satisfaire :
+\[
+  S \geq \frac{N'_{Ed}}{q_a}
+       = \frac{5{,}437}{0{,}75}
+       = 7{,}249~\text{m}^2
+\]
+
+D'où le côté de la semelle (carrée comme le poteau) :
+\[
+  \sqrt{S} = 2{,}693~\text{m} \quad\Longrightarrow\quad
+  \boxed{a' = b' = 2{,}70~\text{m}}
+\]
+
+\paragraph{Hauteur de la semelle.}
+\[
+  h \geq \max\left\{\frac{a' - a}{4} ;\, \frac{b' - b}{4}\right\}
+       = \frac{2{,}70 - 0{,}60}{4} = 0{,}525~\text{m}
+\]
+
+On retient $\boxed{h = 0{,}65~\text{m}}$ (incluant la marge nécessaire pour l'ancrage des armatures du poteau).
+
+\figureplaceholder{semelle-superficielle-coffrage}{Coffrage de la semelle superficielle isolée 2,70 $\times$ 2,70 $\times$ 0,65~m}
+
+\subsubsection{Vérification de la pression au sol}
+
+\paragraph{Poids propre de la semelle :}
+\[
+  P_\text{semelle} = 25 \times 2{,}7 \times 2{,}7 \times 0{,}65 = 118{,}4~\text{kN}
+\]
+
+\paragraph{Effort normal à l'ELU avec poids semelle :}
+\[
+  N_{Ed} = 1{,}35\,(P_\text{semelle} + \Sigma G) + 1{,}5\,\Sigma Q_\text{réd}
+         = 1{,}35 \times (118{,}4 + 2\,460) + 1{,}5 \times 1\,238
+         = \mathbf{5\,338~\text{kN}}
+\]
+
+\paragraph{Pression sur le sol :}
+\[
+  \sigma_\text{sol} = \frac{N_{Ed}}{a' \times b'}
+                    = \frac{5{,}338 \times 10^{-3}}{2{,}70 \times 2{,}70}
+                    = 0{,}73~\text{MPa} \leq q_a = 0{,}75~\text{MPa} \quad\checkmark
+\]
+
+\encadre{Les dimensions adoptées pour la semelle conviennent.}
+
+\subsubsection{Détermination des armatures}
+
+Les armatures de la semelle sont calculées à l'ELU \emph{sans} tenir compte du poids propre (qui n'est pas majoré ici) :
+\[
+  N_{Ed} = 1{,}35\,\Sigma G + 1{,}5\,\Sigma Q_\text{réd} = \mathbf{5\,178~\text{kN}}
+\]
+
+La hauteur utile vaut $d = h - 5~\text{cm} = 0{,}60$~m. La semelle étant carrée comme le poteau, les sections d'armatures dans les deux directions sont identiques :
+\[
+  A_a = A_b = \frac{N_{Ed}\,(a' - a)}{8\,d\,f_{yd}}
+            = \frac{5{,}178 \times (2{,}70 - 0{,}60) \times 10^{4}}{8 \times 0{,}60 \times 500/1{,}15}
+            = \mathbf{52{,}10~\text{cm}^2}
+\]
+
+\encadre{Choix retenu : $A_a = A_b = 11~\text{HA}\,25 = 54~\text{cm}^2$}
+
+La longueur d'ancrage est prise égale à $l_{bd} = a'/4 = 0{,}675$~m.
+
+\figureplaceholder{semelle-superficielle-ferraillage}{Plan de ferraillage de la semelle superficielle --- vue en plan et vue en élévation}
+
+\subsubsection{Vérification au poinçonnement}
+
+La condition à satisfaire est $d \geq d_o / 2$, avec :
+\[
+  d_o = \frac{a' - a}{2} = \frac{2{,}70 - 0{,}60}{2} = 1{,}05~\text{m}
+\]
+
+Donc :
+\[
+  d = 0{,}60~\text{m} \geq \frac{d_o}{2} = 0{,}525~\text{m} \quad\checkmark
+\]
+
+\encadre{La condition de poinçonnement est vérifiée.}
+

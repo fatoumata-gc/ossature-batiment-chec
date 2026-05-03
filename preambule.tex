@@ -1,0 +1,108 @@
+% ============================================================
+% Préambule LaTeX — Rapport Ossatures de bâtiments
+% CHEBAP/TS – Fatoumata Bineta SALL – 2025-2026
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2.2cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+
+\usepackage{amsmath,amssymb,mathtools}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{bleu}{RGB}{30,80,125}
+\definecolor{gris}{RGB}{110,110,110}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+
+% Note : \graphicspath sera défini dans main.tex pour pointer vers tous les
+% sous-dossiers images/ des séances.
+
+% Pour intégrer le scan de l'énoncé en début de rapport
+\usepackage{pdfpages}
+
+% Résultat encadré
+\newcommand{\encadre}[1]{%
+  \begin{tcolorbox}[
+    enhanced, colback=white, colframe=black,
+    boxrule=0.8pt, arc=0pt, sharp corners,
+    halign=center,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  ]
+  #1
+  \end{tcolorbox}\vspace{2pt}%
+}
+
+% Espace réservé pour image — Renommer ton image en "<nom>.png" puis la mettre
+% dans le dossier "images/" de la séance correspondante
+\newcommand{\figureplaceholder}[2]{%
+  \begin{figure}[H]
+    \centering
+    \fbox{\begin{minipage}[c][5cm][c]{0.7\linewidth}
+      \centering
+      \color{gris}\itshape\small
+      \textbf{[ Image à insérer ]}\\[4pt]
+      Renommer votre fichier en :\\
+      \texttt{#1.png}\\[4pt]
+      Légende : #2
+    \end{minipage}}
+    \caption{#2}
+    \label{fig:#1}
+  \end{figure}%
+}
+% Pour utiliser l'image après l'avoir mise dans le dossier images/, remplacer par :
+% \begin{figure}[H]\centering
+%   \includegraphics[width=0.7\linewidth]{nom_image.png}
+%   \caption{...}\label{fig:nom_image}
+% \end{figure}
+
+\usepackage{setspace}
+\setstretch{1.5}
+\setlength{\parindent}{1.2cm}
+\setlength{\parskip}{3pt}
+
+\usepackage{booktabs,array,tabularx}
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.25}
+
+\usepackage{enumitem}
+\setlist[itemize]{label=---,left=0.6cm,topsep=2pt,itemsep=1pt}
+
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{bleu}}{}{0em}{}[{\color{bleu}\vspace{-4pt}\rule{\linewidth}{0.5pt}}]
+\titleformat{\subsection}{\normalsize\bfseries\color{bleu}}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{18pt}{8pt}
+\titlespacing{\subsection}{0pt}{12pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{8pt}{3pt}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=bleu,urlcolor=bleu}
+
+% Bandeau de séance : page de garde dédiée + entrée TOC en niveau 1
+\newcommand{\seance}[2]{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{section}{Séance #1 --- #2}%
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{tcolorbox}[
+    enhanced, colback=bleu, colframe=bleu,
+    boxrule=0pt, arc=0pt, sharp corners,
+    fontupper=\color{white}\Huge\bfseries,
+    halign=center,
+    left=20pt, right=20pt, top=30pt, bottom=30pt
+  ]
+  Séance #1\\[12pt]{\LARGE\mdseries #2}
+  \end{tcolorbox}
+  \vspace*{\fill}
+  \clearpage
+}

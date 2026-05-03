@@ -1,0 +1,401 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 1 — PRÉDIMENSIONNEMENT
+% ════════════════════════════════════════════════════════════
+\seance{1}{Prédimensionnement}
+
+\subsection{Démarche générale}
+
+Le prédimensionnement consiste à fixer une première estimation des dimensions des éléments porteurs de la structure, en partant des éléments \textbf{supportés} (qui ne reprennent que leur poids propre et les charges d'exploitation) pour aller progressivement vers les éléments qui en \textbf{supportent d'autres}. Dans le cadre de cette étude, le dimensionnement est mené dans l'ordre suivant :
+\begin{itemize}
+  \item dalles ;
+  \item poutres secondaires ;
+  \item poutres principales ;
+  \item plancher-dalle (superstructure) et poteaux de superstructure (calcul itératif couplé) ;
+  \item poteaux d'infrastructure.
+\end{itemize}
+
+\figureplaceholder{predim-vue-plan-batiment}{Vue en plan de la partie infrastructure du bâtiment : files A, B, C et 1 à 6 ; portées $L = 6{,}50$~m et $\ell = 6{,}00$~m}
+
+Sur le plan architectural, on distingue \textbf{deux types de dalle} :
+\begin{itemize}
+  \item des \textbf{dalles nervurées} en infrastructure ;
+  \item un \textbf{plancher-dalle} en superstructure.
+\end{itemize}
+
+\subsection{Dimensionnement des dalles nervurées (infrastructure)}
+
+La surface de la dalle prédéfinie par le plan architectural est $6 \times 6{,}5$~m. Cependant, dans l'optique de soulager le travail de la dalle, des \textbf{poutres secondaires} sont ajoutées. Ainsi, la surface de calcul des dalles devient $6 \times 3{,}25$~m. La dalle qui fait l'objet du dimensionnement est celle du \textbf{1\textsuperscript{er} sous-sol} (cas le plus chargé : ses charges d'exploitation sont supérieures à celles des autres niveaux d'infrastructure). Les caractéristiques retenues seront ensuite appliquées à toutes les dalles d'infrastructure.
+
+\subsubsection{Critère de flexibilité}
+
+\[
+\alpha = \frac{\ell_x}{\ell_y} = \frac{3{,}25}{6} = 0{,}542 \;>\; 0{,}4
+\]
+
+La dalle travaille donc \textbf{dans les deux sens}, et l'épaisseur minimale par flexibilité s'écrit :
+
+\[
+h_1 \;\geq\; \frac{\ell_x}{40} = \frac{3{,}25 \times 100}{40} \approx \mathbf{8{,}125~\text{cm}}
+\]
+
+\subsubsection{Critère de sécurité incendie}
+
+La durée de coupe-feu requise pour le 1\textsuperscript{er} sous-sol étant de \textbf{2 heures}, l'épaisseur minimale est :
+
+\[
+h_2 \;\geq\; \mathbf{12~\text{cm}}
+\]
+
+\subsubsection{Critère de résistance}
+
+Avec une classe de résistance C25/30 et un moment réduit $\mu = 0{,}2$, la condition de résistance s'écrit :
+
+\[
+d^2~(\text{cm}^2) \;\geq\; 3 \, M_u
+\quad\text{avec}\quad
+d = h - 3
+\quad\text{et}\quad
+M_u = \frac{P_u \, \ell_x^2}{10 \, (1 + 2\,\alpha^3)}
+\]
+
+Charge ELU de prédimensionnement :
+
+\[
+P_u = 1{,}35 \, P_p + 1{,}5 \, Q = 1{,}35 \times (0{,}12 \times 25) + 1{,}5 \times 10 \approx \mathbf{19{,}05~\text{kN/m}^2}
+\]
+
+D'où :
+
+\[
+M_u = \frac{19{,}05 \times 3{,}25^2}{10 \times (1 + 2 \times 0{,}542^3)} \approx \mathbf{15{,}3~\text{kN.m/m}}
+\]
+
+\[
+d \;\geq\; \sqrt{3 \times 15{,}3} \approx 6{,}77~\text{cm}
+\quad\Longrightarrow\quad
+h_3 \;\geq\; 6{,}77 + 3 \approx \mathbf{9{,}77~\text{cm}}
+\]
+
+\subsubsection{Conclusion --- dalles nervurées}
+
+\encadre{$h = \max\{h_1 \,;\, h_2 \,;\, h_3\} = \max\{8{,}125 \,;\, 12 \,;\, 9{,}77\} = \mathbf{12~\text{cm}}$}
+
+\subsection{Dimensionnement des poutres secondaires}
+
+Les poutres secondaires reportent les charges de la dalle vers les poutres principales. La poutre étudiée a une portée $L = 6$~m et reprend la dalle sur deux surfaces afférentes \textbf{trapézoïdales} de part et d'autre.
+
+\figureplaceholder{predim-poutre-secondaire-charges}{Distribution des charges sur la poutre secondaire (surfaces afférentes trapézoïdales)}
+
+\subsubsection{Critère de résistance en flexion}
+
+La charge linéique équivalente sur la poutre secondaire vaut :
+
+\[
+P_u' = \left(0{,}5 - \frac{\alpha^2}{6}\right) \cdot 2 \, P_u \cdot \ell_x = \left(0{,}5 - \frac{0{,}542^2}{6}\right) \times 38{,}1 \times 3{,}25 \approx \mathbf{55{,}85~\text{kN/ml}}
+\]
+
+Le moment isostatique vaut :
+
+\[
+M_0 = \frac{P_u' \cdot L^2}{8} = \frac{55{,}85 \times 6^2}{8} \approx \mathbf{251{,}33~\text{kN.m}}
+\]
+
+D'où le moment ELU de prédimensionnement (forfaitaire) :
+
+\[
+M_u = 0{,}65 \, M_0 \approx \mathbf{163{,}4~\text{kN.m}}
+\]
+
+Pour $\mu = 0{,}2$ et C25/30, on a la condition $b_0 \, d^2 \geq 300 \, M_u$, avec l'hypothèse $b_0 \approx 0{,}4 \, d$ qui permet d'écrire :
+
+\[
+0{,}4 \, d^3 \;\geq\; 300 \, M_u
+\quad\Longrightarrow\quad
+d \;\geq\; \sqrt[3]{\frac{300 \, M_u}{0{,}4}} = \sqrt[3]{\frac{300 \times 163{,}4}{0{,}4}} \approx \mathbf{49{,}7~\text{cm}}
+\]
+
+D'où le choix : $d = 50$~cm, $b_0 = 0{,}4 \times 50 = 20$~cm, et $h = d + 5 = 55$~cm.
+
+\subsubsection{Critère de résistance à l'effort tranchant}
+
+L'effort tranchant maximal en appui s'écrit :
+
+\[
+V_0 = R_A = R_B = \frac{1}{2} \cdot \frac{6 + 2{,}75}{2} \cdot 38{,}1 \approx \mathbf{83{,}3~\text{kN}}
+\]
+
+Vérification de la condition $V_0 \leq 0{,}3 \, b_0 \, d$ :
+
+\[
+83{,}3 \;\leq\; 0{,}3 \times 20 \times 50 = 300 \quad \checkmark
+\]
+
+Vérification de la contrainte de cisaillement :
+
+\[
+\tau = \frac{3}{2} \cdot \frac{V_0}{b \, h} = \frac{3}{2} \times \frac{83{,}3}{20 \times 55} \approx 1{,}13~\text{MPa} \;\leq\; 3~\text{MPa} \quad \checkmark
+\]
+
+\subsubsection{Critère de flexibilité}
+
+\[
+h \;\geq\; \frac{L}{16} \quad\Longrightarrow\quad 55 \;\geq\; \frac{600}{16} = 37{,}5~\text{cm} \quad \checkmark
+\]
+
+\subsubsection{Conclusion --- poutres secondaires}
+
+\encadre{Section retenue : $\mathbf{b_0 = 20~\text{cm}}$ ; $\mathbf{d = 50~\text{cm}}$ ; $\mathbf{h = 55~\text{cm}}$}
+
+\subsection{Dimensionnement des poutres principales}
+
+À partir du schéma de distribution des charges, la poutre principale supporte :
+\begin{itemize}
+  \item le poids propre de la dalle qui la surplombe (\textcircled{1} sur le schéma) ;
+  \item les charges apportées par les surfaces afférentes triangulaires (\textcircled{2}) ;
+  \item les poutres secondaires qui s'y appuient (\textcircled{3}) ;
+  \item les charges de dalle apportées par les surfaces afférentes trapézoïdales (\textcircled{4}).
+\end{itemize}
+
+Pour simplifier le prédimensionnement, on retient un schéma simplifié de descente de charges (schéma rectangulaire \textcircled{2}), reportant une charge concentrée au milieu de la travée principale.
+
+\figureplaceholder{predim-poutre-principale-charges}{Schémas de distribution des charges sur la poutre principale : modèle complet (gauche) et simplifié (droite)}
+
+\subsubsection{Bilan des charges}
+
+\begin{itemize}
+  \item \textbf{Poutre secondaire (poutrelle)} : $P_p = 0{,}2 \times 0{,}55 \times 6 \times 25 \approx \mathbf{16{,}5~\text{kN}}$
+  \item \textbf{Dalle} : $P_D = 19{,}05 \times 6 \times 3{,}25 \approx \mathbf{371{,}48~\text{kN}}$
+  \item \textbf{Charge totale supportée} :
+\end{itemize}
+
+\[
+P_t = P_D + 1{,}35 \, P_p = 371{,}48 + 1{,}35 \times 16{,}5 \approx \mathbf{393{,}76~\text{kN}}
+\]
+
+\subsubsection{Critère de résistance en flexion}
+
+Le schéma statique est celui d'une poutre simplement appuyée de portée $L = 6{,}5$~m, soumise à la charge concentrée $P_t$ à mi-travée. Le moment isostatique en travée vaut :
+
+\[
+M_0 = \frac{P_t \cdot L}{4} = \frac{393{,}76 \times 6{,}5}{4} \approx \mathbf{639{,}86~\text{kN.m}}
+\]
+
+\[
+M_u = 0{,}65 \, M_0 \approx \mathbf{415{,}91~\text{kN.m}}
+\]
+
+De la même manière que pour les poutres secondaires (avec $\mu = 0{,}2$ et $b_0 \approx 0{,}4 \, d$) :
+
+\[
+d \;\geq\; \sqrt[3]{\frac{300 \, M_u}{0{,}4}} = \sqrt[3]{\frac{300 \times 415{,}91}{0{,}4}} \approx \mathbf{67{,}82~\text{cm}}
+\]
+
+D'où $d \approx 68$~cm, $b_0 \approx 0{,}4 \times 68 = 27{,}2 \approx 30$~cm, et $h = d + 5 \approx 73$~cm.
+
+\paragraph{Limitation de gabarit}
+
+En raison de la limitation du \textbf{gabarit sous poutres à 2~m} pour les sous-sols, la hauteur de la poutre est ramenée à $h = 70$~cm. Au-delà de cette valeur, on dépasserait le gabarit autorisé. Avec $h = 70$~cm, on a $d = h - 5 = 65$~cm.
+
+\subsubsection{Critère de résistance à l'effort tranchant}
+
+\[
+V_0 = \frac{P_t}{2} = \frac{393{,}76}{2} \approx 196{,}88~\text{kN}
+\]
+
+\[
+V_0 \;\leq\; 0{,}3 \, b_0 \, d \quad\Longrightarrow\quad 196{,}88 \;\leq\; 0{,}3 \times 30 \times 65 = 585~\text{kN} \quad \checkmark
+\]
+
+\subsubsection{Critère de sécurité incendie}
+
+Coupe-feu de 2 heures :
+
+\[
+b_0 \;\geq\; 30~\text{cm} \;\geq\; 20~\text{cm} \quad \checkmark
+\]
+
+\subsubsection{Critère de flexibilité}
+
+\[
+h = 70~\text{cm} \;\geq\; \frac{L}{16} = \frac{650}{16} \approx 40{,}63~\text{cm} \quad \checkmark
+\]
+
+\subsubsection{Conclusion --- poutres principales}
+
+\encadre{Section retenue : $\mathbf{b_0 = 30~\text{cm}}$ ; $\mathbf{d = 65~\text{cm}}$ ; $\mathbf{h = 70~\text{cm}}$}
+
+\subsection{Dimensionnement du plancher-dalle et des poteaux de superstructure}
+
+Les dimensionnements du plancher-dalle (superstructure) et des poteaux qui le supportent sont \textbf{couplés} : l'épaisseur de la dalle dépend de la géométrie des poteaux, et inversement. Ce couplage est résolu par un calcul \textbf{itératif} jusqu'à convergence des valeurs.
+
+Dans le cadre de cette étude, deux itérations sont effectuées :
+\begin{itemize}
+  \item une première tentative qui ne converge pas ;
+  \item une seconde tentative qui montre la convergence.
+\end{itemize}
+
+Pour le dimensionnement du poteau de superstructure, on considère le poteau de la \textbf{file B au RDC}, dont la surface afférente vaut $S = 6 \times 6{,}5 = 39$~m\textsuperscript{2}. En tenant compte de la \textbf{continuité} des travées (majoration de 15\%) :
+
+\[
+S^* = 1{,}15 \times S = \mathbf{44{,}85~\text{m}^2}
+\]
+
+\subsubsection{Première tentative --- \texorpdfstring{$h = 25$}{h = 25}~cm}
+
+\paragraph{Critère de flexibilité du plancher-dalle}~
+
+\[
+h \;\geq\; \frac{L}{30} = \frac{650}{30} \approx 21{,}66~\text{cm} \quad\Longrightarrow\quad h \approx \mathbf{25~\text{cm}}
+\]
+
+\paragraph{Descente de charges (avec $h = 0{,}25$~m)}~
+
+\textbf{Terrasse :} $G_1 = (0{,}25 \times 25) + 0{,}4 + 2 + 0{,}1 + (0{,}06 \times 15) \approx \mathbf{9{,}65~\text{kN/m}^2}$
+
+\textbf{Étage courant :} $G_2 = 4 \times \big[(0{,}25 \times 25) + 0{,}4 + 0{,}1\big] = \mathbf{27~\text{kN/m}^2}$ (sur 4 étages)
+
+\textbf{Charges d'exploitation :} $Q = 3{,}5$~kN/m\textsuperscript{2}
+
+\paragraph{Critère effort tranchant}~
+
+\[
+P_u = 1{,}35 \times \big[(0{,}25 \times 25) + 0{,}4 + 0{,}1\big] + 1{,}5 \times 3{,}5 \approx \mathbf{14{,}36~\text{kN/m}^2}
+\]
+
+\[
+V_u = P_u \cdot \frac{\ell \cdot L}{4} = 14{,}36 \times \frac{6 \times 6{,}5}{4} \approx \mathbf{140{,}01~\text{kN}}
+\]
+
+La condition $(b + h) \, h \geq 15 \, V_u$ donne :
+
+\[
+b \;\geq\; \frac{15 \, V_u}{h} - h = \frac{15 \times 140{,}01}{25} - 25 \approx \mathbf{59~\text{cm}}
+\]
+
+\paragraph{Vérification de l'effort normal}~
+
+\[
+N_u = \big[1{,}35 \, G + 1{,}5 \, Q\big] \cdot S^* = \big[1{,}35 \times (9{,}65 + 27) + 1{,}5 \times 3{,}5\big] \times 44{,}85 \approx \mathbf{2\,454{,}53~\text{kN}}
+\]
+
+\[
+1{,}3 \, B \;\geq\; N_u \quad\Longrightarrow\quad B \;\geq\; \frac{N_u}{1{,}3} \quad\Longrightarrow\quad b \;\geq\; \sqrt{\frac{N_u}{1{,}3}} \approx \mathbf{43{,}45~\text{cm}}
+\]
+
+\paragraph{Conclusion de la 1\textsuperscript{re} tentative}~
+
+\textbf{Pas de convergence} : les dimensions adoptées pour le plancher-dalle conduisent à des poteaux trop élancés pour reprendre l'effort tranchant. Il faut donc \textbf{augmenter l'épaisseur de la dalle}.
+
+\subsubsection{Seconde tentative --- \texorpdfstring{$h = 29$}{h = 29}~cm}
+
+On augmente l'épaisseur du plancher-dalle à $h = 29$~cm.
+
+\paragraph{Descente de charges (avec $h = 0{,}29$~m)}~
+
+\textbf{Terrasse :} $G_1 = (0{,}29 \times 25) + 0{,}4 + 2 + 0{,}1 + (0{,}06 \times 15) \approx \mathbf{10{,}65~\text{kN/m}^2}$
+
+\textbf{Étage courant :} $G_2 = 4 \times \big[(0{,}29 \times 25) + 0{,}4 + 0{,}1\big] = \mathbf{31~\text{kN/m}^2}$
+
+\textbf{Charges d'exploitation :} $Q = 3{,}5$~kN/m\textsuperscript{2}
+
+\paragraph{Critère effort tranchant}~
+
+\[
+V_u = \big[1{,}35 \times (0{,}29 \times 25 + 0{,}4 + 0{,}1) + 1{,}5 \times 3{,}5\big] \times \frac{6 \times 6{,}5}{4} \approx \mathbf{153{,}2~\text{kN}}
+\]
+
+\[
+b \;\geq\; \frac{15 \times 153{,}2}{29} - 29 \approx \mathbf{50~\text{cm}}
+\]
+
+\paragraph{Vérification de l'effort normal}~
+
+\[
+N_u = 44{,}85 \times \big[1{,}35 \times (10{,}65 + 31) + 1{,}5 \times 3{,}5\big] \approx \mathbf{2\,757{,}3~\text{kN}}
+\]
+
+\[
+b \;\geq\; \sqrt{\frac{N_u}{1{,}3}} = \sqrt{\frac{2\,757{,}3}{1{,}3}} \approx \mathbf{46~\text{cm}}
+\]
+
+\paragraph{Conclusion de la 2\textsuperscript{e} tentative}~
+
+\textbf{Convergence atteinte} : les deux critères donnent $b \approx 50$~cm, valeur compatible avec $h = 29$~cm pour la dalle.
+
+\encadre{Plancher-dalle : $\mathbf{h = 29~\text{cm}}$}
+\encadre{Poteau de superstructure : $\mathbf{b \times h = 50 \times 50~\text{cm}^2}$}
+
+\subsection{Dimensionnement des poteaux d'infrastructure}
+
+On considère le poteau de la file \textbf{B au 2\textsuperscript{e} sous-sol} (le plus chargé, car il reprend la totalité des étages supérieurs et les charges des deux niveaux de sous-sol). Sa surface afférente est identique : $S^* = 44{,}85$~m\textsuperscript{2}.
+
+\subsubsection{Descente de charges supplémentaire}
+
+L'effort normal apporté par les étages courants (déjà calculé en superstructure) vaut $N_{u,1} = 2\,757{,}3$~kN. À cet effort s'ajoutent les contributions du 1\textsuperscript{er} et du 2\textsuperscript{e} sous-sol.
+
+\paragraph{Niveau du 1\textsuperscript{er} sous-sol (plancher avec retombées)}~
+
+Charges permanentes :
+\begin{align*}
+G &= P_{dalle} + P_{chape} + P_{carrelage} + P_{poutre\,principale} + P_{poutre\,secondaire} \\
+&= 44{,}85 \times \big[(0{,}12 \times 25) + (20 \times 0{,}03) + 0{,}5\big] + (25 \times 0{,}58 \times 0{,}3 \times 6{,}5) + (0{,}43 \times 25 \times 0{,}2 \times 6) \\
+&\approx \mathbf{225{,}1~\text{kN}}
+\end{align*}
+
+Charges d'exploitation : $Q = 5 \times 44{,}85 \approx 224{,}3$~kN.
+
+\[
+N_{u,2} = 1{,}35 \, G + 1{,}5 \, Q = 1{,}35 \times 225{,}1 + 1{,}5 \times 224{,}3 \approx \mathbf{640{,}34~\text{kN}}
+\]
+
+\paragraph{Niveau du 2\textsuperscript{e} sous-sol (dallage)}~
+
+\[
+G = 44{,}85 \times (0{,}12 \times 25) + (25 \times 0{,}58 \times 0{,}3 \times 6{,}5) + (0{,}43 \times 25 \times 0{,}2 \times 6) \approx \mathbf{175{,}73~\text{kN}}
+\]
+
+Charges d'exploitation (archives, $Q = 10$~kN/m\textsuperscript{2}) : $Q = 10 \times 44{,}85 = 448{,}5$~kN.
+
+\[
+N_{u,3} = 1{,}35 \times 175{,}73 + 1{,}5 \times 448{,}5 \approx \mathbf{909{,}99~\text{kN}}
+\]
+
+\subsubsection{Effort normal total et critère de résistance}
+
+\[
+N_u = N_{u,1} + N_{u,2} + N_{u,3} = 2\,757{,}3 + 640{,}34 + 909{,}99 \approx \mathbf{4\,307{,}63~\text{kN}}
+\]
+
+Pour un poteau carré $B = b^2$ et la condition $1{,}3 \, B \geq N_u$ :
+
+\[
+b \;\geq\; \sqrt{\frac{N_u}{1{,}3}} = \sqrt{\frac{4\,307{,}63}{1{,}3}} \approx \mathbf{57{,}6~\text{cm}}
+\]
+
+\subsubsection{Critère de sécurité incendie}
+
+Au niveau du 2\textsuperscript{e} sous-sol, la durée de coupe-feu requise est de \textbf{2 heures}. Le tableau des dimensions minimales de poteau donne $b \geq 35$~cm, ce qui est moins contraignant que le critère de résistance précédent.
+
+\subsubsection{Conclusion --- poteau d'infrastructure}
+
+\encadre{Poteau d'infrastructure : $\mathbf{b \times h = 60 \times 60~\text{cm}^2}$}
+
+\subsection{Synthèse du prédimensionnement}
+
+\begin{center}
+\begin{tabularx}{0.85\linewidth}{Xc}
+\toprule
+\textbf{Élément} & \textbf{Dimensions retenues} \\
+\midrule
+Dalle nervurée (infrastructure)             & $h = 12$~cm \\
+Plancher-dalle (superstructure)             & $h = 29$~cm \\
+Poutre secondaire (infrastructure)          & $20 \times 55$~cm\textsuperscript{2} \\
+Poutre principale (infrastructure)          & $30 \times 70$~cm\textsuperscript{2} \\
+Poteau de superstructure                    & $50 \times 50$~cm\textsuperscript{2} \\
+Poteau d'infrastructure                     & $60 \times 60$~cm\textsuperscript{2} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Ces dimensions servent de \textbf{base} à toutes les analyses ultérieures (descente de charges, dimensionnement des éléments, vérifications au feu, etc.). En particulier, l'épaisseur du plancher-dalle ($h = 29$~cm) intervient directement dans le calcul des charges permanentes (Séance 2), et les dimensions des poteaux conditionnent les surfaces tributaires et les vérifications au poinçonnement (Séances 11 \& 12).
+

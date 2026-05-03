@@ -1,0 +1,495 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 8 — MUR PIGNON
+% ════════════════════════════════════════════════════════════
+\seance{8}{Mur pignon}
+
+\subsection{Présentation du mur étudié}
+
+La structure du bâtiment étudié comporte \textbf{deux murs pignons}, situés au droit des files \textbf{(1)} et \textbf{(6)}. Ces murs font partie des \textbf{éléments porteurs} et constituent également des \textbf{éléments de contreventement} : ils reprennent les charges verticales transmises par les planchers (terrasse, étages courants) ainsi que les actions horizontales du vent appliquées sur le grand côté du bâtiment.
+
+Dans cette séance, le mur pignon est dimensionné en deux temps :
+\begin{itemize}
+  \item au \textbf{rez-de-chaussée}, où il est soumis aux charges verticales cumulées des étages supérieurs combinées au moment de renversement dû au vent ;
+  \item au \textbf{R+1}, où une \textbf{console courte} reprend une partie des charges verticales et doit être ferraillée spécifiquement.
+\end{itemize}
+
+L'épaisseur du mur est prise égale à $h_w = 0{,}20$~m, conformément au prédimensionnement.
+
+\figureplaceholder{mur-pignon-vue-elevation}{Vue en élévation du mur pignon : longueurs et niveaux}
+
+\subsection{Descente de charges}
+
+\textit{Référence : NF EN 1991-1-1 et NF P06-111-2 (AN), FDP 18-717.}
+
+\subsubsection{Données géométriques et charges}
+
+Les paramètres géométriques et les charges retenues pour le mur pignon sont les suivants :
+
+\begin{itemize}
+  \item Poids surfacique du mur : $P_{mur} = 6{,}00$~kN/m\textsuperscript{2}
+  \item Longueur en terrasse : $L_{ter} = 12{,}35$~m
+  \item Longueur en étage courant : $L_{\acute{e}t} = 13{,}35$~m
+  \item Longueur au RDC : $L_{RDC} = 12{,}35$~m
+  \item Hauteur d'un étage courant : $h_{\acute{e}t} = 3{,}50$~m ; hauteur du RDC : $h_{RDC} = 5{,}00$~m
+  \item Charges en terrasse : $G_{ter} = 32{,}00$~kN/ml ; $Q_{ter} = 1{,}10$~kN/ml
+  \item Charges en étage courant : $G_{\acute{e}t} = 22{,}00$~kN/ml ; $Q_{\acute{e}t} = 9{,}50$~kN/ml
+\end{itemize}
+
+\subsubsection{Cas des charges permanentes \texorpdfstring{($G$)}{(G)}}
+
+L'effort normal cumulé au pied du mur est obtenu en sommant les contributions de la terrasse, des planchers d'étage courant, du poids du mur courant et du poids du mur au RDC :
+
+\begin{align*}
+N_{ter}        &= G_{ter} \times L_{ter} = 32 \times 12{,}35 = 395~\text{kN}\\
+N_{\acute{e}t} &= G_{\acute{e}t} \times L_{\acute{e}t} \times 4 = 22 \times 13{,}35 \times 4 = 1\,175~\text{kN}\\
+N_{mur,\acute{e}t}  &= P_{mur} \times L_{\acute{e}t} \times 4 \times h_{\acute{e}t} = 6 \times 13{,}35 \times 4 \times 3{,}5 = 1\,121~\text{kN}\\
+N_{mur,RDC}    &= P_{mur} \times L_{RDC} \times h_{RDC} = 6 \times 12{,}35 \times 5 = 371~\text{kN}
+\end{align*}
+
+\encadre{$N_G = N_{ter} + N_{\acute{e}t} + N_{mur,\acute{e}t} + N_{mur,RDC} = \mathbf{3\,062~\text{kN}}$}
+
+Le moment de renversement à mi-longueur (par rapport à l'arête extérieure du mur) s'écrit :
+
+\[
+M_0 = \frac{L_{ter} \cdot N_{ter}}{2} + \frac{L_{\acute{e}t} \cdot N_{\acute{e}t}}{2} + \frac{L_{\acute{e}t} \cdot N_{mur,\acute{e}t}}{2} + \frac{L_{RDC} \cdot N_{mur,RDC}}{2}
+\]
+
+\[
+M_0 = \frac{12{,}35 \times 395}{2} + \frac{13{,}35 \times 1\,175}{2} + \frac{13{,}35 \times 1\,121}{2} + \frac{12{,}35 \times 371}{2} \approx \mathbf{20\,055~\text{kN.m}}
+\]
+
+L'excentricité de la résultante par rapport au centre du mur (de longueur $L = L_{RDC} = 12{,}35$~m, qui constitue le niveau de référence) vaut :
+
+\[
+e = \frac{M_0}{N_G} = \frac{20\,055}{3\,062} = 6{,}55~\text{m}
+\quad\Longrightarrow\quad
+e_0 = e - \frac{L}{2} = 6{,}55 - 6{,}175 = 0{,}375~\text{m}
+\]
+
+D'où le \textbf{moment dû aux charges permanentes} au pied du mur :
+
+\encadre{$M_G = N_G \cdot e_0 = 3\,062 \times 0{,}375 = \mathbf{1\,150~\text{kN.m}}$}
+
+\subsubsection{Cas des charges d'exploitation \texorpdfstring{($Q$)}{(Q)}}
+
+Le même raisonnement est appliqué aux charges d'exploitation :
+
+\begin{align*}
+N_{Q,ter}        &= Q_{ter} \times L_{ter} = 1{,}1 \times 12{,}35 = 13{,}59~\text{kN}\\
+N_{Q,\acute{e}t} &= Q_{\acute{e}t} \times L_{\acute{e}t} \times 4 = 9{,}5 \times 13{,}35 \times 4 = 507{,}3~\text{kN}
+\end{align*}
+
+\encadre{$N_Q = 13{,}59 + 507{,}3 \approx \mathbf{521~\text{kN}}$}
+
+Le moment associé est :
+
+\[
+M_0^Q = \frac{12{,}35 \times 13{,}59}{2} + \frac{13{,}35 \times 507{,}3}{2} = \mathbf{3\,470{,}15~\text{kN.m}}
+\]
+
+\[
+e = \frac{M_0^Q}{N_Q} = \frac{3\,470{,}15}{521} = 6{,}66~\text{m}
+\quad\Longrightarrow\quad
+e_0 = 6{,}66 - 6{,}175 = 0{,}485~\text{m}
+\]
+
+\encadre{$M_Q = N_Q \cdot e_0 = 521 \times 0{,}485 = \mathbf{253~\text{kN.m}}$}
+
+\subsubsection{Action du vent}
+
+L'action du vent sur le grand côté du bâtiment, ramenée au pied du RDC, est donnée par l'énoncé du projet :
+
+\encadre{$V_w = \mathbf{310~\text{kN}} \quad ; \quad M_w = \mathbf{3\,100~\text{kN.m}}$}
+
+\figureplaceholder{mur-pignon-vent}{Schéma d'application de l'action du vent sur le mur pignon}
+
+\subsubsection{Récapitulatif des sollicitations}
+
+\begin{center}
+\begin{tabularx}{0.85\linewidth}{Xcc}
+\toprule
+\textbf{Action} & \textbf{Effort normal $N$ (kN)} & \textbf{Moment $M$ (kN.m)} \\
+\midrule
+Charges permanentes ($G$)    & 3\,062 & 1\,150 \\
+Charges d'exploitation ($Q$) & 521    & 253   \\
+Vent ($W$)                   & 310    & 3\,100 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Calcul dans le RDC}
+
+\subsubsection{Combinaisons d'actions à l'ELU}
+
+Trois combinaisons fondamentales sont considérées à l'ELU. Les coefficients de combinaison retenus sont, conformément à l'Eurocode 0 (annexe A1.2.2) : $\psi_0 = 0{,}6$ pour le vent et $\psi_0 = 0{,}7$ pour les charges d'exploitation (catégorie A/B usuelle). Pour chaque cas, on détermine la combinaison d'efforts $(N \, ;\, M)$ qui en résulte.
+
+\textbf{Cas 1 --- Combinaison fondamentale avec le vent comme action variable de base :}
+
+\[
+\begin{aligned}
+N_1 &= N_G = \mathbf{3\,062~\text{kN}}\\
+M_1 &= M_G + 1{,}5 \, M_w = 1\,150 + 1{,}5 \times 3\,100 = \mathbf{5\,800~\text{kN.m}}
+\end{aligned}
+\]
+
+\textbf{Cas 2 --- $Q$ action de base, vent en accompagnement :}
+
+\[
+\begin{aligned}
+N_2 &= 1{,}35 \, N_G + 1{,}5 \, N_Q = 1{,}35 \times 3\,062 + 1{,}5 \times 521 = \mathbf{4\,924~\text{kN}}\\
+M_2 &= 1{,}35 \, M_G + 1{,}5 \, M_Q + 1{,}5 \, \psi_0^W \, M_w \\
+    &= 1{,}35 \times 1\,150 + 1{,}5 \times 253 + 1{,}5 \times 0{,}6 \times 3\,100 = \mathbf{4\,722~\text{kN.m}}
+\end{aligned}
+\]
+
+\textbf{Cas 3 --- vent action de base, $Q$ en accompagnement :}
+
+\[
+\begin{aligned}
+N_3 &= 1{,}35 \, N_G + 1{,}5 \, \psi_0^Q \, N_Q = 1{,}35 \times 3\,062 + 1{,}5 \times 0{,}7 \times 521 = \mathbf{4\,687~\text{kN}}\\
+M_3 &= 1{,}35 \, M_G + 1{,}5 \, M_w + 1{,}5 \, \psi_0^Q \, M_Q \\
+    &= 1{,}35 \times 1\,150 + 1{,}5 \times 3\,100 + 1{,}5 \times 0{,}7 \times 253 = \mathbf{6\,468~\text{kN.m}}
+\end{aligned}
+\]
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{cXcc}
+\toprule
+\textbf{Cas} & \textbf{Combinaison} & \textbf{$N$ (kN)} & \textbf{$M$ (kN.m)} \\
+\midrule
+1 & $G + 1{,}5\,W$                                  & 3\,062 & 5\,800 \\
+2 & $1{,}35\,G + 1{,}5\,Q + 1{,}5\,\psi_0^W \, W$   & 4\,924 & 4\,722 \\
+3 & $1{,}35\,G + 1{,}5\,W + 1{,}5\,\psi_0^Q \, Q$   & 4\,687 & 6\,468 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsubsection{Calcul des contraintes}
+
+La section à la base du mur est rectangulaire ($h_w \times L = 0{,}20 \times 12{,}35$). Ses caractéristiques géométriques sont :
+
+\[
+S = h_w \times L = 0{,}20 \times 12{,}35 = \mathbf{2{,}47~\text{m}^2}
+\quad ; \quad
+I = \frac{h_w \cdot L^3}{12} = \frac{0{,}20 \times 12{,}35^3}{12} \approx \mathbf{31{,}4~\text{m}^4}
+\]
+
+\[
+v = \frac{L}{2} = 6{,}175~\text{m}
+\]
+
+Les contraintes extrêmes dans la section s'obtiennent par superposition d'un effort normal et d'un moment de flexion :
+
+\[
+\sigma_{max} = \frac{N}{S} + \frac{M \cdot v}{I}
+\quad ; \quad
+\sigma_{min} = \frac{N}{S} - \frac{M \cdot v}{I}
+\]
+
+\textbf{Cas 1 :} on cherche la contrainte minimale (vérification de non-décompression du mur sous vent et $G$ seul).
+
+\[
+\sigma_{min,1} = \frac{3\,062 \times 10^{-3}}{2{,}47} - \frac{5\,800 \times 10^{-3} \times 6{,}175}{31{,}4} = 1{,}240 - 1{,}141 = \mathbf{0{,}098~\text{MPa}}
+\]
+
+La contrainte minimale reste positive (\textbf{compression}), donc le mur n'est pas décollé sous cette combinaison.
+
+\textbf{Cas 2 :}
+
+\[
+\sigma_{max,2} = \frac{4\,924 \times 10^{-3}}{2{,}47} + \frac{4\,722 \times 10^{-3} \times 6{,}175}{31{,}4} = 1{,}994 + 0{,}929 = \mathbf{2{,}92~\text{MPa}}
+\]
+
+\textbf{Cas 3 :}
+
+\[
+\sigma_{max,3} = \frac{4\,687 \times 10^{-3}}{2{,}47} + \frac{6\,468 \times 10^{-3} \times 6{,}175}{31{,}4} = 1{,}898 + 1{,}272 = \mathbf{3{,}17~\text{MPa}}
+\]
+
+\begin{center}
+\begin{tabularx}{0.6\linewidth}{cXc}
+\toprule
+\textbf{Cas} & \textbf{Contrainte} & \textbf{Valeur (MPa)} \\
+\midrule
+1 & $\sigma_{min}$ & 0{,}098 \\
+2 & $\sigma_{max}$ & 2{,}92  \\
+3 & $\sigma_{max}$ & \textbf{3{,}17} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+L'effort normal sollicitant linéique le plus défavorable est obtenu à partir de la contrainte maximale (Cas 3) :
+
+\encadre{$N_{Ed} = \sigma_{max,3} \times 1 \times h_w = 3{,}17 \times 1 \times 0{,}20 = \mathbf{0{,}634~\text{MN/ml} = 634~\text{kN/ml}}$}
+
+\subsubsection{Détermination de l'effort normal résistant}
+
+Le calcul est mené conformément à la \textit{NF EN 1992-1-1+AN}, en émettant l'hypothèse que le mur est \textbf{non armé}. L'effort normal résistant linéique vaut :
+
+\[
+N_{Rd} = b \cdot h_w \cdot f_{cd} \cdot \Phi
+\]
+
+avec :
+\begin{itemize}
+  \item $b$ : longueur unitaire du mur étudié, $b = 1$~m ;
+  \item $h_w$ : épaisseur du mur, $h_w = 0{,}20$~m ;
+  \item $f_{cd}$ : valeur de calcul de la résistance en compression du béton ;
+  \item $\Phi$ : coefficient prenant en compte l'excentrement et l'élancement.
+\end{itemize}
+
+La résistance de calcul du béton est :
+
+\[
+f_{cd} = \frac{f_{ck}}{\gamma_c} = \frac{25}{1{,}5} \approx 16{,}67~\text{MPa}
+\]
+
+Le coefficient d'excentrement et de flambement $\Phi$ s'évalue par :
+
+\[
+\Phi = 1{,}07 \left(1 - \frac{2 \, e_{tot}}{h_w}\right) - 0{,}026 \, \frac{L_0}{h_w} \quad \leq \quad 1 - \frac{2 \, e_{tot}}{h_w}
+\]
+
+avec :
+\begin{itemize}
+  \item l'excentricité totale : $e_{tot} = e_0 + e_i = \max\{L_0/400 \, ; \, 2~\text{cm}\} = 2~\text{cm} = 0{,}02~\text{m}$ ;
+  \item la longueur de flambement du mur : $L_0 = \beta \cdot L_w = 1 \cdot L_w = h_{RDC} = 5{,}00~\text{m}$ (voile encastré en pied et libre en tête) ;
+  \item l'élancement reste limité à $\lambda \leq 120$, avec $i = \sqrt{I/B}$.
+\end{itemize}
+
+D'où :
+
+\[
+\Phi = 1{,}07 \times \left(1 - \frac{2 \times 0{,}02}{0{,}20}\right) - 0{,}026 \times \frac{5{,}00}{0{,}20} = 1{,}07 \times 0{,}80 - 0{,}026 \times 25 = 0{,}856 - 0{,}65 = \mathbf{0{,}206}
+\]
+
+L'effort normal résistant vaut donc :
+
+\encadre{$N_{Rd} = 1 \times 0{,}20 \times 16{,}67 \times 0{,}206 \approx \mathbf{678~\text{kN/ml}}$}
+
+\textbf{Vérification :}
+\encadre{$N_{Rd} = 678~\text{kN/ml} \;>\; N_{Ed} = 634~\text{kN/ml} \quad \checkmark$}
+
+La condition est satisfaite : \textbf{le mur peut être considéré comme non armé} dans le RDC.
+
+\subsubsection{Vérification de l'effort tranchant}
+
+L'effort tranchant dans le mur est vérifié conformément à la \textit{NF EN 1992-1-1+AN}. La contrainte de compression centrée dans la zone comprimée du voile s'écrit :
+
+\[
+\sigma_{cp} = \frac{N_{Ed}}{A_{cc}}
+\]
+
+où $A_{cc}$ représente l'aire comprimée du voile. En adoptant un \textbf{diagramme rectangulaire} des contraintes pour simplifier les calculs (voile non armé), on a :
+
+\[
+A_{cc} = b \times 0{,}8 \times x_u
+\]
+
+\figureplaceholder{mur-pignon-diagramme-rectangulaire}{Schéma du diagramme rectangulaire de contraintes utilisé pour le calcul de $A_{cc}$}
+
+Avec $N_{Ed} = 634$~kN/ml, on obtient :
+
+\[
+\sigma_{cp} = \mathbf{0{,}642~\text{MPa}}
+\]
+
+La contrainte limite de compression à comparer s'écrit :
+
+\[
+\sigma_{c,lim} = f_{cd} - 2\sqrt{f_{ctd}\,(f_{ctd} + f_{cd})}
+\]
+
+avec :
+
+\[
+f_{ctd} = 0{,}8 \cdot \frac{f_{ctk}}{\gamma_c} = \frac{0{,}8}{1{,}5} \times 0{,}21 \times (25)^{2/3} \approx \mathbf{0{,}957~\text{MPa}}
+\]
+
+\[
+f_{cd} = 0{,}8 \, \frac{f_{ck}}{\gamma_c} = \mathbf{13{,}33~\text{MPa}}
+\]
+
+D'où :
+
+\[
+\sigma_{c,lim} = 13{,}33 - 2\sqrt{0{,}957 \times (0{,}957 + 13{,}33)} = \mathbf{5{,}934~\text{MPa}}
+\]
+
+\textbf{Première vérification :}
+\encadre{$\sigma_{cp} = 0{,}642~\text{MPa} \;\leq\; \sigma_{c,lim} = 5{,}934~\text{MPa} \quad \checkmark$}
+
+La résistance de calcul à l'effort tranchant pour un voile non armé s'écrit :
+
+\[
+f_{cvd} = \sqrt{f_{ctd}^{\,2} + \sigma_{cp} \cdot f_{ctd}} = \sqrt{0{,}957^2 + 0{,}642 \times 0{,}957} = \mathbf{1{,}24~\text{MPa}}
+\]
+
+\textbf{Vérification finale :}
+\encadre{$\sigma_{cp} = 0{,}642~\text{MPa} \;\leq\; f_{cvd} = 1{,}24~\text{MPa} \quad \checkmark$}
+
+La résistance à l'effort tranchant du mur est vérifiée. Le mur pignon, dans le RDC, peut donc être conçu \textbf{sans armature spécifique}.
+
+\subsection{Calcul au R+1 --- Console courte}
+
+\subsubsection{Géométrie et schéma statique}
+
+Au R+1, le mur pignon présente une \textbf{console courte} de longueur $\ell_c = 1{,}20$~m, qui prolonge le mur RDC pour reprendre les charges du plancher d'étage et du mur courant. La géométrie générale est rappelée ci-dessous :
+\begin{itemize}
+  \item Longueur étage courant : $L_{\acute{e}t} = 13{,}35$~m
+  \item Longueur RDC : $L_{RDC} = 12{,}35$~m
+  \item Longueur de la console : $\ell_c = 1{,}20$~m
+  \item Hauteur d'étage : $h_{\acute{e}t} = 3{,}50$~m ; hauteur RDC : $h_{RDC} = 5{,}00$~m
+\end{itemize}
+
+\figureplaceholder{mur-pignon-console-geometrie}{Géométrie de la console courte au R+1 avec efforts du vent}
+
+\subsubsection{Vérification de la stabilité au renversement}
+
+En observant la structure du bâtiment, il existe un \textbf{risque de renversement} dû à l'action du vent. La condition de stabilité s'écrit :
+
+\encadre{$M_{renversant} \;\leq\; M_{stabilisant}$}
+
+L'équilibre est étudié en isolant la console au R+1 (voir schéma).
+
+\paragraph{Moment stabilisant (charges permanentes sur toute la longueur)}~
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{Xcc}
+\toprule
+\textbf{Charge} & \textbf{$N_G$ (kN)} & \textbf{$M_0$ (kN.m)} \\
+\midrule
+Terrasse : $32 \times 12{,}35$                  & 395    & $395 \times 12{,}35 / 2 = 2\,440$ \\
+Plancher : $22 \times 13{,}35 \times 4$         & 1\,086{,}8 & $1\,086{,}8 \times 13{,}35 / 2 = 6\,710{,}99$ \\
+Mur : $6 \times 13{,}35 \times 3{,}5 \times 4$  & 1\,037{,}4 & $1\,037{,}4 \times 13{,}35 / 2 = 6\,405{,}95$ \\
+\midrule
+\textbf{Total}                                  & \textbf{$N_G = 2\,519{,}2$} & \textbf{$M_0 = 15\,556{,}94$} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Moment renversant (charges sur la console + vent)}~
+
+Les charges sont calculées sur la longueur de la console $\ell_c = 1{,}20$~m. Les bras de levier sont mesurés depuis l'angle du mur, soit $\ell_c/2 + L_{RDC} = 0{,}6 + 12{,}35 = 12{,}95$~m. Le vent est ramené à la hauteur effective du bâtiment ($H = 14$~m sur $H_{tot} = 19$~m) :
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{Xcc}
+\toprule
+\textbf{Charge} & \textbf{$N$ (kN)} & \textbf{$M$ (kN.m)} \\
+\midrule
+Terrasse ($G$) : $32 \times 1{,}2$              & 38{,}4    & $38{,}4 \times 12{,}95 \approx 497{,}28$ \\
+Plancher ($G$) : $22 \times 1{,}2 \times 4$     & 105{,}6   & $105{,}6 \times 12{,}95 \approx 1\,367{,}52$ \\
+Terrasse ($Q$) : $1{,}11 \times 1{,}2$          & 1{,}332   & $1{,}332 \times 12{,}95 \approx 17{,}24$ \\
+Plancher ($Q$) : $9{,}5 \times 4 \times 1{,}2$  & 45{,}6    & $45{,}6 \times 12{,}95 \approx 590{,}52$ \\
+Vent : $V_w \times (14/19)$                     & 228{,}42  & $M_w \times (14/19)^2 \approx 1\,683$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+La combinaison à l'ELU donne :
+
+\[
+\begin{aligned}
+N &= 1{,}35 \, N_G + 1{,}5 \, N_Q + N_w = 1{,}35 \times 144 + 1{,}5 \times 46{,}932 + 228{,}42 \approx \mathbf{493{,}22~\text{kN}}\\
+M &= 1{,}35 \, M_G + 1{,}5 \, M_Q + M_w = 1{,}35 \times 1\,864{,}8 + 1{,}5 \times 607{,}76 + 1\,683 \approx \mathbf{5\,118{,}12~\text{kN.m}}
+\end{aligned}
+\]
+
+\textbf{Vérification :}
+\encadre{$M_{renv.} = 5\,118~\text{kN.m} \;\leq\; M_{stab.} = 15\,557~\text{kN.m} \quad \checkmark$}
+
+Le moment stabilisant est largement supérieur au moment renversant : la \textbf{stabilité au renversement est assurée}.
+
+\subsubsection{Détermination des armatures de la console}
+
+La console courte est dimensionnée selon le modèle de \textbf{bielles-tirants} (NF EN 1992-1-1, §6.5). On retient un angle d'inclinaison de la bielle $\alpha = 45^\circ$.
+
+\paragraph{Effort de compression dans la bielle}~
+
+La contrainte sur la console à l'ELU vaut :
+
+\[
+\sigma_{uc} = \frac{N}{S} + \frac{M}{I} = \mathbf{0{,}866~\text{MPa}}
+\]
+
+L'effort vertical reprenant la console s'écrit :
+
+\[
+N_{uc} = \sigma_{uc} \cdot b_w \cdot \ell_c = 0{,}866 \times 1{,}0 \times 0{,}20 \times 1{,}20 \times 10^3 \approx \mathbf{208{,}04~\text{kN}}
+\]
+
+\figureplaceholder{mur-pignon-console-bielles}{Schéma de bielles et tirants de la console courte}
+
+\paragraph{Tirant principal}~
+
+L'effort dans le tirant horizontal est obtenu par projection :
+
+\[
+F_{bu} = \frac{N_{uc}}{\tan \alpha} = \frac{N_{uc}}{\tan 45^\circ} = N_{uc} = 208{,}04~\text{kN}
+\]
+
+D'où la section d'acier nécessaire pour le tirant :
+
+\[
+A_{tirant} = \frac{F_{bu}}{f_{yd}} = \frac{208{,}04 \times 10}{434{,}78} \approx \mathbf{4{,}78~\text{cm}^2}
+\]
+
+\paragraph{Aciers répartis horizontaux}~
+
+\[
+A_r = \frac{A_{tirant}}{4} = \frac{4{,}78}{4} \approx \mathbf{1{,}20~\text{cm}^2}
+\]
+
+\paragraph{Aciers répartis verticaux}~
+
+La résistance maximale en compression de la bielle s'écrit :
+
+\[
+F_b = \sigma_{Rd,max} = k \cdot \nu' \cdot f_{cd} = 1 \times \left(1 - 0{,}6 \times \frac{25}{250}\right) \times \frac{25}{1{,}5} = \mathbf{15{,}66~\text{MPa}}
+\]
+
+L'effort de traction dans les aciers répartis verticaux est obtenu par :
+
+\[
+T = \frac{1}{4}\left(1 - 0{,}7 \, \frac{a_b}{L}\right)^2 \cdot F_b \approx \mathbf{92{,}81~\text{kN}}
+\]
+
+avec $a_b = x_u \cdot \sin \alpha$ et $L = \dfrac{\ell_c + x_u}{2} \times \dfrac{1}{\cos \alpha} - \cos \alpha \approx 1{,}39$~m, où $x_u = L_{RDC}/2 - 0{,}6 = 5{,}575$~m. La section d'acier nécessaire vaut :
+
+\[
+A_v = \frac{2 \, T \, \cos \alpha}{f_{yd}} \approx \mathbf{9{,}28~\text{cm}^2}
+\]
+
+\paragraph{Armatures anti-éclatement}~
+
+Pour reprendre l'effort de fendage transversal au niveau de l'appui, on dispose une armature anti-éclatement :
+
+\[
+A_t = \frac{2 \, T \, \sin \alpha}{f_{yd}} \approx \mathbf{3{,}01~\text{cm}^2}
+\]
+
+\subsubsection{Synthèse du ferraillage de la console}
+
+\begin{center}
+\begin{tabularx}{0.85\linewidth}{Xc}
+\toprule
+\textbf{Armature} & \textbf{Section requise (cm²)} \\
+\midrule
+Tirant principal $A_{tirant}$              & 4{,}78 \\
+Aciers répartis horizontaux $A_r$          & 1{,}20 \\
+Aciers répartis verticaux $A_v$            & 9{,}28 \\
+Armatures anti-éclatement $A_t$            & 3{,}01 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\figureplaceholder{mur-pignon-console-ferraillage}{Ferraillage de la console courte au R+1 (tirant, aciers répartis, anti-éclatement)}
+
+\subsection{Conclusion de la séance}
+
+Le dimensionnement du mur pignon a été mené en deux étapes :
+\begin{itemize}
+  \item dans le \textbf{RDC}, le mur (épaisseur 20~cm) résiste à la combinaison la plus défavorable $(N_{Ed} = 634$~kN/ml ; $\sigma_{max} = 3{,}17$~MPa$)$ avec $N_{Rd} = 678$~kN/ml. La vérification à l'effort tranchant est également satisfaite avec une marge confortable. Le mur peut donc être réalisé en \textbf{béton non armé} selon l'Eurocode 2 ;
+  \item au \textbf{R+1}, la console courte est ferraillée selon le modèle de bielles-tirants : tirant principal de $4{,}78$~cm\textsuperscript{2}, aciers répartis horizontaux et verticaux ($1{,}20$ et $9{,}28$~cm\textsuperscript{2}), avec une armature anti-éclatement de $3{,}01$~cm\textsuperscript{2}. La stabilité au renversement est largement assurée ($M_{renv.} \approx 1/3 \cdot M_{stab.}$).
+\end{itemize}
+

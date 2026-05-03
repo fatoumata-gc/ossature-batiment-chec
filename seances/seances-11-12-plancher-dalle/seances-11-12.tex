@@ -1,0 +1,505 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCES 11 ET 12 — PLANCHER-DALLE
+% ════════════════════════════════════════════════════════════
+\seance{11 \& 12}{Plancher-dalle}
+
+\subsection{Définition et représentation}
+
+Le \textbf{plancher-dalle} est un plancher constitué d'une dalle d'épaisseur uniforme reposant directement sur des poteaux, sans poutres intermédiaires. C'est ce système qui est mis en œuvre pour la \textbf{superstructure} du bâtiment étudié.
+
+\paragraph{Avantages :}
+\begin{itemize}
+  \item \textbf{sous-face plane et unie}, propice à des installations techniques en plafond ;
+  \item simplification de la mise en œuvre (pas de poutres à coffrer) ;
+  \item gain de hauteur sous plafond ;
+  \item flexibilité d'aménagement (cloisonnement libre).
+\end{itemize}
+
+\paragraph{Inconvénients :}
+\begin{itemize}
+  \item consommation d'aciers plus importante ;
+  \item calculs de dimensionnement plus longs (notamment au poinçonnement) ;
+  \item nécessité de vérifier soigneusement la stabilité au feu et la flèche.
+\end{itemize}
+
+\figureplaceholder{plancher-dalle-vue-3d}{Vue d'ensemble du plancher-dalle étudié}
+
+\subsection{Hypothèses de travail}
+
+Le calcul du plancher-dalle s'appuie sur les hypothèses suivantes :
+\begin{itemize}
+  \item les files de poteaux sont \textbf{régulières} ;
+  \item l'étude porte sur la \textbf{file 2} dans le sens $L_y$ ;
+  \item les portées sont mesurées \textbf{d'axe en axe} ;
+  \item la dalle est considérée comme \textbf{articulée} sur les poteaux (pas de portique).
+\end{itemize}
+
+\subsection{Partie A --- Moments fléchissants}
+
+\textit{Référence : NF EN 1992-1-1 + AN, FDP 18-717.}
+
+\subsubsection{Application de la méthode forfaitaire}
+
+La méthode forfaitaire est applicable si elle respecte sept critères, dont le fait que les poteaux ne fonctionnent pas en portiques. Si ce n'était pas le cas, il faudrait recourir à la méthode de Caquot, à la méthode générale (RDM) ou à la méthode des éléments finis (MEF). On note également que la \textbf{charge de façade en bout de console} n'est pas prise en compte.
+
+\figureplaceholder{plancher-dalle-vue-en-plan}{Vue en plan du plancher-dalle, file 2 dans le sens $y$, portées et console}
+
+\paragraph{Vérification des conditions d'application}~
+
+\textbf{Condition 1 --- portées équivalentes :}
+\[
+0{,}8 \;\leq\; \frac{L_i}{L_{i+1}} \;\leq\; 1{,}25
+\]
+
+Les travées étant identiques, $L_{AB} = L_{BC} = 6$~m :
+
+\[
+\frac{6}{6} = 1 \quad\Longrightarrow\quad 0{,}8 \;\leq\; 1 \;\leq\; 1{,}25 \quad \checkmark
+\]
+
+\textbf{Condition 2 --- charges modérées :}
+\[
+(CP + Q) \;\leq\; 7{,}5~\text{kN/m}^2 \quad\text{et}\quad Q \;\leq\; 2 \, G
+\]
+
+Les charges de la dalle sont :
+
+\[
+g = 25 \times 0{,}29 + 0{,}10 + 0{,}40 = \mathbf{7{,}75~\text{kN/m}^2}
+\quad ; \quad
+q = 3{,}5~\text{kN/m}^2
+\]
+
+\[
+(CP + Q) = 3{,}5 \;\leq\; 7{,}5~\text{kN/m}^2 \quad \checkmark
+\]
+\[
+Q = 3{,}5 \;\leq\; 2 \times 7{,}75 = 15{,}5~\text{kN/m}^2 \quad \checkmark
+\]
+
+\textbf{Les deux conditions sont vérifiées} : la méthode forfaitaire s'applique.
+
+\paragraph{Coefficient \texorpdfstring{$\alpha$}{α} et charge ELU}~
+
+\[
+\alpha = \frac{q}{g + q} = \frac{3{,}5}{7{,}75 + 3{,}5} = \mathbf{0{,}311}
+\]
+
+\[
+p_u = 1{,}35 \, g + 1{,}5 \, q = 1{,}35 \times 7{,}75 + 1{,}5 \times 3{,}5 \approx \mathbf{15{,}7~\text{kN/m}^2}
+\]
+
+\paragraph{Moment isostatique de référence}~
+
+Le moment isostatique de la travée est calculé sur la largeur $L_y = 6{,}5$~m :
+
+\[
+M_0 = \frac{p_u \cdot L_x^2}{8} \cdot L_y = \frac{15{,}7 \times 6^2}{8} \times 6{,}5 \approx \mathbf{459~\text{kN.m}}
+\]
+
+\subsubsection{Moments sur appuis}
+
+\paragraph{Appui de rive A :}
+\[
+M_A = 0{,}25 \, M_0 = 0{,}25 \times 459 = \mathbf{115~\text{kN.m}}
+\]
+
+\paragraph{Appui intermédiaire B :}
+\[
+M_B = 0{,}6 \, M_0 = 0{,}6 \times 459 \approx \mathbf{275{,}4~\text{kN.m}}
+\]
+
+\paragraph{Console (longueur $\ell_c = 1{,}20$~m) :}
+\[
+M_{c,max} = \frac{p_u \cdot \ell_c^2}{2} \cdot L_y = \frac{15{,}7 \times 1{,}2^2}{2} \times 6{,}5 \approx \mathbf{73{,}5~\text{kN.m}}
+\]
+
+\[
+M_{c,min} = \frac{1{,}35 \, g \cdot \ell_c^2}{2} \cdot L_y = \frac{1{,}35 \times 7{,}75 \times 1{,}2^2}{2} \times 6{,}5 \approx \mathbf{49~\text{kN.m}}
+\]
+
+\subsubsection{Moments en travée}
+
+Les moments en travée doivent satisfaire les conditions de la méthode forfaitaire :
+
+\[
+M_t + \frac{M_w + M_e}{2} \;\geq\; \max\!\left\{(1 + 0{,}3\,\alpha) \, M_0 \,;\, 1{,}05 \, M_0\right\}
+\]
+
+\paragraph{Travée principale AB :}
+
+Pour la travée AB, les appuis sont $M_w = M_A = 0$ (la liaison sur l'appui de rive est traitée séparément) et $M_e = M_B$ :
+
+\[
+M_{t,AB} = (1 + 0{,}3 \, \alpha) \, M_0 - \frac{M_B}{2} = (1 + 0{,}3 \times 0{,}311) \times 459 - \frac{275{,}4}{2} \approx \mathbf{365~\text{kN.m}}
+\]
+
+\paragraph{Travée de rive BC (avec console) :}
+
+\[
+M_{t,BC} \;\geq\; \frac{(1{,}2 + 0{,}3\,\alpha) \, M_0}{2} + M_{c,min}
+\]
+
+\[
+M_{t,BC} = \frac{(1{,}2 + 0{,}3 \times 0{,}311) \times 459}{2} + 49 \approx \mathbf{345{,}8~\text{kN.m}}
+\]
+
+\subsubsection{Récapitulatif des moments}
+
+\begin{center}
+\begin{tabularx}{0.65\linewidth}{Xc}
+\toprule
+\textbf{Section} & \textbf{Moment (kN.m)} \\
+\midrule
+Appui A (rive)            & 115     \\
+Appui B (intermédiaire)   & 275{,}4 \\
+Travée AB                 & 365     \\
+Travée BC                 & 345{,}8 \\
+Console (max)             & 73{,}5  \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsubsection{Répartition des moments dans la largeur}
+
+Le plancher-dalle est divisé en deux types de bandes de calcul, perpendiculaires au sens d'étude :
+\begin{itemize}
+  \item les \textbf{bandes sur poteaux} (largeur $1{,}50$~m), centrées sur les files de poteaux, qui reprennent la part principale des moments ;
+  \item les \textbf{bandes centrales} (largeur $1{,}75$~m), situées entre les files de poteaux.
+\end{itemize}
+
+La répartition retenue est la suivante :
+\begin{itemize}
+  \item En \textbf{travée} : $30\%$ du moment sur les bandes sur poteaux et $20\%$ sur les bandes centrales ;
+  \item Sur \textbf{appuis} : $35\%$ du moment sur les bandes sur poteaux et $15\%$ sur les bandes centrales.
+\end{itemize}
+
+\figureplaceholder{plancher-dalle-repartition-bandes}{Répartition des moments en bandes (sur poteaux et centrales)}
+
+\paragraph{Travée AB ($M_{t,AB} = 365$ kN.m) :}
+
+\[
+M_{t,AB,\text{poteaux}} = 0{,}30 \times 365 \approx \mathbf{110~\text{kN.m}}
+\quad ; \quad
+M_{t,AB,\text{centrale}} = 0{,}20 \times 365 \approx \mathbf{73~\text{kN.m}}
+\]
+
+\paragraph{Travée BC ($M_{t,BC} \approx 345$ kN.m) :}
+
+\[
+M_{t,BC,\text{poteaux}} = 0{,}30 \times 345 \approx \mathbf{103{,}5~\text{kN.m}}
+\quad ; \quad
+M_{t,BC,\text{centrale}} = 0{,}20 \times 345 \approx \mathbf{69~\text{kN.m}}
+\]
+
+\paragraph{Appui A ($M_A = 115$ kN.m) :}
+
+\[
+M_{A,\text{poteaux}} = 0{,}35 \times 115 \approx \mathbf{40{,}3~\text{kN.m}}
+\quad ; \quad
+M_{A,\text{centrale}} = 0{,}15 \times 115 \approx \mathbf{17{,}3~\text{kN.m}}
+\]
+
+\paragraph{Appui B ($M_B = 275$ kN.m) :}
+
+\[
+M_{B,\text{poteaux}} = 0{,}35 \times 275 \approx \mathbf{96{,}3~\text{kN.m}}
+\quad ; \quad
+M_{B,\text{centrale}} = 0{,}15 \times 275 \approx \mathbf{41{,}3~\text{kN.m}}
+\]
+
+\paragraph{Appui C / Console ($M_{c,max} = 73{,}5$ kN.m) :}
+
+\[
+M_{C,\text{poteaux}} = 0{,}35 \times 73{,}5 \approx \mathbf{25{,}8~\text{kN.m}}
+\quad ; \quad
+M_{C,\text{centrale}} = 0{,}15 \times 73{,}5 \approx \mathbf{11~\text{kN.m}}
+\]
+
+\subsubsection{Calcul des armatures}
+
+Les calculs sont menés en \textbf{flexion simple} avec les hypothèses : béton C25/30, acier B500B, hauteur utile $d = 0{,}24$~m. Les formules utilisées sont :
+
+\[
+\mu = \frac{M_i}{b \, d^2 \, f_{cd}}
+\quad ; \quad
+\alpha_u = 1{,}25 \, (1 - \sqrt{1 - 2\,\mu})
+\quad ; \quad
+z = d \, (1 - 0{,}4 \, \alpha_u)
+\quad ; \quad
+A_S = \frac{M_i}{z \cdot \sigma_S}
+\]
+
+La section minimale d'armatures est donnée par :
+
+\[
+A_{S,min} = 0{,}26 \cdot \frac{f_{ctm}}{f_{yk}} \cdot b_t \cdot d
+\]
+
+\paragraph{Section minimale}~
+
+\[
+b_t = 1{,}50~\text{m} : \quad A_{S,min} = 0{,}26 \times \frac{2{,}6}{500} \times 150 \times 24 \approx \mathbf{4{,}9~\text{cm}^2}
+\]
+
+\[
+b_t = 1{,}75~\text{m} : \quad A_{S,min} = 0{,}26 \times \frac{2{,}6}{500} \times 175 \times 24 \approx \mathbf{5{,}7~\text{cm}^2}
+\]
+
+\paragraph{Sections d'aciers sur appuis}~
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{XXcc}
+\toprule
+\textbf{Appui} & \textbf{Bande} & \textbf{$A_S$ calculée (cm²)} & \textbf{$A_S$ retenue (cm²)} \\
+\midrule
+\multirow{2}{*}{A} & sur poteaux ($1{,}50$ m) & 3{,}9  & \textbf{4{,}9} \\
+                   & centrale ($1{,}75$ m)    & 1{,}7  & \textbf{5{,}7} \\
+\midrule
+\multirow{2}{*}{B} & sur poteaux ($1{,}50$ m) & 9{,}6  & \textbf{9{,}6} \\
+                   & centrale ($1{,}75$ m)    & 4{,}0  & \textbf{5{,}7} \\
+\midrule
+\multirow{2}{*}{C} & sur poteaux ($1{,}50$ m) & 2{,}5  & \textbf{4{,}9} \\
+                   & centrale ($1{,}75$ m)    & 1{,}06 & \textbf{5{,}7} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Sections d'aciers en travée}~
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{XXcc}
+\toprule
+\textbf{Travée} & \textbf{Bande} & \textbf{$A_S$ calculée (cm²)} & \textbf{$A_S$ retenue (cm²)} \\
+\midrule
+\multirow{2}{*}{AB} & sur poteaux ($1{,}50$ m) & 11    & \textbf{11}    \\
+                    & centrale ($1{,}75$ m)    & 7{,}2 & \textbf{7{,}2} \\
+\midrule
+\multirow{2}{*}{BC} & sur poteaux ($1{,}50$ m) & 10{,}3 & \textbf{10{,}3} \\
+                    & centrale ($1{,}75$ m)    & 6{,}8  & \textbf{6{,}8}  \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\figureplaceholder{plancher-dalle-armatures-final}{Schéma de répartition des sections d'aciers retenues, par bande}
+
+\subsection{Partie B --- Vérification au cisaillement (poinçonnement)}
+
+L'étude porte sur le \textbf{poteau de la file B2}, qui est un poteau intermédiaire.
+
+\subsubsection{Calcul du cisaillement sollicitant}
+
+La contrainte de cisaillement au niveau du contour de contrôle s'écrit :
+
+\[
+v_{Ed} = \beta \, \frac{V_{Ed}}{u \cdot d}
+\]
+
+avec :
+\begin{itemize}
+  \item $\beta$ : coefficient d'excentricité prenant en compte une répartition non uniforme de la charge sur le contour de contrôle. Pour un poteau intermédiaire, on retient $\beta = 1{,}15$ ;
+  \item $V_{Ed}$ : effort tranchant total de calcul ;
+  \item $u$ : périmètre du contour de contrôle, situé à la distance $2d$ du nu du poteau.
+\end{itemize}
+
+\paragraph{Effort tranchant $V_{Ed}$}~
+
+L'effort tranchant inclut le coefficient majorateur $\beta = 1{,}15$ appliqué au chargement (méthode forfaitaire pour poteau intermédiaire) :
+
+\[
+V_{Ed} = p_u \cdot S \cdot 1{,}15 = 15{,}7 \times 6 \times 6{,}5 \times 1{,}15 \approx \mathbf{704~\text{kN}}
+\]
+
+\paragraph{Périmètre du contour de contrôle}~
+
+Le contour de contrôle est situé à $2d = 0{,}48$~m du nu du poteau (carré $0{,}50 \times 0{,}50$~m). Son périmètre est composé de quatre tronçons rectilignes (de longueur égale au côté du poteau) reliés par quatre quarts de cercle de rayon $2d$ :
+
+\[
+u = 4 \times 0{,}50 + 2\pi \times 2d = 2{,}0 + 2\pi \times 0{,}48 \approx \mathbf{5{,}02~\text{m}}
+\]
+
+\paragraph{Contrainte de cisaillement}~
+
+\[
+v_{Ed} = \beta \, \frac{V_{Ed}}{u \cdot d} = 1{,}15 \times \frac{704 \times 10^{-3}}{5{,}02 \times 0{,}24} \approx \mathbf{0{,}67~\text{MPa}}
+\]
+
+\subsubsection{Calcul du cisaillement résistant}
+
+La résistance au cisaillement de la dalle, en l'absence d'armatures de poinçonnement, vaut :
+
+\[
+v_{Rd,c} = \max\!\left\{ v_{Rd,c1} = C_{Rd,c} \cdot k \cdot (100 \, \rho_l \, f_{ck})^{1/3} \,;\, v_{min} = 0{,}035 \cdot k^{3/2} \cdot \sqrt{f_{ck}} \right\}
+\]
+
+\paragraph{Coefficients}~
+
+\[
+C_{Rd,c} = \frac{0{,}18}{\gamma_c} = \frac{0{,}18}{1{,}5} = \mathbf{0{,}12}
+\]
+
+\[
+k = \min\!\left\{ 1 + \sqrt{\frac{200}{d}} \,;\, 2 \right\} = \min\!\left\{ 1 + \sqrt{\frac{200}{240}} \,;\, 2 \right\} \approx \mathbf{1{,}91}
+\]
+
+\paragraph{Largeur efficace et taux d'armatures}~
+
+\[
+b_w = (\text{côté poteau}) + 6\,d = 0{,}50 + 6 \times 0{,}24 = \mathbf{1{,}94~\text{m}}
+\]
+
+\[
+A = \frac{9{,}6 \times 1{,}94}{1{,}50} = \mathbf{12{,}41~\text{cm}^2}
+\]
+
+\[
+\rho_{lx} = \rho_{ly} = \frac{A}{b_w \cdot d} = \frac{12{,}41 \times 10^{-4}}{1{,}94 \times 0{,}24} \approx 2{,}66 \times 10^{-3}
+\]
+
+\[
+\rho_l = \sqrt{\rho_{lx} \cdot \rho_{ly}} = \mathbf{2{,}66 \times 10^{-3}}
+\]
+
+\paragraph{Calcul de $v_{Rd,c}$}~
+
+\[
+v_{Rd,c1} = 0{,}12 \times 1{,}91 \times \big(100 \times 2{,}66 \times 10^{-3} \times 25\big)^{1/3} \approx \mathbf{0{,}43~\text{MPa}}
+\]
+
+\[
+v_{min} = 0{,}035 \times 1{,}91^{3/2} \times \sqrt{25} \approx \mathbf{0{,}46~\text{MPa}}
+\]
+
+\encadre{$v_{Rd,c} = \max\{0{,}43 \,;\, 0{,}46\} = \mathbf{0{,}46~\text{MPa}}$}
+
+\subsubsection{Conclusion intermédiaire}
+
+\encadre{$v_{Rd,c} = 0{,}46~\text{MPa} \;<\; v_{Ed} = 0{,}67~\text{MPa}$}
+
+\textbf{La condition n'est pas vérifiée :} il faut prévoir des \textbf{armatures de poinçonnement}.
+
+\subsubsection{Détermination des armatures de poinçonnement}
+
+\paragraph{Contour de contrôle $u_{out}$ pour lequel aucune armature n'est plus requise}~
+
+\[
+u_{out} = \beta \, \frac{V_{Ed}}{v_{Rd,c} \cdot d} = \frac{1{,}15 \times 0{,}704}{0{,}46 \times 0{,}24} \approx \mathbf{7{,}33~\text{m}}
+\]
+
+En supposant un contour circulaire $u_{out} = \pi \cdot \phi$ :
+
+\[
+\phi = \frac{u_{out}}{\pi} = \frac{7{,}33}{\pi} \approx \mathbf{2{,}334~\text{m}}
+\]
+
+\[
+d_1 = \frac{\phi - 0{,}5}{2} = \frac{2{,}334 - 0{,}5}{2} \approx \mathbf{0{,}92~\text{m}}
+\]
+
+La distance à laquelle les armatures de poinçonnement deviennent nécessaires est :
+
+\[
+d_2 = d_1 - 1{,}5 \, d = 0{,}92 - 1{,}5 \times 0{,}24 \approx \mathbf{0{,}56~\text{m}}
+\]
+
+\paragraph{Formule de dimensionnement des armatures}~
+
+\[
+\frac{A_{sw}}{S_r} = \big(v_{Rd,cs} - 0{,}75 \, v_{Rd,c}\big) \times \frac{u_1}{1{,}5 \, f_{ywd,ef}}
+\]
+
+avec :
+
+\[
+f_{ywd,ef} = \min\big(250 + 0{,}25\,d \,;\, f_{yd}\big) = 250 + 0{,}25 \times 240 = \mathbf{310~\text{MPa}}
+\]
+
+\figureplaceholder{poinconnement-contour-controle}{Contour de contrôle $u_1$ et zone d'armatures de poinçonnement}
+
+\paragraph{Calcul à $0{,}56$~m du nu du poteau}~
+
+Le périmètre du contour à cette distance est :
+
+\[
+u_1 = \pi \times (2 \times 0{,}56 + 0{,}50) = \mathbf{5{,}09~\text{m}}
+\]
+
+La contrainte sollicitante à ce périmètre est :
+
+\[
+v_{Rd,cs} = \beta \, \frac{V_{Ed}}{u_1 \cdot d} = \frac{1{,}15 \times 0{,}704}{5{,}09 \times 0{,}24} \approx \mathbf{0{,}66~\text{MPa}}
+\]
+
+D'où la section d'armatures :
+
+\[
+\frac{A_{sw}}{S_r} = \big(0{,}66 - 0{,}75 \times 0{,}46\big) \times \frac{5{,}09 \times 10^4}{1{,}5 \times 310} \approx \mathbf{34{,}48~\text{cm}^2}
+\]
+
+Soit, sur la longueur $S_r = 5{,}09$~m, $A_{sw} \approx 6{,}77$~cm\textsuperscript{2}/ml.
+
+\paragraph{Calcul à $0{,}28$~m du nu du poteau}~
+
+\[
+u_1 = \pi \times (2 \times 0{,}28 + 0{,}50) = \mathbf{3{,}33~\text{m}}
+\]
+
+\[
+v_{Rd,cs} = \frac{1{,}15 \times 0{,}704}{3{,}33 \times 0{,}24} \approx \mathbf{1{,}01~\text{MPa}}
+\]
+
+\[
+\frac{A_{sw}}{S_r} = \big(1{,}01 - 0{,}75 \times 0{,}46\big) \times \frac{3{,}33 \times 10^4}{1{,}5 \times 310} \approx \mathbf{47{,}6~\text{cm}^2}
+\]
+
+Soit $A_{sw} \approx 14{,}30$~cm\textsuperscript{2}/ml.
+
+\paragraph{Choix d'armatures}~
+
+Pour la section dimensionnante de $34{,}48$~cm\textsuperscript{2}, on retient :
+
+\encadre{Choix : \textbf{61 HA 10} ou \textbf{42 HA 12}}
+
+\subsubsection{Vérification au nu du poteau}
+
+Au nu du poteau, on doit vérifier la résistance par compression du béton :
+
+\[
+v_{Ed} = \beta \, \frac{V_{Ed}}{u_0 \cdot d} \;\leq\; v_{Rd,max}
+\]
+
+avec $u_0$ le périmètre du poteau :
+
+\[
+u_0 = 0{,}5 \times 4 = \mathbf{2~\text{m}}
+\]
+
+\paragraph{Calcul de $v_{Rd,max}$}~
+
+\[
+\nu = 0{,}6 \, \left(1 - \frac{f_{ck}}{250}\right) = 0{,}6 \times \left(1 - \frac{25}{250}\right) = \mathbf{0{,}54}
+\]
+
+\[
+v_{Rd,max} = 0{,}4 \cdot \nu \cdot f_{cd} = 0{,}4 \times 0{,}54 \times \frac{25}{1{,}5} = \mathbf{3{,}6~\text{MPa}}
+\]
+
+\paragraph{Vérification}~
+
+\[
+v_{Ed} = \frac{1{,}15 \times 0{,}704}{2 \times 0{,}24} \approx \mathbf{1{,}69~\text{MPa}}
+\]
+
+\encadre{$v_{Ed} = 1{,}69~\text{MPa} \;\leq\; v_{Rd,max} = 3{,}6~\text{MPa} \quad \checkmark$}
+
+La résistance par compression du béton au nu du poteau est largement vérifiée.
+
+\subsection{Conclusion de la séance}
+
+Le plancher-dalle de la superstructure a été dimensionné en deux temps :
+
+\begin{itemize}
+  \item Les \textbf{moments fléchissants} ont été calculés par la méthode forfaitaire (FDP 18-717), après vérification de ses conditions d'application. Le moment isostatique de référence vaut $M_0 = 459$~kN.m, et les moments en travée atteignent $M_{t,AB} = 365$~kN.m et $M_{t,BC} = 345{,}8$~kN.m. La répartition transversale (bandes sur poteaux $1{,}50$~m / bandes centrales $1{,}75$~m) conduit à des sections d'aciers maximales de $11$~cm\textsuperscript{2} en travée AB sur les bandes sur poteaux et $9{,}6$~cm\textsuperscript{2} sur l'appui B.
+  \item Le \textbf{poinçonnement} au droit du poteau intermédiaire B2 ne peut être repris par le seul béton ($v_{Ed} = 0{,}67$~MPa $>$ $v_{Rd,c} = 0{,}46$~MPa). Des \textbf{armatures de poinçonnement} sont donc nécessaires : la section dimensionnante est $A_{sw}/S_r = 34{,}48$~cm\textsuperscript{2} sur le contour à $0{,}56$~m du nu du poteau, conduisant au choix de $61$~HA $10$ ou $42$~HA $12$. La vérification au nu du poteau ($v_{Ed} = 1{,}69$~MPa $\leq$ $v_{Rd,max} = 3{,}6$~MPa) est largement satisfaite.
+\end{itemize}
+

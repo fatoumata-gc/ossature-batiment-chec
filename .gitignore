@@ -1,0 +1,41 @@
+# ──────────────────────────────────────────────────────────────
+# .gitignore — projet LaTeX
+# ──────────────────────────────────────────────────────────────
+
+# PDF compilé localement (le PDF officiel est généré par la CI)
+*.pdf
+!meta/enonce.pdf
+
+# Fichiers temporaires LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+
+# Système
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*

@@ -1,0 +1,238 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 7 — ESCALIER
+% ════════════════════════════════════════════════════════════
+\seance{7}{Escalier}
+
+\subsection{Présentation de l'escalier étudié}
+
+Dans cette étude, l'escalier est considéré comme un \textbf{élément indépendant} de la structure principale. Il constitue un élément essentiel de \textbf{sécurité} et un élément d'\textbf{évacuation} en cas d'incendie. Le dimensionnement portera sur l'escalier de l'étage courant.
+
+\figureplaceholder{escalier-vue-plan}{Vue en plan de l'escalier --- volées et palier intermédiaire}
+
+\figureplaceholder{escalier-coupe}{Coupe en élévation de l'escalier --- paillasse, contremarche, giron}
+
+\paragraph{Caractéristiques :}
+\begin{itemize}
+  \item Hauteur d'étage : $h_t = 3{,}50$~m
+  \item Hauteur à franchir par volée : $h_\text{volée} = 1{,}75$~m
+  \item Épaisseur de la paillasse : $e = 12$~cm (valeur retenue selon le critère de flexibilité)
+\end{itemize}
+
+\subsection{Pré-dimensionnement par la règle de Blondel}
+
+Le critère de dimensionnement des éléments constitutifs de l'escalier est basé sur la \textbf{règle de Blondel}, donnée par la relation :
+\[
+  0{,}59 \leq g + 2h \leq 0{,}66~\text{m}
+\]
+
+\paragraph{Calculs retenus.} En posant l'hypothèse $\tan\alpha = h/g = 0{,}6$, on obtient :
+\[
+  g + 2h = 0{,}66~\text{m} \quad\Longrightarrow\quad g + 2(0{,}6\,g) = 0{,}66
+\]
+\[
+  2{,}2\,g = 0{,}66 \quad\Longrightarrow\quad g = 0{,}30~\text{m} \quad ; \quad h = 0{,}18~\text{m}
+\]
+
+\paragraph{Détermination du nombre de marches $n$ :}
+\[
+  n = \frac{h_\text{volée}}{h} = \frac{1{,}75}{0{,}18} = 9{,}72
+\]
+
+On retient $n = 10$ marches par volée.
+
+\paragraph{Choix : $n = 10$ marches par volée.}
+\[
+  h_\text{réel} = \frac{1{,}75}{10} = 0{,}175~\text{m} = 17{,}5~\text{cm}
+  \qquad ; \qquad
+  g_\text{réel} = 30~\text{cm}
+\]
+
+Ainsi, $e = 12$~cm et $a = 10$~cm (largeur du nez de marche).
+
+\paragraph{Longueur de la volée :}
+\[
+  L = n \cdot g + 2 \cdot \frac{a}{2}
+    = 10 \times 30 + 2 \times \frac{10}{2}
+    = 310~\text{cm}
+    = \mathbf{3{,}10~\text{m}}
+\]
+
+\subsection{Descente de charges}
+
+\subsubsection{Charges permanentes (G)}
+
+\paragraph{Poids propre du béton projeté.} L'épaisseur moyenne du béton projeté de la paillasse est donnée par :
+\[
+  E = \frac{e}{\cos\alpha} + \frac{h}{2}
+\]
+
+Avec $\alpha = 30^\circ$ (correspondant à $\tan\alpha \approx 0{,}6$, arrondi pour les calculs) :
+\[
+  E = \frac{12}{\cos 30^\circ} + \frac{17{,}5}{2}
+    = 13{,}856 + 8{,}75
+    = \mathbf{22{,}606~\text{cm}}
+\]
+
+\[
+  g_\text{paillasse} = 0{,}22606 \times 25 = \mathbf{5{,}65~\text{kN/m}^2}
+\]
+
+\paragraph{Poids propre du revêtement (marbre).} L'épaisseur équivalente du marbre est :
+\[
+  e_\text{eq} = \frac{e_m \cdot g + e_m \cdot h}{g}
+\]
+
+avec $e_m = 0{,}03$~m (épaisseur du marbre), $g = 0{,}30$~m, $h = 0{,}175$~m :
+\[
+  e_\text{eq} = \frac{0{,}03 \times 0{,}30 + 0{,}03 \times 0{,}175}{0{,}30}
+              = \frac{0{,}009 + 0{,}00525}{0{,}30}
+              = \mathbf{0{,}0475~\text{m}}
+\]
+\[
+  g'_\text{marbre} = \gamma_\text{marbre} \cdot e_\text{eq}
+                   = 28 \times 0{,}0475
+                   = \mathbf{1{,}33~\text{kN/m}^2/\text{ml}}
+\]
+
+\paragraph{Total charges permanentes :}
+\[
+  g_t = g_\text{paillasse} + g'_\text{marbre}
+       = 5{,}65 + 1{,}33
+       = \mathbf{6{,}98~\text{kN/m}^2/\text{ml}}
+\]
+
+\subsubsection{Charges d'exploitation (Q)}
+\[
+  q = 2{,}5~\text{kN/m}^2
+\]
+
+\subsubsection{Combinaison à l'ELU}
+\[
+  P_u = 1{,}35\,g_t + 1{,}5\,q
+      = 1{,}35 \times 6{,}98 + 1{,}5 \times 2{,}5
+      = \mathbf{13{,}2~\text{kN/m}^2/\text{ml}}
+\]
+
+\figureplaceholder{escalier-schema-statique}{Schéma statique de l'escalier --- charges projetées sur la longueur $L = 3{,}10$~m}
+
+\subsection{Sollicitations}
+
+\paragraph{Moment fléchissant maximal (à mi-portée) :}
+\[
+  M_u = \frac{P_u \cdot L^2}{8} = \frac{13{,}2 \times 3{,}10^2}{8} = \mathbf{15{,}85~\text{kN}\cdot\text{m/ml}}
+\]
+
+\paragraph{Effort tranchant maximal (sur appui) :}
+\[
+  V_{Ed} = \frac{P_u \cdot L}{2} = \frac{13{,}2 \times 3{,}10}{2} = \mathbf{20{,}46~\text{kN/ml}}
+\]
+
+\subsection{Calcul des armatures longitudinales}
+
+Avec $d = 10$~cm, $b = 1$~m, $f_{cd} = 25/1{,}5 = 16{,}67$~MPa, $f_{yd} = 500/1{,}15 = 434{,}78$~MPa.
+
+\paragraph{Moment réduit :}
+\[
+  \mu = \frac{M_u}{b\,d^2\,f_{cd}}
+      = \frac{15{,}85 \times 10^{-3}}{1 \times 0{,}10^2 \times 16{,}67}
+      = \mathbf{0{,}0954}
+\]
+
+\paragraph{Hauteur de bloc :}
+\[
+  \alpha = 1{,}25\,(1 - \sqrt{1 - 2\mu})
+         = 1{,}25\,(1 - \sqrt{1 - 0{,}1908})
+         = \mathbf{0{,}1256}
+\]
+
+\paragraph{Bras de levier :}
+\[
+  z = d\,(1 - 0{,}4\,\alpha)
+    = 0{,}10\,(1 - 0{,}4 \times 0{,}1256)
+    = \mathbf{0{,}095~\text{m}}
+\]
+
+\paragraph{Section d'acier inférieure :}
+\[
+  A_\text{inf} = \frac{M_u}{z \cdot \sigma_S}
+              = \frac{15{,}85 \times 10^{-3}}{0{,}095 \times 434{,}78} \times 10^4
+              = \mathbf{3{,}85~\text{cm}^2/\text{ml}}
+\]
+
+Pour la largeur de la volée (1,20 m) :
+\[
+  A_\text{inf} = 3{,}85 \times 1{,}20 = 4{,}62~\text{cm}^2
+\]
+
+\encadre{Choix de ferraillage : 6\,HA\,10 ($A_\text{inf,réelle} = 4{,}71$~cm$^2$ pour 1,20~m de largeur)}
+
+\paragraph{Section minimale (Eurocode \S{}9.3.1.1) :}
+\[
+  A_{s,\min} = 0{,}26 \cdot \frac{f_{ctm}}{f_{yk}} \cdot b_t \cdot d
+            = 0{,}26 \times \frac{2{,}6}{500} \times 1 \times 0{,}10 \times 10^4
+            = \mathbf{1{,}35~\text{cm}^2/\text{ml}}
+\]
+
+La condition $A_\text{inf} \geq A_{s,\min}$ est largement vérifiée.
+
+\paragraph{Armatures de répartition :}
+\[
+  A_r \approx 1{,}00~\text{cm}^2/\text{ml} \quad\Longrightarrow\quad 4\,\text{HA}\,6/\text{ml}
+\]
+
+\figureplaceholder{escalier-ferraillage-paillasse}{Schéma de ferraillage de la paillasse --- armatures principales et armatures de répartition}
+
+\subsection{Ferraillage du béquet}
+
+\paragraph{Caractéristiques du béquet.} L'épaisseur du béquet vaut $e = 7$~cm.
+
+\paragraph{Réaction d'appui à l'ELU :}
+\[
+  R_u = 2 \cdot V_{Ed} = 2 \times 20{,}5 = \mathbf{41~\text{kN/ml}}
+\]
+
+\paragraph{Moment sollicitant :}
+\[
+  M_u = R_u \cdot \left(l - \frac{a}{2}\right)
+\]
+
+avec $l = a + 3~\text{cm} = 13~\text{cm}$ et $a = 10$~cm :
+\[
+  M_u = 41 \times \left(0{,}13 - \frac{0{,}10}{2}\right) = \mathbf{3{,}28~\text{kN}\cdot\text{m/ml}}
+\]
+
+\paragraph{Moment réduit (avec $d = 5$~cm) :}
+\[
+  \mu = \frac{M_u}{b\,d^2\,f_{cd}}
+      = \frac{3{,}28 \times 10^{-3}}{1 \times 0{,}05^2 \times 16{,}67}
+      = \mathbf{0{,}078}
+\]
+
+\paragraph{Bras de levier :}
+\[
+  \alpha = 1{,}25\,(1 - \sqrt{1 - 0{,}156}) = \mathbf{0{,}1026}
+\]
+\[
+  z = 0{,}05\,(1 - 0{,}4 \times 0{,}1026) = \mathbf{0{,}0479~\text{m}}
+\]
+
+\paragraph{Section d'acier inférieure :}
+\[
+  A_S = \frac{M_u}{z \cdot \sigma_S}
+      = \frac{3{,}28 \times 10^{-3}}{0{,}0479 \times 434{,}78} \times 10^4
+      = \mathbf{1{,}57~\text{cm}^2/\text{ml}}
+\]
+
+\paragraph{Espacement des armatures :}
+\[
+  s_t \leq \min\{2h ;\, 20~\text{cm}\}
+       = \min\{14~\text{cm} ;\, 20~\text{cm}\}
+       = 14~\text{cm}
+\]
+
+Ainsi, $s_t = 14$~cm.
+
+\encadre{Choix de ferraillage du béquet : 4\,HA\,6 / ml}
+
+\figureplaceholder{escalier-bequet-ferraillage}{Schéma de ferraillage du béquet --- armatures principales et armatures de répartition}
+

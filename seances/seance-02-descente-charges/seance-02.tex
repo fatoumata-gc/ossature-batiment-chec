@@ -1,0 +1,218 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCE 2 — DESCENTE DE CHARGES
+% ════════════════════════════════════════════════════════════
+\seance{2}{Descente de charges}
+
+\subsection{Définition et principe}
+
+La descente de charges consiste à \textbf{cumuler, niveau par niveau, l'ensemble des charges} (permanentes et d'exploitation) qui sollicitent un élément porteur, depuis la toiture jusqu'aux fondations. Elle permet de déterminer l'effort normal et le moment au pied de chaque poteau ou voile, et constitue la base de tout dimensionnement structural.
+
+Avant de commencer les calculs, il faut identifier le \textbf{poteau le plus sollicité}. Ce choix n'est pas arbitraire : c'est toujours le poteau qui supporte la plus grande surface de plancher autour de lui, appelée \textbf{surface tributaire} (ou surface afférente).
+
+Dans cette étude, la descente de charges est effectuée sur le \textbf{poteau de la file B2 au 2\textsuperscript{e} sous-sol}, le plus chargé du bâtiment.
+
+\figureplaceholder{poteau-B2-position}{Position du poteau B2 dans la vue en plan du bâtiment}
+
+\subsection{Réduction des charges d'exploitation}
+
+L'Eurocode autorise deux types de réductions sur les charges d'exploitation : selon l'aire portée et selon le nombre d'étages.
+
+\subsubsection{Réduction selon l'aire portée \texorpdfstring{($\alpha_A$)}{(αA)}}
+
+\[
+  \alpha_A = 0{,}77 + \frac{3{,}5}{A} \leq 1{,}0
+\]
+
+Pour la descente de charges, on prend par sécurité :
+\[
+  \boxed{\alpha_A = 1{,}0}
+\]
+
+\subsubsection{Réduction selon le nombre d'étages \texorpdfstring{($\alpha_n$)}{(αn)}}
+
+Plus il y a d'étages au-dessus d'un niveau, plus la probabilité d'occupation maximale simultanée à \emph{tous} les étages diminue. On applique donc une réduction (formule FDP 18-717, catégorie B = bureaux) :
+\[
+  \alpha_n = 0{,}7 + \frac{0{,}8}{n} \leq 1{,}0
+\]
+
+où $n$ = nombre d'étages de \emph{même catégorie} situés \emph{au-dessus} du niveau étudié.
+
+\figureplaceholder{vue-elevation}{Vue en élévation du bâtiment avec niveaux annotés}
+
+\paragraph{Application :}
+\begin{itemize}
+  \item 4\textsuperscript{e} étage ($n = 1$) : $\alpha_n = 0{,}7 + 0{,}8/1 = 1{,}5 \to$ limité à $1{,}0$ (pas de réduction)
+  \item 3\textsuperscript{e} étage ($n = 2$) : $\alpha_n = 0{,}7 + 0{,}8/2 = 1{,}1 \to$ limité à $1{,}0$ (pas de réduction)
+  \item 2\textsuperscript{e} étage ($n = 3$) : $\alpha_n = 0{,}7 + 0{,}8/3 = 0{,}967$ (réduction appliquée)
+  \item 1\textsuperscript{er} étage ($n = 4$) : $\alpha_n = 0{,}7 + 0{,}8/4 = 0{,}90$ (réduction appliquée)
+  \item RDC et sous-sol : catégories \emph{différentes} (ateliers et archives) $\to$ pas de réduction $\alpha_n$.
+\end{itemize}
+
+\subsection{Surface tributaire du poteau B2}
+
+Le poteau B2 est un poteau intérieur. Sa surface tributaire correspond aux demi-portées des travées qui le bordent.
+
+\figureplaceholder{surface-tributaire-B2}{Surface tributaire du poteau B2 --- demi-portées des travées adjacentes}
+
+D'après le plan : travées de 6,50\,m en direction $X$ et 6,00\,m en direction $Y$.
+\[
+  S = 6{,}50 \times 6{,}00 = \mathbf{39{,}00~\text{m}^2}
+\]
+
+\subsection{Charges permanentes par m\texorpdfstring{$^2$}{2}}
+
+\figureplaceholder{coupe-planchers}{Coupes-types des différents planchers}
+
+\paragraph{Terrasse inaccessible :}
+\[
+\begin{aligned}
+  g &= 7{,}25 + 0{,}40 + 2{,}00 + 0{,}10 + 0{,}90 \\
+    &= \mathbf{10{,}65~\text{kN/m}^2}
+\end{aligned}
+\]
+
+\paragraph{Étage courant (bureaux) :}
+\[
+  g = 7{,}25 + 0{,}10 + 0{,}40 = \mathbf{7{,}75~\text{kN/m}^2}
+\]
+
+\paragraph{RDC (plancher haut du 1\textsuperscript{er} sous-sol, dalle nervurée 12\,cm) :}
+\[
+  g = 0{,}12 \times 25 + 0{,}03 \times 20 + 0{,}50 = 3{,}00 + 0{,}60 + 0{,}50 = \mathbf{4{,}10~\text{kN/m}^2}
+\]
+
+\paragraph{1\textsuperscript{er} sous-sol (dalle 12\,cm sans chape ni revêtement) :}
+\[
+  g = 0{,}12 \times 25 = \mathbf{3{,}00~\text{kN/m}^2}
+\]
+
+\subsection{Poids propres linéiques}
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Élément & Charge (kN/ml) \\
+\midrule
+Poutrelle 20$\times$43\,cm : $0{,}43 \times 0{,}20 \times 25$ & 2,15 \\
+Poutre principale 30$\times$58\,cm : $0{,}30 \times 0{,}58 \times 25$ & 4,35 \\
+Poteau superstructure 50$\times$50\,cm : $0{,}50 \times 0{,}50 \times 25$ & 6,25 \\
+Poteau infrastructure 60$\times$60\,cm : $0{,}60 \times 0{,}60 \times 25$ & 9,00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Remarque.} Les retombées 0,43\,m et 0,58\,m correspondent à la partie de la poutre située \emph{sous} la dalle :
+\begin{itemize}
+  \item Poutre principale : $h_\text{totale} = 70$\,cm $-$ dalle 12\,cm $= 58$\,cm
+  \item Poutre secondaire : $h_\text{totale} = 55$\,cm $-$ dalle 12\,cm $= 43$\,cm
+\end{itemize}
+
+\subsection{Cumul des charges permanentes \texorpdfstring{$G$}{G} sur le poteau B2}
+
+Pour chaque niveau, on additionne :
+\begin{itemize}
+  \item la charge surfacique du plancher $\times$ surface tributaire (39\,m\textsuperscript{2}),
+  \item les retombées de poutres $\times$ longueurs respectives,
+  \item le poids propre du poteau du niveau.
+\end{itemize}
+
+\subsubsection{Terrasse}
+\[
+\begin{aligned}
+  G_\text{terrasse} &= 10{,}65 \times 39 + 2{,}15 \times 6{,}50 + 4{,}35 \times 6{,}00 + 6{,}25 \times 3{,}50 \\
+                    &= 415{,}4 + 14{,}0 + 26{,}1 + 21{,}9 \\
+                    &= 477{,}4 \approx \mathbf{500~\text{kN}}
+\end{aligned}
+\]
+
+\subsubsection{Étage courant (4\texorpdfstring{\textsuperscript{e}}{e}, 3\texorpdfstring{\textsuperscript{e}}{e}, 2\texorpdfstring{\textsuperscript{e}}{e} étages)}
+\[
+\begin{aligned}
+  G_\text{étage} &= 7{,}75 \times 39 + 14{,}0 + 26{,}1 + 21{,}9 \\
+                 &= 302{,}3 + 62{,}0 \\
+                 &= 364{,}3 \approx \mathbf{368~\text{kN}}
+\end{aligned}
+\]
+
+\subsubsection{1\texorpdfstring{\textsuperscript{er}}{er} étage}
+
+Le poteau du 1\textsuperscript{er} étage a une hauteur supérieure de 10\,cm pour rejoindre le RDC :
+\[
+\begin{aligned}
+  G_{1^\text{er}\text{ étage}} &= 7{,}75 \times 39 + 14{,}0 + 26{,}1 + 6{,}25 \times 3{,}60 \\
+                                &= 302{,}3 + 14{,}0 + 26{,}1 + 22{,}5 \\
+                                &= 364{,}9 \approx \mathbf{377~\text{kN}}
+\end{aligned}
+\]
+
+\subsubsection{Rez-de-chaussée}
+
+Le poteau passe en infrastructure (60$\times$60). On ajoute une estimation de 40\,kN pour les murs et allèges.
+\[
+\begin{aligned}
+  G_\text{RDC} &= 4{,}10 \times 39 + 14{,}0 + 26{,}1 + 9{,}00 \times 2{,}70 + 40{,}0 \\
+               &= 159{,}9 + 14{,}0 + 26{,}1 + 24{,}3 + 40{,}0 \\
+               &= 264{,}3 \approx \mathbf{264~\text{kN}}
+\end{aligned}
+\]
+
+\subsubsection{1\texorpdfstring{\textsuperscript{er}}{er} sous-sol}
+
+On ajoute 33,6\,kN pour les murs voiles BA du sous-sol :
+\[
+\begin{aligned}
+  G_\text{SS1} &= 3{,}00 \times 39 + 14{,}0 + 26{,}1 + 24{,}3 + 33{,}6 \\
+               &= 117{,}0 + 14{,}0 + 26{,}1 + 24{,}3 + 33{,}6 \\
+               &= \mathbf{215{,}0~\text{kN}}
+\end{aligned}
+\]
+
+\subsection{Charges d'exploitation \texorpdfstring{$Q$}{Q}}
+
+Les charges $Q$ sont calculées en multipliant la charge surfacique par la surface tributaire $S = 39$\,m\textsuperscript{2}, puis \textbf{majorées par le coefficient de continuité} $\times 1{,}15$ pour tenir compte des reports de charges des travées adjacentes (FDP 18-717).
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Niveau & $q$ (kN/m\textsuperscript{2}) & $q \times S$ (kN) & $\times 1{,}15$ (kN) \\
+\midrule
+Terrasse (inaccessible)            & 0    & 0     & \textbf{0}   \\
+Étages bureaux                     & 3,5  & 136,5 & \textbf{157} \\
+RDC ateliers                       & 5,0  & 195,0 & \textbf{224} \\
+1\textsuperscript{er} SS archives  & 10,0 & 390,0 & \textbf{449} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Tableau récapitulatif de la descente de charges}
+
+On cumule $G$ et $Q$ niveau par niveau, du haut vers le bas. La colonne $\Sigma Q_\text{réduit}$ applique le coefficient $\alpha_n$.
+
+\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Niveau} & \textbf{$G$} & \textbf{$Q$} & \textbf{$\Sigma G$} & \textbf{$\Sigma Q$ brut} & \textbf{$\alpha_n$} & \textbf{$\Sigma Q$ réduit} \\
+                & (kN)         & (kN)         & (kN)                & (kN)                     &                     & (kN) \\
+\midrule
+Terrasse                            & 500 & 0   & 500    & 0      & ---   & 0      \\
+4\textsuperscript{e} étage          & 368 & 157 & 868    & 157    & 1,0   & 157    \\
+3\textsuperscript{e} étage          & 368 & 157 & 1\,236 & 314    & 1,0   & 314    \\
+2\textsuperscript{e} étage          & 368 & 157 & 1\,604 & 471    & 0,967 & 455    \\
+1\textsuperscript{er} étage         & 377 & 157 & 1\,981 & 628    & 0,90  & 565    \\
+RDC                                 & 264 & 224 & 2\,245 & 852    & ---   & 789    \\
+1\textsuperscript{er} sous-sol      & 215 & 449 & 2\,460 & 1\,301 & ---   & 1\,238 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4pt}
+
+\subsection{Conclusion}
+
+Au pied du poteau B2 (au niveau du 2\textsuperscript{e} sous-sol), les charges de calcul sont :
+
+\encadre{$\Sigma G = 2\,460~\text{kN}$ \qquad $\Sigma Q_\text{réduit} = 1\,238~\text{kN}$}
+
+Ces valeurs serviront de base au dimensionnement des fondations en Séance 3.
+

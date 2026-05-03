@@ -1,0 +1,166 @@
+name: Build LaTeX & Deploy
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # =====================================================
+  # Build du PDF avec LaTeX
+  # =====================================================
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      pdf-name: ${{ steps.set-name.outputs.pdf-name }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set PDF name
+        id: set-name
+        run: echo "pdf-name=ossature-batiment-chec.pdf" >> $GITHUB_OUTPUT
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: false
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Rename output PDF
+        run: mv main.pdf ${{ steps.set-name.outputs.pdf-name }}
+
+      - name: Upload PDF as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-pdf
+          path: ${{ steps.set-name.outputs.pdf-name }}
+          retention-days: 90
+
+  # =====================================================
+  # Déploiement GitHub Pages (uniquement sur main)
+  # =====================================================
+  deploy-pages:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rapport-pdf
+          path: site/
+
+      - name: Create landing page
+        run: |
+          cat > site/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="fr">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>Rapport Ossatures de bâtiments — CHEBAP/TS</title>
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+                     max-width: 720px; margin: 4em auto; padding: 0 1em; color: #1c2434; line-height: 1.55; }
+              h1 { color: #1e507d; border-bottom: 2px solid #1e507d; padding-bottom: .35em; }
+              .card { background:#f5f8fb; border:1px solid #d4dde6; border-radius:8px;
+                      padding:1.4em 1.6em; margin: 1.4em 0; }
+              .btn { display:inline-block; background:#1e507d; color:#fff;
+                     padding:.65em 1.4em; border-radius:6px; text-decoration:none; font-weight:600; }
+              .btn:hover { background:#163a5a; }
+              .meta { color:#6e6e6e; font-size:.92em; }
+              ul { padding-left: 1.2em; }
+              code { background:#eef2f6; padding:.1em .35em; border-radius:3px; font-size:.92em; }
+            </style>
+          </head>
+          <body>
+            <h1>Rapport — Ossatures de bâtiments</h1>
+            <p class="meta">CHEBAP/TS · 2025–2026 · Fatoumata Bineta SALL</p>
+
+            <div class="card">
+              <p>La dernière version du rapport, compilée automatiquement à partir des sources LaTeX
+                 du dépôt, est disponible ci-dessous :</p>
+              <p style="text-align:center; margin: 1.4em 0;">
+                <a class="btn" href="ossature-batiment-chec.pdf">📄 Télécharger le PDF</a>
+              </p>
+              <p class="meta" style="text-align:center; margin-top: 0;">
+                ou consulter directement en ligne :
+                <a href="ossature-batiment-chec.pdf">ossature-batiment-chec.pdf</a>
+              </p>
+            </div>
+
+            <h2>Contenu</h2>
+            <ul>
+              <li>Séance 1 — Prédimensionnement</li>
+              <li>Séance 2 — Descente de charges</li>
+              <li>Séance 3 — Semelles de fondations</li>
+              <li>Séance 4 — Dalle sur 4 côtés</li>
+              <li>Séances 5 & 6 — Poutre continue</li>
+              <li>Séance 7 — Escalier</li>
+              <li>Séance 8 — Mur pignon</li>
+              <li>Séance 9 — Mur de sous-sol</li>
+              <li>Séance 10 — Calcul au feu</li>
+              <li>Séances 11 & 12 — Plancher-dalle</li>
+              <li>Synthèse des résultats</li>
+            </ul>
+
+            <p class="meta">Le code source est consultable sur
+              <a href="https://github.com/${{ github.repository }}">GitHub</a>.
+              Le PDF est régénéré automatiquement à chaque mise à jour de la branche
+              <code>main</code>.</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # =====================================================
+  # Création d'une release GitHub sur tag (ex : v1.0)
+  # =====================================================
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rapport-pdf
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ossature-batiment-chec.pdf
+          name: Rapport ${{ github.ref_name }}
+          body: |
+            Version ${{ github.ref_name }} du rapport.
+            Compilée automatiquement à partir des sources LaTeX.
+          draft: false
+          prerelease: false

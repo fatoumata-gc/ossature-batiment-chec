@@ -1,0 +1,576 @@
+% ════════════════════════════════════════════════════════════
+% SÉANCES 5 ET 6 — POUTRE
+% ════════════════════════════════════════════════════════════
+\seance{5 \& 6}{Poutre}
+
+\subsection{Poutre étudiée}
+
+L'étude porte sur la \textbf{poutre principale 30\,$\times$\,70~cm} située au niveau $-2{,}70$~m (plancher du 1\textsuperscript{er} sous-sol), \textbf{file~B}. La poutre est continue et l'on s'intéresse particulièrement à la travée comprise entre la file~1 et la file~2.
+
+\figureplaceholder{poutre-etudiee-vue-plan}{Vue en plan de la poutre étudiée (file~B, travée 1-2) et schéma des charges supportées}
+
+Cette poutre supporte deux types de charges (FDP~18-717 §5.1.3(1)) :
+\begin{itemize}
+  \item des \textbf{charges concentrées} provenant des poutrelles qui s'appuient sur elle (avec leur poids propre et la part de dalle qu'elles transmettent), \textbf{majorées de 15\,\%} pour tenir compte de la continuité des poutrelles ;
+  \item des \textbf{charges réparties} provenant de la poutre elle-même (poids propre) et de la part de dalle qui la sollicite directement.
+\end{itemize}
+
+\subsection{Bilan des charges}
+
+\subsubsection{Charges concentrées (poutrelle)}
+
+\paragraph{Charges permanentes (G).}
+\[
+  P_\text{poutrelle} = 0{,}20 \times 0{,}55 \times 6 \times 25 = 16{,}5~\text{kN}
+\]
+\[
+  P_\text{dalle} = 0{,}12 \times 25 \times 2 \times \frac{5{,}80 + 2{,}75}{2} \times \frac{3{,}05}{2} = 39{,}12~\text{kN}
+\]
+
+Avec le coefficient de continuité 1,15 :
+\[
+  G = (16{,}5 + 39{,}12) \times 1{,}15 \approx \mathbf{64~\text{kN}}
+\]
+
+\paragraph{Charges d'exploitation (Q).}
+\[
+  Q_\text{sur dalle} = 10 \times 2 \times \frac{5{,}80 + 2{,}75}{2} \times \frac{3{,}05}{2} = 130{,}4~\text{kN}
+\]
+\[
+  Q_\text{sur poutre} = 10 \times 6 \times 0{,}20 = 12~\text{kN}
+\]
+
+Avec le coefficient de continuité 1,15 :
+\[
+  Q = (130{,}4 + 12) \times 1{,}15 \approx \mathbf{165~\text{kN}}
+\]
+
+\subsubsection{Charges uniformément réparties (poutre + dalle)}
+
+\paragraph{Charges permanentes (g).}
+\[
+  g_\text{poutre} = 0{,}30 \times 0{,}70 \times 25 = 5{,}25~\text{kN/ml}
+\]
+\[
+  g_\text{dalle} = 4 \times \left(\frac{1}{2} \times 1{,}525 \times 3{,}05\right) \times 0{,}12 \times 25 \times \frac{1}{6{,}10} = 4{,}57~\text{kN/ml}
+\]
+\[
+  g = 5{,}25 + 4{,}57 = \mathbf{9{,}82~\text{kN/ml}}
+\]
+
+\paragraph{Charges d'exploitation (q).}
+\[
+  q_\text{sur poutre} = 0{,}30 \times 10 = 3~\text{kN/ml}
+\]
+\[
+  q_\text{sur dalle} = 4 \times \left(\frac{1}{2} \times 1{,}525 \times 3{,}05\right) \times 10 \times \frac{1}{6{,}10} = 15{,}25~\text{kN/ml}
+\]
+\[
+  q = 3 + 15{,}25 = \mathbf{18{,}3~\text{kN/ml}}
+\]
+
+\figureplaceholder{poutre-schema-charges}{Schéma statique global de la poutre continue avec charges concentrées $G$, $Q$ et charges réparties $g$, $q$}
+
+\subsection{Calcul des sollicitations --- Méthode de Caquot}
+
+La poutre étant continue sur plusieurs appuis et soumise à des charges concentrées intenses, la \textbf{méthode forfaitaire} n'est pas applicable. On utilise la \textbf{méthode de Caquot} (NF~EN~1992-1-1 + AN + FDP~18-717~§5.6).
+
+\subsubsection{Longueurs de calcul Caquot}
+
+Pour la travée étudiée B1-B2-B3 :
+\begin{itemize}
+  \item $l_w = 6{,}10$~m (travée de rive B1-B2)
+  \item $l_e = 5{,}90$~m (travée intermédiaire B2-B3)
+\end{itemize}
+
+La méthode Caquot impose une \textbf{réduction forfaitaire de 20\,\%} sur les portées intermédiaires :
+\[
+  l'_w = l_w = 6{,}10~\text{m} \qquad ; \qquad
+  l'_e = 0{,}8 \times l_e = 0{,}8 \times 5{,}90 = \mathbf{4{,}72~\text{m}}
+\]
+
+\subsubsection{Coefficients de Caquot pour charges concentrées}
+
+Pour une charge concentrée à la distance $a$ de l'appui considéré, le coefficient $K$ s'écrit :
+\[
+  K = \frac{(a/l')(1 - a/l')(2 - a/l')}{2{,}125}
+\]
+
+\paragraph{Côté gauche (B1-B2).} La charge concentrée est au milieu de la travée : $a = l_w/2 = 3{,}05$~m, $a/l'_w = 0{,}5$.
+\[
+  K_w = \frac{0{,}5 \times 0{,}5 \times 1{,}5}{2{,}125} = \mathbf{0{,}176}
+\]
+
+\paragraph{Côté droit (B2-B3).} La charge concentrée est au milieu de la travée réelle : $a = l_e/2 = 2{,}95$~m, $a/l'_e = 2{,}95/4{,}72 = 0{,}625$.
+\[
+  K_e = \frac{0{,}625 \times 0{,}375 \times 1{,}375}{2{,}125} = \mathbf{0{,}151}
+\]
+
+\subsubsection{Moments élémentaires sur l'appui B2}
+
+Trois cas de chargement sont étudiés pour rechercher les extrémums :
+\begin{itemize}
+  \item \textbf{Cas 1} : charges permanentes sur les deux travées
+  \item \textbf{Cas 2} : charges permanentes partout + charges d'exploitation sur travée B1-B2
+  \item \textbf{Cas 3} : charges permanentes partout + charges d'exploitation sur travée B2-B3
+\end{itemize}
+
+\paragraph{Cas 1 --- Charges permanentes seules.}
+
+\textit{Contribution de la charge répartie} (sur les deux travées) :
+\[
+  M_{B_2}^{(1),\text{rép}} = \frac{P_w \cdot l'^3_w + P_e \cdot l'^3_e}{8{,}5\,(l'_w + l'_e)}
+  = \frac{9{,}82 \times 6{,}10^3 + 9{,}82 \times 4{,}72^3}{8{,}5 \times (6{,}10 + 4{,}72)}
+  = \mathbf{35{,}5~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Contribution de la charge concentrée côté gauche} :
+\[
+  M_{B_2}^{(1),G_w} = \frac{K_w \cdot G \cdot l'^2_w}{l'_w + l'_e}
+  = \frac{0{,}176 \times 64 \times 6{,}10^2}{10{,}82}
+  = \mathbf{38{,}73~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Contribution de la charge concentrée côté droit} :
+\[
+  M_{B_2}^{(1),G_e} = \frac{K_e \cdot G \cdot l'^2_e}{l'_w + l'_e}
+  = \frac{0{,}151 \times 64 \times 4{,}72^2}{10{,}82}
+  = \mathbf{19{,}89~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Total Cas 1 :}
+\encadre{$M_{B_2}^{(1)} = 35{,}5 + 38{,}73 + 19{,}89 = \mathbf{94{,}1~\text{kN}\cdot\text{m}}$}
+
+\paragraph{Cas 2 --- Charges d'exploitation sur travée B1-B2.}
+
+\textit{Charge répartie d'exploitation côté gauche :}
+\[
+  M_{B_2}^{(2),\text{rép}} = \frac{q \cdot l'^3_w}{8{,}5\,(l'_w + l'_e)}
+  = \frac{18{,}3 \times 6{,}10^3}{8{,}5 \times 10{,}82} = \mathbf{45{,}16~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Charge concentrée d'exploitation côté gauche :}
+\[
+  M_{B_2}^{(2),Q_w} = \frac{K_w \cdot Q \cdot l'^2_w}{l'_w + l'_e}
+  = \frac{0{,}176 \times 165 \times 37{,}21}{10{,}82} = \mathbf{99{,}87~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Total Cas 2 :}
+\encadre{$M_{B_2}^{(2)} = 45{,}16 + 99{,}87 \approx \mathbf{145~\text{kN}\cdot\text{m}}$}
+
+\paragraph{Cas 3 --- Charges d'exploitation sur travée B2-B3.}
+
+\textit{Charge répartie d'exploitation côté droit :}
+\[
+  M_{B_2}^{(3),\text{rép}} = \frac{q \cdot l'^3_e}{8{,}5\,(l'_w + l'_e)}
+  = \frac{18{,}3 \times 4{,}72^3}{91{,}97} = \mathbf{20{,}92~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Charge concentrée d'exploitation côté droit :}
+\[
+  M_{B_2}^{(3),Q_e} = \frac{K_e \cdot Q \cdot l'^2_e}{l'_w + l'_e}
+  = \frac{0{,}151 \times 165 \times 22{,}28}{10{,}82} = \mathbf{51{,}30~\text{kN}\cdot\text{m}}
+\]
+
+\textit{Total Cas 3 :}
+\encadre{$M_{B_2}^{(3)} = 20{,}92 + 51{,}30 \approx \mathbf{72{,}22~\text{kN}\cdot\text{m}}$}
+
+\subsubsection{Combinaisons à l'ELU --- Recherche des extrémums}
+
+\paragraph{Moment maximum sur appui B2.}
+La combinaison la plus défavorable applique 1,5 sur les deux contributions Q :
+\[
+  M_{\max,B_2} = 1{,}35 \cdot M_{B_2}^{(1)} + 1{,}5 \cdot M_{B_2}^{(2)} + 1{,}5 \cdot M_{B_2}^{(3)}
+\]
+\[
+  = 1{,}35 \times 94{,}1 + 1{,}5 \times 145 + 1{,}5 \times 72{,}22 = \mathbf{453~\text{kN}\cdot\text{m}}
+\]
+
+\paragraph{Moment maximum en travée B1-B2.}
+On charge G partout et Q sur la travée étudiée. Le moment isostatique vaut :
+\[
+  M_{iso,u} = 1{,}35 \cdot \left(\frac{g\,l_w^2}{8} + \frac{G\,l_w}{4}\right) + 1{,}5 \cdot \left(\frac{q\,l_w^2}{8} + \frac{Q\,l_w}{4}\right)
+\]
+\[
+  = 1{,}35 \times 143{,}28 + 1{,}5 \times 336{,}73 = \mathbf{698{,}5~\text{kN}\cdot\text{m}}
+\]
+
+Le moment hyperstatique en travée se déduit en retranchant la moyenne des moments d'appuis :
+\[
+  M_{t,B_1B_2}^{\max} = M_{iso,u} - \frac{M_{B_1} + M_{B_2}}{2}
+\]
+
+avec $M_{B_1} = 0$ (appui de rive simple) et $M_{B_2} = 1{,}35 \cdot 94{,}1 + 1{,}5 \cdot 145 = 344{,}5$~kN.m :
+\[
+  M_{t,B_1B_2}^{\max} = 698{,}5 - \frac{0 + 344{,}5}{2} = \mathbf{526{,}3~\text{kN}\cdot\text{m}}
+\]
+
+\paragraph{Moment minimum en travée.}
+Pour le moment minimum (qui peut éventuellement être négatif et nécessiter des armatures supérieures), on ne charge Q que sur la travée adjacente B2-B3 :
+\[
+  M_{t,B_1B_2}^{\min} = 1{,}35 \cdot M_{iso,G} - \frac{1{,}35 \cdot M_{B_2}^{(1)} + 1{,}5 \cdot M_{B_2}^{(3)}}{2}
+\]
+\[
+  = 1{,}35 \times 143{,}3 - \frac{1{,}35 \times 94{,}1 + 1{,}5 \times 72{,}22}{2} = 193{,}4 - 117{,}3 = 76~\text{kN}\cdot\text{m}
+\]
+
+Le moment minimum reste positif : pas d'armatures supérieures dimensionnantes en travée.
+
+\figureplaceholder{poutre-courbe-enveloppe}{Courbe enveloppe des moments fléchissants sur les deux travées B1-B2 et B2-B3}
+
+\subsection{Calcul des armatures longitudinales}
+
+\subsubsection{Sur appui B2 --- Section rectangulaire 30\texorpdfstring{$\times$}{x}70}
+
+Pour le calcul des armatures sur appui, on considère la section comme \textbf{rectangulaire} (30\,$\times$\,70~cm) car le béton tendu (en haut) ne participe pas à la résistance. La hauteur utile est $d = 0{,}63$~m (enrobage et lit d'armatures supérieurs).
+
+\paragraph{Moment réduit :}
+\[
+  \mu = \frac{M_u}{b\,d^2\,f_{cd}} = \frac{453 \times 10^{-3}}{0{,}30 \times 0{,}63^2 \times 25/1{,}5} = \mathbf{0{,}228}
+\]
+
+Comme $\mu < 0{,}372$, le diagramme est en pivot~A et $\sigma_s = f_{yd} = 500/1{,}15 = 435$~MPa.
+
+\paragraph{Bras de levier :}
+\[
+  z = \frac{d}{2}\left(1 + \sqrt{1 - 2\mu}\right) = \frac{0{,}63}{2}\left(1 + \sqrt{1 - 2 \times 0{,}228}\right) = \mathbf{0{,}547~\text{m}}
+\]
+
+\paragraph{Section d'armatures :}
+\[
+  A_s = \frac{M_u}{z \cdot f_{yd}} = \frac{453 \times 10^{-3}}{0{,}547 \times 434{,}78} \times 10^4 = \mathbf{19{,}04~\text{cm}^2}
+\]
+
+\encadre{Choix : 6\,HA\,25 = 29{,}45~cm$^2$}
+
+\subsubsection{En travée B1-B2 --- Section rectangulaire (béton tendu en bas)}
+
+En travée, le béton tendu étant en bas, on calcule également en \textbf{section rectangulaire} avec $b_w = 0{,}30$~m et $d = 0{,}63$~m.
+
+\paragraph{Moment réduit :}
+\[
+  \mu = \frac{526{,}3 \times 10^{-3}}{0{,}30 \times 0{,}63^2 \times 25/1{,}5} = \mathbf{0{,}265}
+\]
+
+\paragraph{Bras de levier :}
+\[
+  z = \frac{d}{2}\left(1 + \sqrt{1 - 2 \times 0{,}265}\right) = \mathbf{0{,}531~\text{m}}
+\]
+
+\paragraph{Section d'armatures :}
+\[
+  A_s = \frac{526{,}3 \times 10^{-3}}{0{,}531 \times 434{,}78} \times 10^4 = \mathbf{22{,}80~\text{cm}^2}
+\]
+
+\encadre{Choix : 6\,HA\,25 = 29{,}45~cm$^2$}
+
+\subsubsection{Section minimale (Eurocode \S{}9.2.1.1)}
+
+\[
+  A_{s,\min} = 0{,}26 \cdot \frac{f_{ctm}}{f_{yk}} \cdot b_w \cdot d
+            = 0{,}26 \times \frac{2{,}6}{500} \times 0{,}30 \times 0{,}63 \times 10^4 = \mathbf{1{,}80~\text{cm}^2}
+\]
+
+Cette valeur est très inférieure aux armatures retenues : la condition est vérifiée.
+
+\subsubsection{Armatures supérieures sur l'appui B1 (rive)}
+
+Au droit de l'appui de rive B1, un \textbf{moment résiduel} $M_{B_1} = 0{,}15 \cdot M_{iso}$ doit être repris par armatures supérieures (Eurocode \S{}9.2.1.2) :
+\[
+  M_{B_1} = 0{,}15 \times M_{iso,u} = 0{,}15 \times 698{,}5 = 104{,}77~\text{kN}\cdot\text{m}
+\]
+
+Le calcul donne $A_{s,B_1} = 3{,}89$~cm$^2$, soit le choix : 1\,HA\,25 = 4{,}91~cm$^2$.
+
+\subsection{Calcul des moments résistants et épure d'arrêt des barres}
+
+L'épure d'arrêt des barres est construite en comparant la \textbf{courbe enveloppe des moments sollicitants} (décalée d'une distance $a_l$) avec les \textbf{moments résistants} fournis par les différents lits d'armatures.
+
+\subsubsection{Armatures pour appui B2 --- Calcul des moments résistants}
+
+\paragraph{1\textsuperscript{er} lit : 3\,HA\,25 en partie supérieure} ($A_s = 14{,}73$~cm$^2$)
+
+\textit{Équilibre des efforts normaux :}
+\[
+  F_S = F_C \quad\Longrightarrow\quad
+  A_s\,f_{yd} = \eta\,f_{cd}\,\lambda x \cdot b
+  \quad\Longrightarrow\quad
+  x = \frac{A_s\,f_{yd}}{\eta\,f_{cd}\,\lambda\,b}
+\]
+
+avec $\eta = 1$, $\lambda = 0{,}8$, $b = 0{,}30$~m :
+\[
+  x = \frac{14{,}73 \times 10^{-4} \times 435}{1 \times 25/1{,}5 \times 0{,}8 \times 0{,}30}
+    = 0{,}16~\text{m}
+\]
+\[
+  \chi = \frac{x}{d} = \frac{0{,}16}{0{,}63} = 0{,}254 < 0{,}672 \quad\Longrightarrow\quad \text{Armatures plastifiées}
+\]
+
+\textit{Moment résistant :}
+\[
+  M_{R_1} = A_s\,f_{yd}\,z_1
+          = 14{,}73 \times 10^{-4} \times 435 \times \left(0{,}63 - \frac{0{,}8 \times 0{,}16}{2}\right)
+          = \mathbf{362{,}66~\text{kN}\cdot\text{m}}
+\]
+
+\paragraph{2\textsuperscript{e} lit : ajout de 3\,HA\,25 supplémentaires} ($A_s = 29{,}45$~cm$^2$ au total)
+
+\[
+  x = 0{,}320~\text{m} \quad\Longrightarrow\quad \chi = 0{,}508 < 0{,}672 \quad\Longrightarrow\quad \sigma_{st} = f_{yd}
+\]
+
+\textit{Moment résistant :}
+\[
+  M_{R_2} = \mathbf{546{,}76~\text{kN}\cdot\text{m}} > M_{B_2} = 453~\text{kN}\cdot\text{m} \quad\checkmark
+\]
+
+\subsubsection{Calcul des moments résistants en travée B1-B2}
+
+\paragraph{1\textsuperscript{er} lit :}
+\[
+  M_{R_1} = \mathbf{362{,}66~\text{kN}\cdot\text{m}}
+\]
+
+\paragraph{2\textsuperscript{e} lit (6\,HA\,25 = 29,45~cm$^2$) :}
+\[
+  M_{R_2} = \mathbf{546{,}76~\text{kN}\cdot\text{m}} > M_{t_{B_1B_2}} = 526{,}3~\text{kN}\cdot\text{m} \quad\checkmark
+\]
+
+\subsubsection{Armatures supérieures sur l'appui de rive B1}
+
+Au droit de l'appui de rive B1, on doit reprendre un moment résiduel correspondant à $0{,}15 \cdot M_{iso}$ (Eurocode \S{}9.2.1.2) :
+\[
+  M_{B_1} = 0{,}15 \cdot M_{iso} = 0{,}15 \times 698{,}5 \approx 104{,}77~\text{kN}\cdot\text{m}
+\]
+\[
+  A_{sup,B_1} = 3{,}89~\text{cm}^2
+\]
+
+\encadre{Choix : 1\,HA\,25 = $4{,}91$~cm$^2$}
+
+\subsubsection{Décalage de la courbe enveloppe}
+
+L'épure d'arrêt des barres se construit en décalant la courbe enveloppe des moments d'une distance $a_l$ donnée par :
+\[
+  a_l = z \cdot \frac{\cot\theta}{2}
+\]
+
+Avec $z = 0{,}547$~m (en appui) et $\theta = 45^\circ$ ($\cot\theta = 1$) :
+\[
+  a_l = \frac{0{,}547 \times 1}{2} = \mathbf{0{,}28~\text{m}}
+\]
+
+\subsubsection{Longueurs d'ancrage}
+
+Pour les barres HA en C25/30, l'Eurocode fournit la longueur d'ancrage de calcul $l_{bd}$. En considérant des conditions d'adhérence bonnes ($\eta_1 = 1$, $\eta_2 = 1$) et un coefficient $\alpha$ global :
+\[
+  l_{bd} = 0{,}7 \cdot l_{b,rqd} = 0{,}7 \times 40 \cdot \phi
+\]
+
+Pour les HA\,25 :
+\[
+  l_{bd} = 0{,}7 \times 40 \times 25 = 700~\text{mm} = 70~\text{cm}
+\]
+
+\figureplaceholder{poutre-epure-arret-barres}{Épure d'arrêt des barres --- courbes enveloppes décalées de $a_l = 0{,}28$~m et schéma de ferraillage en élévation}
+
+\subsection{Effort tranchant}
+
+\subsubsection{Calcul de \texorpdfstring{$V_{Ed}$}{V_Ed} isostatique}
+
+L'effort tranchant isostatique sur l'appui résulte de la superposition des charges réparties et concentrées.
+
+\paragraph{Sous charges uniformément réparties :}
+\[
+  V_{ED,1} = \frac{P_u \cdot l_w}{2}
+            = \frac{1{,}35\,g + 1{,}5\,q}{2} \times l_w
+\]
+\[
+  V_{ED,1} = \frac{1{,}35 \times 9{,}82 + 1{,}5 \times 18{,}3}{2} \times 6{,}10
+          = \frac{40{,}71}{2} \times 6{,}10
+          = \mathbf{124{,}2~\text{kN}}
+\]
+
+\paragraph{Sous charges concentrées :}
+\[
+  V_{ED,2} = \frac{P}{2} = \frac{1{,}35\,G + 1{,}5\,Q}{2}
+\]
+\[
+  V_{ED,2} = \frac{1{,}35 \times 64 + 1{,}5 \times 165}{2}
+          = \frac{86{,}4 + 247{,}5}{2}
+          = \mathbf{166{,}95~\text{kN}}
+\]
+
+\paragraph{Effort tranchant total isostatique :}
+\[
+  V_{ED,iso} = V_{ED,1} + V_{ED,2}
+            = 124{,}2 + 166{,}95
+            = \mathbf{291{,}11~\text{kN}}
+\]
+
+\subsubsection{Correction hyperstatique \texorpdfstring{($V_{hyper}$)}{(V_hyper)}}
+
+Pour tenir compte de la continuité de la poutre, l'effort tranchant hyperstatique sur chaque appui de la travée B1-B2 se calcule par :
+\[
+  V_{hyper} = V_{ED,iso} \pm \frac{\Delta M}{l_w}
+\]
+
+\paragraph{Effort tranchant maximum sur l'appui B2 (côté travée gauche) :}
+\[
+  V_{B_2,\max} = V_{ED,iso} + \frac{M_{B_2,\max}}{l_w}
+              = 291{,}11 + \frac{453}{6{,}10}
+              = 291{,}11 + 74{,}26
+              = \mathbf{365~\text{kN}}
+\]
+
+\paragraph{Effort tranchant maximum sur l'appui de rive B1 :}
+\[
+  V_{B_1,\max} = V_{ED,iso} - \frac{M_{B_2,\min}}{l_w}
+              = 291{,}11 - \frac{344}{6{,}10}
+              = 291{,}11 - 56{,}39
+              = \mathbf{235~\text{kN}}
+\]
+
+avec $M_{B_2,\min} = 1{,}35 \cdot M_{B_2}^{(1)} + 1{,}5 \cdot M_{B_2}^{(2)} = 344~\text{kN}\cdot\text{m}$ (cas où Q ne charge que la travée B1-B2).
+
+\subsubsection{Armatures transversales}
+
+Conformément à l'Eurocode~2 \S{}6.2.3, on retient un angle de bielle $\theta = 45^\circ$ (cot$\theta = 1$) et des cadres verticaux ($\alpha = 90^\circ$). La formule de dimensionnement :
+\[
+  \frac{A_{sw}}{s_w} = \frac{V_{Ed}}{z \cdot f_{yd} \cdot \cot\theta}
+\]
+
+avec $z = 0{,}547$~m (bras de levier en appui, calculé précédemment).
+
+\paragraph{Armatures pour $V_{B_2,\max} = 365$~kN :}
+\[
+  \frac{A_{sw}}{s_w} = \frac{365 \times 10^{-3}}{0{,}547 \times 434{,}78 \times 1} \times 10^4
+                    = \mathbf{15{,}35~\text{cm}^2/\text{ml}}
+\]
+
+\encadre{Choix : 3\,brins HA\,12, $e = 20$~cm $\to$ $A_{sw}/s_w = 16{,}8$~cm$^2$/ml}
+
+\paragraph{Armatures pour $V_{B_1,\max} = 235$~kN :}
+\[
+  \frac{A_{sw}}{s_w} = \frac{235 \times 10^{-3}}{0{,}547 \times 434{,}78 \times 1} \times 10^4
+                    = \mathbf{9{,}88~\text{cm}^2/\text{ml}}
+\]
+
+\encadre{Choix : 3\,brins HA\,12, $e = 35$~cm $\to$ $A_{sw}/s_w = 9{,}6$~cm$^2$/ml}
+
+\figureplaceholder{poutre-coupe-section}{Coupes de la section en appui B1, en travée et en appui B2 avec disposition des armatures longitudinales et des cadres}
+
+\subsection{Vérifications complémentaires}
+
+\subsubsection{Vérification des bielles d'about}
+
+La vérification de la bielle d'about consiste à s'assurer que la condition $\sigma_b \leq \sigma_{R,\max}$ est satisfaite, où :
+\[
+  \sigma_b = \frac{V_{Ed,\text{non réduit}}}{a \cdot a'}
+  \qquad ; \qquad
+  \sigma_{R,\max} = k_1 \cdot \nu' \cdot f_{cd}
+\]
+
+avec $\nu' = 1 - f_{ck}/250$ et $k_1$ qui dépend du type d'appui.
+
+\paragraph{Calcul de $\sigma_{R,\max}$ :}
+
+\textit{Appui de rive (B1)} ($k_1 = 0{,}85$) :
+\[
+  \sigma_{R,\max}^{(B_1)} = 0{,}85 \times 0{,}6 \times \left(1 - \frac{25}{250}\right) \times \frac{25}{1{,}5} = \mathbf{7{,}65~\text{MPa}}
+\]
+
+\textit{Appui de continuité (B2)} ($k_1 = 1{,}0$) :
+\[
+  \sigma_{R,\max}^{(B_2)} = 1 \times 0{,}6 \times \left(1 - \frac{25}{250}\right) \times \frac{25}{1{,}5} = \mathbf{9~\text{MPa}}
+\]
+
+\paragraph{Calcul de l'inclinaison de la bielle d'about $\theta'$ :}
+
+L'angle d'inclinaison de la bielle d'about est donné par :
+\[
+  \cot\theta' = \frac{a + 2 \cdot \cot\theta}{2z}
+\]
+
+\textit{Appui de rive (B1)} (avec $a = 0{,}3$~m supposé pour l'appui de rive) :
+\[
+  \cot\theta'^{(B_1)} = \frac{a + z \cdot \cot 45^\circ}{2z}
+                    = \frac{0{,}3 + 0{,}567}{2 \times 0{,}567}
+                    = 0{,}676
+\]
+\[
+  \theta'^{(B_1)} = \mathbf{34{,}06^\circ}
+\]
+
+\textit{Appui de continuité (B2)} :
+\[
+  \cot\theta'^{(B_2)} = \frac{0{,}3 + 0{,}567}{2 \times 0{,}567}
+                    = 0{,}764
+  \qquad ; \qquad
+  \theta'^{(B_2)} = \mathbf{37{,}47^\circ}
+\]
+
+\paragraph{Vérification des bielles d'about à l'appui de rive B1 :}
+\[
+  \sigma_b^{(B_1)} = \frac{V_{Ed,\text{non réduit}}^{(B_1)}}{a \times a'}
+                  = \frac{0{,}235}{0{,}20 \times 0{,}20}
+                  = \mathbf{5{,}875~\text{MPa}}
+\]
+\[
+  \sigma_b^{(B_1)} = 5{,}875~\text{MPa} \leq \sigma_{R,\max}^{(B_1)} = 7{,}65~\text{MPa} \quad\checkmark
+\]
+
+\paragraph{Vérification des bielles d'about à l'appui de continuité B2 :}
+\[
+  \sigma_b^{(B_2)} = \frac{V_{Ed,\text{non réduit}}^{(B_2)}}{a \times a'}
+                  = \frac{0{,}365}{0{,}30 \times 0{,}30}
+                  = \mathbf{4{,}05~\text{MPa}}
+\]
+\[
+  \sigma_b^{(B_2)} = 4{,}05~\text{MPa} \leq \sigma_{R,\max}^{(B_2)} = 9~\text{MPa} \quad\checkmark
+\]
+
+\subsubsection{Armatures d'ancrage sur appuis}
+
+La force de traction à reprendre par les armatures longitudinales sur appui s'écrit :
+\[
+  A_s = \frac{V_{Ed,\text{non réduit}} \cdot \cot\theta'}{f_{yd}}
+\]
+
+\paragraph{Appui de rive B1 :}
+\[
+  A_s^{(B_1)} = \frac{0{,}235 \times 0{,}676}{434{,}78} \times 10^4 \approx \mathbf{8~\text{cm}^2}
+\]
+
+\encadre{Choix : 3\,HA\,20 = $9{,}42$~cm$^2$}
+
+\paragraph{Appui de continuité B2 :}
+\[
+  A_s^{(B_2)} = \frac{0{,}365 \times 0{,}764}{434{,}78} \times 10^4 = \mathbf{10{,}94~\text{cm}^2}
+\]
+
+\encadre{Choix : 3\,HA\,25 = $14{,}73$~cm$^2$}
+
+\subsubsection{Armatures de suspente pour la poutrelle 20\texorpdfstring{$\times$}{x}55}
+
+La poutrelle s'appuie sur la poutre principale en partie médiane de la travée. La réaction concentrée doit être suspendue par des armatures spéciales (suspentes) pour éviter la fissuration locale et le poinçonnement de la jonction nervure-poutre.
+
+\paragraph{Réaction à l'ELU :}
+\[
+  R_{ELU} = 1{,}35\,G + 1{,}5\,Q = 1{,}35 \times 64 + 1{,}5 \times 165 = 333{,}9~\text{kN}
+\]
+
+\paragraph{Section de suspentes :}
+\[
+  A_{sus} = \frac{R_{ELU}}{f_{yd}} = \frac{0{,}3339}{434{,}78} \times 10^4 = \mathbf{7{,}79~\text{cm}^2}
+\]
+
+\encadre{$A_{suspentes} \approx 8~\text{cm}^2$}
+
+\figureplaceholder{poutre-suspentes}{Schéma des armatures de suspente au droit de l'appui de la poutrelle sur la poutre principale}
+
+\subsubsection{Synthèse du ferraillage}
+
+\encadre{Section poutre 30\,$\times$\,70~cm : 6\,HA\,25 en bas (travée) et 6\,HA\,25 en haut (appui B2) ; cadres HA\,12 espacement variable 20--35~cm ; suspentes 8~cm$^2$ au droit des poutrelles.}
+
