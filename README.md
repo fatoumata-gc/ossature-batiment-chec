@@ -4,7 +4,7 @@
 
 Rapport du projet **Ossatures de bâtiments** — CHEBAP/TS — Fatoumata Bineta SALL — Année universitaire 2025-2026 — Chargé de TD : M. Bodet.
 
-> 📄 **Le PDF compilé est disponible en ligne :** [Lien GitHub Pages](https://USER.github.io/ossature-batiment-chec/) *(remplacer `USER` par ton nom d'utilisateur GitHub)*
+> 📄 **Le PDF compilé est disponible en ligne :** [Lien GitHub Pages]([https://USER.github.io/ossature-batiment-chec/](https://fatoumata-gc.github.io/ossature-batiment-chec/) 
 
 ---
 
