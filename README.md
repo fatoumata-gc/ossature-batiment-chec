@@ -2,7 +2,7 @@
 
 [![Build LaTeX & Deploy](https://github.com/fatoumata-gc/ossature-batiment-chec/actions/workflows/build.yml/badge.svg)](https://github.com/USER/ossature-batiment-chec/actions/workflows/build.yml)
 
-Rapport du projet **Ossatures de bâtiments** — CHEBAP/TS — Fatoumata Bineta SALL — Année universitaire 2025-2026 — Chargé de TD : M. Bodet.
+Rapport du projet **Ossatures de bâtiments** - CHEBAP/TS - Fatoumata Bineta SALL - Année universitaire 2025-2026 - Chargé de TD : M. Bodet.
 
 > 📄 **Le PDF compilé est disponible en ligne :** [Lien GitHub Pages](https://fatoumata-gc.github.io/ossature-batiment-chec/) 
 
@@ -92,30 +92,5 @@ Toutes les images d'une séance se rangent dans le sous-dossier `images/` de cet
 
 > 💡 Le `\graphicspath` défini dans `main.tex` couvre tous les sous-dossiers `images/` des séances : pas besoin de préciser le chemin complet, juste le nom du fichier.
 
-## Comment intégrer l'énoncé scanné
 
-1. Placer le scan PDF de l'énoncé dans `meta/enonce.pdf`
-2. Ouvrir `meta/enonce.tex` et :
-   - supprimer le bloc `% --- Placeholder ...`
-   - dé-commenter la ligne `\includepdf[pages=-,...]{meta/enonce.pdf}`
-3. Commiter le tout. Le scan apparaîtra automatiquement après la table des matières.
 
-## État du rapport
-
-| Section | Statut |
-|---|---|
-| Page de garde + sommaire | ✅ |
-| Énoncé (scan à ajouter) | ⚠️ placeholder |
-| Séance 1 — Prédimensionnement | ✅ rédigée |
-| Séance 2 — Descente de charges | ✅ rédigée |
-| Séance 3 — Semelles fondations | ✅ rédigée |
-| Séance 4 — Dalle sur 4 côtés | ✅ rédigée |
-| Séances 5 & 6 — Poutre | ✅ rédigées |
-| Séance 7 — Escalier | ✅ rédigée |
-| Séance 8 — Mur pignon | ✅ rédigée |
-| Séance 9 — Mur de sous-sol | ✅ rédigée |
-| Séance 10 — Calcul au feu | ✅ rédigée |
-| Séances 11 & 12 — Plancher-dalle | ✅ rédigée |
-| Synthèse des résultats | ✅ rédigée |
-
-**45 figures** au total à insérer (la liste détaillée est dans `recap_schemas.pdf`, fourni séparément).
