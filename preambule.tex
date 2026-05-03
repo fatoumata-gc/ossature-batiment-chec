@@ -106,3 +106,25 @@
   \vspace*{\fill}
   \clearpage
 }
+
+% Variante : bandeau de section spéciale (énoncé, annexes, etc.) sans
+% numéro de séance, mais avec le même style graphique.
+% Usage : \sectionspeciale{Énoncé du projet}
+\newcommand{\sectionspeciale}[1]{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}%
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{tcolorbox}[
+    enhanced, colback=bleu, colframe=bleu,
+    boxrule=0pt, arc=0pt, sharp corners,
+    fontupper=\color{white}\Huge\bfseries,
+    halign=center,
+    left=20pt, right=20pt, top=30pt, bottom=30pt
+  ]
+  #1
+  \end{tcolorbox}
+  \vspace*{\fill}
+  \clearpage
+}
