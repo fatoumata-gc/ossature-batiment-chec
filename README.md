@@ -1,6 +1,6 @@
 # Rapport — Ossatures de bâtiments
 
-[![Build LaTeX & Deploy](https://github.com/USER/ossature-batiment-chec/actions/workflows/build.yml/badge.svg)](https://github.com/USER/ossature-batiment-chec/actions/workflows/build.yml)
+[![Build LaTeX & Deploy](https://github.com/fatoumata-gc/ossature-batiment-chec/actions/workflows/build.yml/badge.svg)](https://github.com/USER/ossature-batiment-chec/actions/workflows/build.yml)
 
 Rapport du projet **Ossatures de bâtiments** — CHEBAP/TS — Fatoumata Bineta SALL — Année universitaire 2025-2026 — Chargé de TD : M. Bodet.
 
