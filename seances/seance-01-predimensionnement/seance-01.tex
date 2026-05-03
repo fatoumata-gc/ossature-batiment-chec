@@ -14,7 +14,11 @@ Le prédimensionnement consiste à fixer une première estimation des dimensions
   \item poteaux d'infrastructure.
 \end{itemize}
 
-\figureplaceholder{predim-vue-plan-batiment}{Vue en plan de la partie infrastructure du bâtiment : files A, B, C et 1 à 6 ; portées $L = 6{,}50$~m et $\ell = 6{,}00$~m}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s1-fig01-vue-plan-infrastructure.png}
+  \caption{Vue en plan de la partie infrastructure du bâtiment : files A, B, C et 1 à 6 ; portées $L = 6{,}50$~m et $\ell = 6{,}00$~m}
+  \label{fig:s1-vue-plan}
+\end{figure}
 
 Sur le plan architectural, on distingue \textbf{deux types de dalle} :
 \begin{itemize}
@@ -27,6 +31,12 @@ Sur le plan architectural, on distingue \textbf{deux types de dalle} :
 La surface de la dalle prédéfinie par le plan architectural est $6 \times 6{,}5$~m. Cependant, dans l'optique de soulager le travail de la dalle, des \textbf{poutres secondaires} sont ajoutées. Ainsi, la surface de calcul des dalles devient $6 \times 3{,}25$~m. La dalle qui fait l'objet du dimensionnement est celle du \textbf{1\textsuperscript{er} sous-sol} (cas le plus chargé : ses charges d'exploitation sont supérieures à celles des autres niveaux d'infrastructure). Les caractéristiques retenues seront ensuite appliquées à toutes les dalles d'infrastructure.
 
 \subsubsection{Critère de flexibilité}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.45\linewidth]{s1-fig02-dalle-nervuree-flexibilite.png}
+  \caption{Dalle nervurée étudiée : $\ell_x = 3{,}25$~m, $\ell_y = 6{,}00$~m, épaisseur $h$ à déterminer}
+  \label{fig:s1-dalle-flex}
+\end{figure}
 
 \[
 \alpha = \frac{\ell_x}{\ell_y} = \frac{3{,}25}{6} = 0{,}542 \;>\; 0{,}4
@@ -84,9 +94,21 @@ h_3 \;\geq\; 6{,}77 + 3 \approx \mathbf{9{,}77~\text{cm}}
 
 Les poutres secondaires reportent les charges de la dalle vers les poutres principales. La poutre étudiée a une portée $L = 6$~m et reprend la dalle sur deux surfaces afférentes \textbf{trapézoïdales} de part et d'autre.
 
-\figureplaceholder{predim-poutre-secondaire-charges}{Distribution des charges sur la poutre secondaire (surfaces afférentes trapézoïdales)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s1-fig03-poutre-sec-charges.png}
+  \caption{Distribution des charges sur la poutre secondaire (surfaces afférentes trapézoïdales)}
+  \label{fig:s1-poutre-sec-charges}
+\end{figure}
 
 \subsubsection{Critère de résistance en flexion}
+
+Le chargement trapézoïdal de la dalle peut être ramené à une charge linéique uniforme équivalente :
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s1-fig04-poutre-sec-charge-equivalente.png}
+  \caption{Équivalence statique : chargement trapézoïdal $\Leftrightarrow$ chargement uniforme $P_u'$}
+  \label{fig:s1-poutre-sec-equiv}
+\end{figure}
 
 La charge linéique équivalente sur la poutre secondaire vaut :
 
@@ -118,6 +140,14 @@ D'où le choix : $d = 50$~cm, $b_0 = 0{,}4 \times 50 = 20$~cm, et $h = d + 5 = 5
 
 \subsubsection{Critère de résistance à l'effort tranchant}
 
+Le schéma statique de calcul de l'effort tranchant est le suivant :
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s1-fig05-poutre-sec-effort-tranchant.png}
+  \caption{Schéma statique pour le calcul de l'effort tranchant en appui ($V_0 = R_A = R_B$)}
+  \label{fig:s1-poutre-sec-tranchant}
+\end{figure}
+
 L'effort tranchant maximal en appui s'écrit :
 
 \[
@@ -146,6 +176,12 @@ h \;\geq\; \frac{L}{16} \quad\Longrightarrow\quad 55 \;\geq\; \frac{600}{16} = 3
 
 \encadre{Section retenue : $\mathbf{b_0 = 20~\text{cm}}$ ; $\mathbf{d = 50~\text{cm}}$ ; $\mathbf{h = 55~\text{cm}}$}
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s1-fig06-poutre-sec-section-T.png}
+  \caption{Section en T retenue pour la poutre secondaire (cotes en mètres)}
+  \label{fig:s1-poutre-sec-section}
+\end{figure}
+
 \subsection{Dimensionnement des poutres principales}
 
 À partir du schéma de distribution des charges, la poutre principale supporte :
@@ -156,9 +192,13 @@ h \;\geq\; \frac{L}{16} \quad\Longrightarrow\quad 55 \;\geq\; \frac{600}{16} = 3
   \item les charges de dalle apportées par les surfaces afférentes trapézoïdales (\textcircled{4}).
 \end{itemize}
 
-Pour simplifier le prédimensionnement, on retient un schéma simplifié de descente de charges (schéma rectangulaire \textcircled{2}), reportant une charge concentrée au milieu de la travée principale.
+Pour simplifier le prédimensionnement, on retient un schéma simplifié de descente de charges (schéma B), reportant une charge concentrée au milieu de la travée principale.
 
-\figureplaceholder{predim-poutre-principale-charges}{Schémas de distribution des charges sur la poutre principale : modèle complet (gauche) et simplifié (droite)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s1-fig07-poutre-pp-distribution-charges.png}
+  \caption{Schémas de distribution des charges sur la poutre principale : modèle complet (schéma A, gauche) et modèle simplifié (schéma B, droite)}
+  \label{fig:s1-poutre-pp-charges}
+\end{figure}
 
 \subsubsection{Bilan des charges}
 
@@ -174,7 +214,15 @@ P_t = P_D + 1{,}35 \, P_p = 371{,}48 + 1{,}35 \times 16{,}5 \approx \mathbf{393{
 
 \subsubsection{Critère de résistance en flexion}
 
-Le schéma statique est celui d'une poutre simplement appuyée de portée $L = 6{,}5$~m, soumise à la charge concentrée $P_t$ à mi-travée. Le moment isostatique en travée vaut :
+Le schéma statique est celui d'une poutre simplement appuyée de portée $L = 6{,}5$~m, soumise à la charge concentrée $P_t$ à mi-travée.
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.6\linewidth]{s1-fig08-poutre-pp-schema-statique.png}
+  \caption{Schéma statique de la poutre principale : charge concentrée $P_t = 393{,}76$~kN sur portée $L = 6{,}50$~m}
+  \label{fig:s1-poutre-pp-schema}
+\end{figure}
+
+Le moment isostatique en travée vaut :
 
 \[
 M_0 = \frac{P_t \cdot L}{4} = \frac{393{,}76 \times 6{,}5}{4} \approx \mathbf{639{,}86~\text{kN.m}}
@@ -224,6 +272,12 @@ h = 70~\text{cm} \;\geq\; \frac{L}{16} = \frac{650}{16} \approx 40{,}63~\text{cm
 
 \encadre{Section retenue : $\mathbf{b_0 = 30~\text{cm}}$ ; $\mathbf{d = 65~\text{cm}}$ ; $\mathbf{h = 70~\text{cm}}$}
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s1-fig09-poutre-pp-section-T.png}
+  \caption{Section en T retenue pour la poutre principale (cotes en mètres)}
+  \label{fig:s1-poutre-pp-section}
+\end{figure}
+
 \subsection{Dimensionnement du plancher-dalle et des poteaux de superstructure}
 
 Les dimensionnements du plancher-dalle (superstructure) et des poteaux qui le supportent sont \textbf{couplés} : l'épaisseur de la dalle dépend de la géométrie des poteaux, et inversement. Ce couplage est résolu par un calcul \textbf{itératif} jusqu'à convergence des valeurs.
@@ -234,7 +288,21 @@ Dans le cadre de cette étude, deux itérations sont effectuées :
   \item une seconde tentative qui montre la convergence.
 \end{itemize}
 
-Pour le dimensionnement du poteau de superstructure, on considère le poteau de la \textbf{file B au RDC}, dont la surface afférente vaut $S = 6 \times 6{,}5 = 39$~m\textsuperscript{2}. En tenant compte de la \textbf{continuité} des travées (majoration de 15\%) :
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s1-fig10-plancher-dalle-element.png}
+  \caption{Élément de plancher-dalle étudié : portée $L = 6{,}50$~m, largeur $\ell = 6{,}00$~m, épaisseur $h$ à déterminer}
+  \label{fig:s1-plancher-element}
+\end{figure}
+
+Pour le dimensionnement du poteau de superstructure, on considère le poteau de la \textbf{file B au RDC}, dont la surface afférente est représentée ci-dessous :
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.5\linewidth]{s1-fig11-poteau-surface-afferente.png}
+  \caption{Surface afférente du poteau de la file B (zone hachurée) : $S = 6 \times 6{,}5 = 39$~m\textsuperscript{2}}
+  \label{fig:s1-poteau-S}
+\end{figure}
+
+En tenant compte de la \textbf{continuité} des travées (majoration de 15\,\%) :
 
 \[
 S^* = 1{,}15 \times S = \mathbf{44{,}85~\text{m}^2}
@@ -398,4 +466,3 @@ Poteau d'infrastructure                     & $60 \times 60$~cm\textsuperscript{
 \end{center}
 
 Ces dimensions servent de \textbf{base} à toutes les analyses ultérieures (descente de charges, dimensionnement des éléments, vérifications au feu, etc.). En particulier, l'épaisseur du plancher-dalle ($h = 29$~cm) intervient directement dans le calcul des charges permanentes (Séance 2), et les dimensions des poteaux conditionnent les surfaces tributaires et les vérifications au poinçonnement (Séances 11 \& 12).
-
