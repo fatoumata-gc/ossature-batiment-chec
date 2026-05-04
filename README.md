@@ -69,28 +69,5 @@ git tag -a v1.0 -m "Première version finale du rapport"
 git push origin v1.0
 ```
 
-## Comment ajouter une image
-
-Toutes les images d'une séance se rangent dans le sous-dossier `images/` de cette séance. Par exemple, pour ajouter le schéma de la vue en plan du bâtiment dans la séance 1 :
-
-1. Placer le fichier dans `seances/seance-01-predimensionnement/images/predim-vue-plan-batiment.png`
-2. Dans `seances/seance-01-predimensionnement/seance-01.tex`, remplacer la ligne :
-
-   ```latex
-   \figureplaceholder{predim-vue-plan-batiment}{Légende ...}
-   ```
-
-   par :
-
-   ```latex
-   \begin{figure}[H]\centering
-     \includegraphics[width=0.7\linewidth]{predim-vue-plan-batiment.png}
-     \caption{Légende ...}
-     \label{fig:predim-vue-plan-batiment}
-   \end{figure}
-   ```
-
-> 💡 Le `\graphicspath` défini dans `main.tex` couvre tous les sous-dossiers `images/` des séances : pas besoin de préciser le chemin complet, juste le nom du fichier.
-
 
 
