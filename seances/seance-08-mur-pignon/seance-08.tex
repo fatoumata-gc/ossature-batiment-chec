@@ -15,7 +15,11 @@ Dans cette séance, le mur pignon est dimensionné en deux temps :
 
 L'épaisseur du mur est prise égale à $h_w = 0{,}20$~m, conformément au prédimensionnement.
 
-\figureplaceholder{mur-pignon-vue-elevation}{Vue en élévation du mur pignon : longueurs et niveaux}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s8-fig01-mur-vue-elevation.png}
+  \caption{Vue en élévation du mur pignon : largeur 13,35~m en haut (terrasse), 12,35~m en bas (RDC), hauteur totale 19,5~m. Le décrochement à gauche (largeur $\ell_c = 1{,}0$~m) constitue la console R+1}
+  \label{fig:s8-vue-elevation}
+\end{figure}
 
 \subsection{Descente de charges}
 
@@ -60,6 +64,12 @@ M_0 = \frac{12{,}35 \times 395}{2} + \frac{13{,}35 \times 1\,175}{2} + \frac{13{
 
 L'excentricité de la résultante par rapport au centre du mur (de longueur $L = L_{RDC} = 12{,}35$~m, qui constitue le niveau de référence) vaut :
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.5\linewidth]{s8-fig02-mur-centre-gravite.png}
+  \caption{Détermination du centre de gravité $G$ et de l'excentricité $e_0$ par rapport au point $A$ : $N_G$ représente l'effort normal cumulé, $e$ la distance entre $G$ et $A$}
+  \label{fig:s8-centre-gravite}
+\end{figure}
+
 \[
 e = \frac{M_0}{N_G} = \frac{20\,055}{3\,062} = 6{,}55~\text{m}
 \quad\Longrightarrow\quad
@@ -101,7 +111,11 @@ L'action du vent sur le grand côté du bâtiment, ramenée au pied du RDC, est 
 
 \encadre{$V_w = \mathbf{310~\text{kN}} \quad ; \quad M_w = \mathbf{3\,100~\text{kN.m}}$}
 
-\figureplaceholder{mur-pignon-vent}{Schéma d'application de l'action du vent sur le mur pignon}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s8-fig03-mur-vent.png}
+  \caption{Schéma d'application de l'action du vent sur le mur pignon : effort horizontal $W$ poussant sur le mur, et efforts verticaux $W/2$ aux files extrêmes (files 1 et 6)}
+  \label{fig:s8-action-vent}
+\end{figure}
 
 \subsubsection{Récapitulatif des sollicitations}
 
@@ -120,6 +134,12 @@ Vent ($W$)                   & 310    & 3\,100 \\
 \subsection{Calcul dans le RDC}
 
 \subsubsection{Combinaisons d'actions à l'ELU}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.5\linewidth]{s8-fig04-mur-combinaison.png}
+  \caption{Sollicitations à combiner au pied du mur pignon : efforts normaux $N_G$, $N_Q$, moments fléchissants $M_G$, $M_Q$, $M_W$ et effort tranchant $V_W$ (vent)}
+  \label{fig:s8-combinaison}
+\end{figure}
 
 Trois combinaisons fondamentales sont considérées à l'ELU. Les coefficients de combinaison retenus sont, conformément à l'Eurocode 0 (annexe A1.2.2) : $\psi_0 = 0{,}6$ pour le vent et $\psi_0 = 0{,}7$ pour les charges d'exploitation (catégorie A/B usuelle). Pour chaque cas, on détermine la combinaison d'efforts $(N \, ;\, M)$ qui en résulte.
 
@@ -286,7 +306,11 @@ où $A_{cc}$ représente l'aire comprimée du voile. En adoptant un \textbf{diag
 A_{cc} = b \times 0{,}8 \times x_u
 \]
 
-\figureplaceholder{mur-pignon-diagramme-rectangulaire}{Schéma du diagramme rectangulaire de contraintes utilisé pour le calcul de $A_{cc}$}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.6\linewidth]{s8-fig05-mur-diagramme-rectangulaire.png}
+  \caption{Schéma du diagramme rectangulaire de contraintes : la zone comprimée s'étend sur $0{,}8\,x_u$, ce qui simplifie le calcul de la section comprimée $A_{cc}$ sous l'action combinée $(N_{Ed}, M_{Ed}, V_{Ed})$}
+  \label{fig:s8-diagramme-rect}
+\end{figure}
 
 Avec $N_{Ed} = 634$~kN/ml, on obtient :
 
@@ -342,9 +366,19 @@ Au R+1, le mur pignon présente une \textbf{console courte} de longueur $\ell_c 
   \item Hauteur d'étage : $h_{\acute{e}t} = 3{,}50$~m ; hauteur RDC : $h_{RDC} = 5{,}00$~m
 \end{itemize}
 
-\figureplaceholder{mur-pignon-console-geometrie}{Géométrie de la console courte au R+1 avec efforts du vent}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s8-fig06-console-geometrie.png}
+  \caption{Géométrie de la console courte au R+1 et application de l'effort du vent $W$. La console fait $\ell_c = 1{,}0$~m de largeur, intercalée entre les niveaux RDC ($H = 5$~m) et la partie supérieure ($H = 14{,}5$~m)}
+  \label{fig:s8-console-geom}
+\end{figure}
 
 \subsubsection{Vérification de la stabilité au renversement}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s8-fig07-equilibre-statique.png}
+  \caption{Schéma d'équilibre statique du mur pignon : combinaison ELU $1{,}35\,G + 1{,}5\,Q + W$ appliquée comme charge répartie sur la longueur $L_{RDC} = 12{,}35$~m, avec contribution ponctuelle de la charge $G$}
+  \label{fig:s8-equilibre-statique}
+\end{figure}
 
 En observant la structure du bâtiment, il existe un \textbf{risque de renversement} dû à l'action du vent. La condition de stabilité s'écrit :
 
@@ -418,7 +452,11 @@ L'effort vertical reprenant la console s'écrit :
 N_{uc} = \sigma_{uc} \cdot b_w \cdot \ell_c = 0{,}866 \times 1{,}0 \times 0{,}20 \times 1{,}20 \times 10^3 \approx \mathbf{208{,}04~\text{kN}}
 \]
 
-\figureplaceholder{mur-pignon-console-bielles}{Schéma de bielles et tirants de la console courte}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s8-fig09-console-bielles.png}
+  \caption{Schéma de bielles et tirants pour la console courte : effort vertical $N_{uc}$ appliqué à la distance $x_1$ du bord, équilibré par un tirant horizontal $F_{bu}$ et une bielle inclinée descendant vers le pied du voile}
+  \label{fig:s8-bielles-tirants}
+\end{figure}
 
 \paragraph{Tirant principal}~
 
@@ -483,7 +521,11 @@ Armatures anti-éclatement $A_t$            & 3{,}01 \\
 \end{tabularx}
 \end{center}
 
-\figureplaceholder{mur-pignon-console-ferraillage}{Ferraillage de la console courte au R+1 (tirant, aciers répartis, anti-éclatement)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s8-fig08-console-coupe.png}
+  \caption{Coupe verticale de la console courte au R+1 : la contrainte de compression $\sigma_{uc}$ et l'effort résultant $N_{uc} = \sigma_{uc} \cdot b_w \cdot \ell_c$ sont équilibrés par les armatures du tirant et les aciers répartis horizontaux}
+  \label{fig:s8-console-ferraillage}
+\end{figure}
 
 \subsection{Conclusion de la séance}
 

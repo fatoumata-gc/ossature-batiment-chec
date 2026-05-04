@@ -11,8 +11,6 @@ Avant de commencer les calculs, il faut identifier le \textbf{poteau le plus sol
 
 Dans cette étude, la descente de charges est effectuée sur le \textbf{poteau de la file B2 au 2\textsuperscript{e} sous-sol}, le plus chargé du bâtiment.
 
-\figureplaceholder{poteau-B2-position}{Position du poteau B2 dans la vue en plan du bâtiment}
-
 \subsection{Réduction des charges d'exploitation}
 
 L'Eurocode autorise deux types de réductions sur les charges d'exploitation : selon l'aire portée et selon le nombre d'étages.
@@ -37,7 +35,11 @@ Plus il y a d'étages au-dessus d'un niveau, plus la probabilité d'occupation m
 
 où $n$ = nombre d'étages de \emph{même catégorie} situés \emph{au-dessus} du niveau étudié.
 
-\figureplaceholder{vue-elevation}{Vue en élévation du bâtiment avec niveaux annotés}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.75\linewidth]{s2-fig01-vue-elevation-batiment.png}
+  \caption{Vue en élévation du bâtiment : niveaux et coefficients de réduction $\alpha_n$}
+  \label{fig:s2-vue-elevation}
+\end{figure}
 
 \paragraph{Application :}
 \begin{itemize}
@@ -52,8 +54,6 @@ où $n$ = nombre d'étages de \emph{même catégorie} situés \emph{au-dessus} d
 
 Le poteau B2 est un poteau intérieur. Sa surface tributaire correspond aux demi-portées des travées qui le bordent.
 
-\figureplaceholder{surface-tributaire-B2}{Surface tributaire du poteau B2 --- demi-portées des travées adjacentes}
-
 D'après le plan : travées de 6,50\,m en direction $X$ et 6,00\,m en direction $Y$.
 \[
   S = 6{,}50 \times 6{,}00 = \mathbf{39{,}00~\text{m}^2}
@@ -61,7 +61,11 @@ D'après le plan : travées de 6,50\,m en direction $X$ et 6,00\,m en direction 
 
 \subsection{Charges permanentes par m\texorpdfstring{$^2$}{2}}
 
-\figureplaceholder{coupe-planchers}{Coupes-types des différents planchers}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.75\linewidth]{s2-fig02-charges-permanentes-coupe.png}
+  \caption{Schéma des charges permanentes : descente depuis la dalle vers la poutrelle, la retombée et le poteau}
+  \label{fig:s2-charges-permanentes}
+\end{figure}
 
 \paragraph{Terrasse inaccessible :}
 \[

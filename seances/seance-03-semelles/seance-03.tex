@@ -29,7 +29,11 @@ Le bâtiment sera \textbf{fondé sur deux pieux} sous chaque poteau de la file B
 \subsection{Solution retenue --- Fondation sur deux pieux}
 % ─────────────────────────────────────────────────────────────
 
-\figureplaceholder{semelle-deux-pieux-principe}{Principe d'une semelle sur deux pieux --- vue en plan et coupe en élévation}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s3-fig01-semelle-2-pieux-vue-coupe.png}
+  \caption{Principe d'une semelle sur deux pieux : vue en plan (gauche) et coupe en élévation (droite). $N_{Ed}$ : effort normal du poteau ; $R$ : réaction de chaque pieu ; $b_0$ : largeur de la semelle ; $\ell_t$ : entraxe des pieux}
+  \label{fig:s3-semelle-principe}
+\end{figure}
 
 \subsubsection{Justification du choix de deux pieux}
 
@@ -92,7 +96,11 @@ avec $a$ = côté du poteau (60\,cm). La hauteur totale est obtenue en ajoutant 
   h = d + 5~\text{cm} = \mathbf{1{,}10~\text{m}}
 \]
 
-\figureplaceholder{semelle-pieux-cote-bielle}{Demi-coupe transversale --- méthode des bielles : effort N, bielle inclinée à $\theta = 55^{\circ}$, hauteur utile $d$}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.65\linewidth]{s3-fig02-methode-bielles.png}
+  \caption{Méthode des bielles --- demi-coupe transversale : l'effort $N_{Ed}$ se transmet par une bielle inclinée jusqu'à l'axe du pieu, équilibrée par un tirant horizontal $F$ ; $a$ : côté du poteau, $d$ : hauteur utile, $h$ : hauteur de la semelle}
+  \label{fig:s3-bielles}
+\end{figure}
 
 \subsubsection{Vérification du coffrage}
 
@@ -181,7 +189,11 @@ Les armatures horizontales reprennent 10\,\% de la section d'armatures inférieu
   A_h = 0{,}10 \times A_\text{inf} = 0{,}10 \times 48{,}0 = \mathbf{4{,}80~\text{cm}^2}
 \]
 
-\figureplaceholder{semelle-pieux-ferraillage}{Coupe en élévation du plan de ferraillage de la semelle sur deux pieux : armatures inférieures, supérieures, verticales et horizontales}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s3-fig03-coupe-ferraillage-2-pieux.png}
+  \caption{Coupe en élévation du plan de ferraillage de la semelle sur deux pieux : armatures supérieures $A_{sup}$, armatures inférieures $A_{inf}$, armatures verticales $A_v$ et armatures horizontales $A_h$ ; semelle $2{,}55 \times 1{,}10$~m, pieux $\varnothing\,0{,}70$~m, entraxe $1{,}75$~m}
+  \label{fig:s3-ferraillage-pieux}
+\end{figure}
 
 % ─────────────────────────────────────────────────────────────
 \subsection{Solution alternative --- Semelle superficielle isolée}
@@ -218,7 +230,11 @@ D'où le côté de la semelle (carrée comme le poteau) :
 
 On retient $\boxed{h = 0{,}65~\text{m}}$ (incluant la marge nécessaire pour l'ancrage des armatures du poteau).
 
-\figureplaceholder{semelle-superficielle-coffrage}{Coffrage de la semelle superficielle isolée 2,70 $\times$ 2,70 $\times$ 0,65~m}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s3-fig04-semelle-isolee-vue-plan.png}
+  \caption{Vue en plan de la semelle superficielle isolée : $a' = b' = 2{,}70$~m, poteau central $a \times b = 0{,}60 \times 0{,}60$~m}
+  \label{fig:s3-coffrage-isolee}
+\end{figure}
 
 \subsubsection{Vérification de la pression au sol}
 
@@ -261,9 +277,19 @@ La hauteur utile vaut $d = h - 5~\text{cm} = 0{,}60$~m. La semelle étant carré
 
 La longueur d'ancrage est prise égale à $l_{bd} = a'/4 = 0{,}675$~m.
 
-\figureplaceholder{semelle-superficielle-ferraillage}{Plan de ferraillage de la semelle superficielle --- vue en plan et vue en élévation}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s3-fig05-semelle-isolee-ferraillage.png}
+  \caption{Plan de ferraillage de la semelle superficielle : vue en plan (gauche, armatures en croix 11 HA 25 dans chaque sens) et vue en élévation (droite, hauteur $h = 0{,}65$~m, nappe d'armatures inférieures)}
+  \label{fig:s3-ferraillage-isolee}
+\end{figure}
 
 \subsubsection{Vérification au poinçonnement}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s3-fig06-poinconnement-coupe.png}
+  \caption{Vérification au poinçonnement de la semelle isolée --- coupe latérale : $d_o = (a' - a)/2 = 1{,}05$~m, hauteur utile $d = 0{,}60$~m}
+  \label{fig:s3-poinconnement}
+\end{figure}
 
 La condition à satisfaire est $d \geq d_o / 2$, avec :
 \[

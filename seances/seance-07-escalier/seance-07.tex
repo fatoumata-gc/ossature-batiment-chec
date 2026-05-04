@@ -7,9 +7,17 @@
 
 Dans cette étude, l'escalier est considéré comme un \textbf{élément indépendant} de la structure principale. Il constitue un élément essentiel de \textbf{sécurité} et un élément d'\textbf{évacuation} en cas d'incendie. Le dimensionnement portera sur l'escalier de l'étage courant.
 
-\figureplaceholder{escalier-vue-plan}{Vue en plan de l'escalier --- volées et palier intermédiaire}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.5\linewidth]{s7-fig01-escalier-vue-plan.png}
+  \caption{Vue en plan de l'escalier : 2 volées de largeur 1,2~m de part et d'autre du jour central, palier intermédiaire de profondeur 1,8~m. Hauteur totale 3,1 + 1,8 = 4,9~m}
+  \label{fig:s7-vue-plan}
+\end{figure}
 
-\figureplaceholder{escalier-coupe}{Coupe en élévation de l'escalier --- paillasse, contremarche, giron}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s7-fig02-escalier-coupe.png}
+  \caption{Coupe en élévation de l'escalier : paillasse inclinée d'angle $\alpha$, marches successives définies par le giron $g$ et la contremarche $h$}
+  \label{fig:s7-coupe}
+\end{figure}
 
 \paragraph{Caractéristiques :}
 \begin{itemize}
@@ -77,7 +85,15 @@ Avec $\alpha = 30^\circ$ (correspondant à $\tan\alpha \approx 0{,}6$, arrondi p
   g_\text{paillasse} = 0{,}22606 \times 25 = \mathbf{5{,}65~\text{kN/m}^2}
 \]
 
-\paragraph{Poids propre du revêtement (marbre).} L'épaisseur équivalente du marbre est :
+\paragraph{Poids propre du revêtement (marbre).}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s7-fig03-marche-detail.png}
+  \caption{Coupe détaillée d'une marche : giron $g = 30$~cm, contremarche $h = 17{,}5$~cm, revêtement de marbre d'épaisseur $e_m = 3$~cm}
+  \label{fig:s7-marche-detail}
+\end{figure}
+
+L'épaisseur équivalente du marbre est :
 \[
   e_\text{eq} = \frac{e_m \cdot g + e_m \cdot h}{g}
 \]
@@ -113,7 +129,11 @@ avec $e_m = 0{,}03$~m (épaisseur du marbre), $g = 0{,}30$~m, $h = 0{,}175$~m :
       = \mathbf{13{,}2~\text{kN/m}^2/\text{ml}}
 \]
 
-\figureplaceholder{escalier-schema-statique}{Schéma statique de l'escalier --- charges projetées sur la longueur $L = 3{,}10$~m}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.65\linewidth]{s7-fig-statique-escalier.png}
+  \caption{Schéma statique de l'escalier : paillasse inclinée soumise à la charge $P_u$, équivalente à un schéma horizontal projeté de longueur $\ell = 3{,}10$~m sous la charge $P_u' = $ charge projetée}
+  \label{fig:s7-schema-statique}
+\end{figure}
 
 \subsection{Sollicitations}
 
@@ -180,7 +200,11 @@ La condition $A_\text{inf} \geq A_{s,\min}$ est largement vérifiée.
   A_r \approx 1{,}00~\text{cm}^2/\text{ml} \quad\Longrightarrow\quad 4\,\text{HA}\,6/\text{ml}
 \]
 
-\figureplaceholder{escalier-ferraillage-paillasse}{Schéma de ferraillage de la paillasse --- armatures principales et armatures de répartition}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s7-fig04-paillasse-ferraillage.png}
+  \caption{Schéma de ferraillage de la paillasse : armatures principales longitudinales (6 HA 10 avec espacement $S_t = 20$~cm) et armatures de répartition perpendiculaires}
+  \label{fig:s7-ferraillage-paillasse}
+\end{figure}
 
 \subsection{Ferraillage du béquet}
 
@@ -234,5 +258,9 @@ Ainsi, $s_t = 14$~cm.
 
 \encadre{Choix de ferraillage du béquet : 4\,HA\,6 / ml}
 
-\figureplaceholder{escalier-bequet-ferraillage}{Schéma de ferraillage du béquet --- armatures principales et armatures de répartition}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.5\linewidth]{s7-fig05-bequet.png}
+  \caption{Schéma du béquet (console courte) : appui $a$, longueur $\ell = a + 3$~cm $= 13$~cm, hauteur $h_t$, charge $R_{eu}$ et armature en MA 6 ($A_s/S_w = $ MA 6 St $= 14$~cm)}
+  \label{fig:s7-bequet}
+\end{figure}
 

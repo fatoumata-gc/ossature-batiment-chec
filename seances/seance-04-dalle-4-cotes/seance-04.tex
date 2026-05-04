@@ -9,7 +9,11 @@ Pour le dimensionnement des dalles en infrastructure, on considère la dalle sit
 
 Cette dalle est appuyée sur ses quatre côtés, d'épaisseur $h = 12$~cm (déterminée en Séance~1).
 
-\figureplaceholder{dalle-sur-4-cotes}{Dalle sur 4 côtés au 1\textsuperscript{er} sous-sol --- vue en plan avec dimensions $l_x = 3{,}05$~m et $l_y = 5{,}85$~m}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.45\linewidth]{s4-fig01-dalle-4-cotes.png}
+  \caption{Dalle sur 4 côtés au 1\textsuperscript{er} sous-sol : $\ell_x = 3{,}05$~m, $\ell_y = 5{,}85$~m, épaisseur $h = 12$~cm}
+  \label{fig:s4-dalle-4-cotes}
+\end{figure}
 
 \subsection{Élancement et nature de la dalle}
 
@@ -92,7 +96,11 @@ La charge d'exploitation :
   v = v_0 + h = 10 + 12 = 22~\text{cm}
 \]
 
-\figureplaceholder{dalle-diffusion-45}{Diffusion à $45^{\circ}$ de la charge concentrée sur le feuillet moyen --- $u = u_0 + h$, $v = v_0 + h$}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s4-fig02-charge-concentree-diffusion.png}
+  \caption{Diffusion à $45^{\circ}$ de la charge concentrée $Q$ sur le feuillet moyen : la zone $u_0 \times v_0$ devient $u \times v$ avec $u = u_0 + h$, $v = v_0 + h$}
+  \label{fig:s4-diffusion-45}
+\end{figure}
 
 \paragraph{Lecture des abaques (charge concentrée).} Avec $\alpha = 0{,}52$ et :
 \[
@@ -160,7 +168,11 @@ Le panneau étudié n'est pas isolé : il appartient à un plancher continu. On 
   M_n = 0{,}15 \cdot M_{ox} = 0{,}15 \times 16{,}15 = \mathbf{2{,}42~\text{kN}\cdot\text{m/ml}}
 \]
 
-\figureplaceholder{dalle-repartition-moments}{Répartition des moments en travée et sur appuis --- diagrammes en X et en Y}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s4-fig03-diagrammes-moments.png}
+  \caption{Diagrammes des moments fléchissants : sens $X$ à gauche (en travée $M_{tx}$, sur appuis $M_w$ et $M_e$) et sens $Y$ à droite (en travée $M_{ty}$, sur appuis $M_n$ et $M_s$)}
+  \label{fig:s4-diagrammes-moments}
+\end{figure}
 
 \subsection{Vérifications obligatoires}
 
@@ -217,7 +229,11 @@ Appui $N$ (rive)      & 2,42  & 90 & 0,62 & \textbf{1,22}\textsuperscript{*} & H
 \textsuperscript{*}\,Section minimale Eurocode imposée car $A_s$ calculée $<$ $A_{s,\min}$.
 \vspace{4pt}
 
-\figureplaceholder{dalle-plan-ferraillage}{Plan de ferraillage de la dalle --- disposition des armatures dans les deux directions}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.6\linewidth]{s4-fig04-disposition-armatures.png}
+  \caption{Disposition des armatures dans la dalle : armatures en travée $A_{tx}$, $A_{ty}$ au centre et armatures sur appuis $A_n$, $A_s$, $A_w$, $A_e$ sur les bords}
+  \label{fig:s4-disposition-armatures}
+\end{figure}
 
 \subsection{Vérification à l'effort tranchant}
 
