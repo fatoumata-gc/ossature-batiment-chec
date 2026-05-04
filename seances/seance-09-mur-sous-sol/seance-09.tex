@@ -13,7 +13,11 @@ Dans cette étude, nous nous intéressons au \textbf{mur situé au droit de la f
 
 Le dimensionnement comportera donc deux parties : une étude du mur en \textbf{flexion} sous la poussée des terres et de la surcharge en surface, puis une étude de la \textbf{poutre cloison} qui répartit les charges des poteaux par le biais d'un modèle de bielles et tirants.
 
-\figureplaceholder{mur-sous-sol-coupe}{Coupe verticale du mur de sous-sol avec données géotechniques (file C)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.6\linewidth]{s9-fig01-mur-coupe.png}
+  \caption{Coupe verticale du mur de sous-sol situé au droit de la file C : hauteur totale 5,40~m sur 2 niveaux (radier en bas, plancher intermédiaire à $-2{,}70$~m). Données géotechniques : $\gamma = 18$~kN/m³, $\varphi = 30^{\circ}$, $c = 0$ ; surcharge en surface $q = 10$~kN/m²}
+  \label{fig:s9-mur-coupe}
+\end{figure}
 
 \subsection{Données géotechniques et géométrie}
 
@@ -87,7 +91,11 @@ $-5{,}40$ & 48{,}6 & 5 & $1{,}35 \times 48{,}6 + 1{,}5 \times 5 = \mathbf{73{,}1
 \end{tabularx}
 \end{center}
 
-\figureplaceholder{mur-sous-sol-diagramme-poussee}{Diagrammes de poussée : terre seule, surcharge seule, et combinaison ELU}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s9-fig02-poussees.png}
+  \caption{Diagrammes de poussée sur le mur de sous-sol : poussée triangulaire des terres ($K_a \cdot \gamma \cdot h$, à gauche) + poussée rectangulaire de la surcharge ($K_0 \cdot q$, au milieu) = poussée trapézoïdale combinée à l'ELU (à droite)}
+  \label{fig:s9-poussees}
+\end{figure}
 
 \subsubsection{Méthode de calcul des moments}
 
@@ -190,7 +198,11 @@ M_t \;\geq\; 1{,}05 \times 51{,}7 - \frac{3{,}1 + 31}{2} = 54{,}29 - 17{,}05 \ap
 M_t \;\geq\; \frac{1{,}2 + 0{,}3 \times 0{,}29}{2} \times 21{,}8 \approx \mathbf{14{,}03~\text{kN.m/ml}}
 \]
 
-\figureplaceholder{mur-sous-sol-diagramme-moments}{Diagramme des moments fléchissants sur les deux travées du mur}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s9-fig03-diagramme-moments.png}
+  \caption{Diagramme des moments fléchissants sur les deux travées du mur (en kN·m/ml) : moment maximum en travée 1 ($14{,}03$), moment sur appui central ($31$ et $51{,}7$ selon la combinaison), moment maximum en travée 2 ($38{,}8$)}
+  \label{fig:s9-moments}
+\end{figure}
 
 \subsection{Calcul des armatures principales}
 
@@ -249,7 +261,11 @@ L'espacement maximal des armatures secondaires est :
 s_{max}^{sec} = \min\{3h \,;\, 40~\text{cm}\} = \mathbf{40~\text{cm}}
 \]
 
-\figureplaceholder{mur-sous-sol-ferraillage}{Schéma de ferraillage du mur de sous-sol (sections principales)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s9-fig04-ferraillage.png}
+  \caption{Schéma de ferraillage du mur de sous-sol : armatures verticales principales côté terre (extérieur) et armatures sur appui central côté intrados. Sections : $1{,}93$~cm²/ml (travée 1), $4{,}34$~cm²/ml (travée 2), $5{,}40$~cm²/ml (sur appui central)}
+  \label{fig:s9-ferraillage}
+\end{figure}
 
 \subsection{Calcul de la poutre cloison}
 
@@ -268,7 +284,11 @@ La poutre cloison est sollicitée par :
 p_u = \frac{1{,}35 \, G + 1{,}5 \, Q}{L} = \frac{1{,}35 \times 1\,120 + 1{,}5 \times 350}{6{,}5} \approx \mathbf{313{,}8~\text{kN/ml}}
 \]
 
-\figureplaceholder{poutre-cloison-schema-statique}{Schéma statique de la poutre cloison avec charges concentrées et réactions}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s9-fig05-poutre-cloison-statique.png}
+  \caption{Schéma statique de la poutre cloison (portée $L = 6{,}5$~m, hauteur $H = 6{,}0$~m) avec charges concentrées des poteaux supérieurs ($Q/4$, $Q/4$, $Q/4$), charge répartie $p_u = 313{,}8$~kN/ml, et modèle bielles-tirants : 2 bielles inclinées à $66{,}3^{\circ}$, tirant horizontal $F_t$, charges totales $G = 1\,120$~kN, $Q = 350$~kN}
+  \label{fig:s9-poutre-statique}
+\end{figure}
 
 Les caractéristiques géométriques de la poutre cloison sont :
 \begin{itemize}
@@ -293,7 +313,11 @@ F_b = \frac{N}{\sin \theta} = \frac{1\,018{,}5}{\sin 66{,}3^\circ} \approx \math
 F_t = \frac{N}{\tan \theta} = \frac{1\,018{,}5}{\tan 66{,}3^\circ} \approx \mathbf{447~\text{kN}}
 \]
 
-\figureplaceholder{poutre-cloison-bielles-tirants}{Modèle de bielles et tirants de la poutre cloison}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s9-fig06-bielles-about.png}
+  \caption{Détail de la bielle d'about de la poutre cloison : appui de largeur $0{,}5$~m, bielle inclinée formant un angle de $16{,}3^{\circ}$ avec l'horizontale, charge ponctuelle transmise $1\,018{,}5$~kN, force dans la bielle $F_b$ et tirant horizontal $F_t$}
+  \label{fig:s9-bielles-about}
+\end{figure}
 
 \subsubsection{Section d'armatures du tirant}
 
