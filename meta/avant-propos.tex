@@ -1,0 +1,96 @@
+% ============================================================
+% Avant-propos
+% Présentation des outils utilisés pour la production du rapport :
+% LaTeX, GitHub et GitHub Actions.
+% ============================================================
+
+\sectionspeciale{Avant-propos}
+
+\subsection*{Sur le choix de \LaTeX{}}
+
+Le présent rapport est rédigé en \LaTeX{}, un système de composition de
+documents largement utilisé dans le milieu universitaire et l'édition
+scientifique. J'ai eu l'occasion de me familiariser avec cet outil lors
+de la rédaction de mon mémoire de Master~2 en génie civil, dont les
+sources sont consultables à l'adresse suivante :
+\url{https://drive.google.com/drive/folders/1xuWxaYyATofsG46Qz3gQ8edoHxM41sDl?usp=drive_link}.
+
+Le choix de \LaTeX{} pour ce rapport tient à plusieurs raisons concrètes.
+D'abord, la qualité typographique des formules mathématiques et le soin
+apporté à la mise en page des équations longues, qui sont nombreuses
+dans un rapport de calcul de structures. Ensuite, la stabilité des
+références croisées : chaque figure, chaque tableau, chaque équation
+porte une étiquette interne, et leur numérotation se met à jour
+automatiquement au fil des modifications, sans risque de
+désynchronisation entre le texte et les renvois. Enfin, le format de
+sortie est un document PDF reproductible, c'est-à-dire qu'à partir des
+mêmes fichiers source, n'importe quel lecteur obtient le même PDF
+identique au caractère près.
+
+Le rapport est organisé en plusieurs fichiers source : un fichier
+principal qui orchestre la compilation, un préambule contenant les
+réglages de mise en page, et un fichier par séance regroupant le texte,
+les calculs et les figures de la séance. Cette organisation modulaire
+facilite la relecture et permet de travailler sur une séance sans
+toucher aux autres.
+
+\subsection*{Sur l'usage de GitHub}
+
+Les fichiers source du rapport sont hébergés sur GitHub, une plateforme
+publique de stockage de code et de documents textuels. L'adresse du
+dépôt est :
+\url{https://github.com/fatoumata-gc/ossature-batiment-chec}.
+
+GitHub joue ici le rôle d'archive consultable et historique. Chaque
+modification apportée à un fichier est enregistrée avec sa date, son
+auteur et une description, ce qui permet de retrouver à tout moment
+l'état du rapport à une étape antérieure du travail. Cette traçabilité
+n'est pas une fin en soi : elle reflète simplement la même rigueur
+qu'un cahier de laboratoire daté et paraphé. Pour un examinateur qui
+souhaiterait consulter directement les sources, vérifier une formule
+dans son contexte de calcul ou observer la progression du travail au
+cours du semestre, l'historique du dépôt en offre la possibilité.
+
+\subsection*{Sur GitHub Actions, et ce que ce n'est pas}
+
+Une seule fonctionnalité de GitHub mérite ici une explication un peu
+plus précise, car son nom peut prêter à confusion : il s'agit de
+GitHub~Actions.
+
+GitHub~Actions est un service d'automatisation. Concrètement, il permet
+de demander au serveur d'exécuter une tâche programmée chaque fois
+qu'un fichier source est modifié. Dans le cas du présent rapport, la
+tâche est unique et très simple : à chaque mise à jour du dépôt, le
+serveur lance la commande \texttt{pdflatex} sur le fichier
+\texttt{main.tex}, recompile le document et publie le PDF résultant.
+C'est exactement ce que je ferais en local avec un Makefile ou un
+script shell, à la différence près que la tâche est exécutée par le
+serveur de GitHub plutôt que sur ma propre machine. L'intérêt pratique
+est qu'on dispose toujours d'une version PDF à jour sans devoir penser
+à recompiler manuellement après chaque correction.
+
+Il me paraît important de préciser ce que GitHub~Actions \emph{n'est
+pas}, car le terme « actions » peut évoquer des fonctionnalités
+beaucoup plus ambitieuses qu'il ne recouvre.
+
+GitHub~Actions n'est pas un système d'intelligence artificielle. Il ne
+génère aucun contenu, ne propose aucune formulation, ne corrige aucune
+phrase, ne retouche aucune équation. Le service ne fait que rejouer une
+suite d'instructions définies à l'avance dans un fichier de
+configuration : récupérer les fichiers source, installer la
+distribution \LaTeX{}, exécuter \texttt{pdflatex} en deux passes,
+produire un PDF, et le rendre téléchargeable. C'est un déclencheur de
+compilation, équivalent moderne d'un Makefile. La rédaction du rapport,
+le choix des hypothèses, le déroulé des calculs et la formulation des
+conclusions relèvent intégralement du travail de l'auteur.
+
+\subsection*{Lecture du rapport}
+
+Le rapport peut être lu indépendamment de toute considération
+informatique : le PDF est un document autonome qui se suffit à
+lui-même. Les éléments présentés dans cet avant-propos visent
+uniquement à donner au lecteur la possibilité, s'il le souhaite, de
+remonter aux sources du document, de consulter son historique, ou de
+recompiler le PDF à partir du dépôt public.
+
+\clearpage

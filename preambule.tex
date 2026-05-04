@@ -87,11 +87,23 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks,linkcolor=bleu,urlcolor=bleu}
 
-% Bandeau de séance : page de garde dédiée + entrée TOC en niveau 1
-\newcommand{\seance}[2]{%
+% Bandeau de séance : page de garde dédiée + entrée TOC en niveau 1.
+%
+% Usage :
+%   \seance{N}{titre}        -> sous-sections numérotées N.1, N.2, ...
+%   \seance[N]{N \& M}{titre} -> idem, avec N en argument optionnel
+%
+% L'argument optionnel sert pour les séances groupées (« 5 \& 6 »,
+% « 11 \& 12 ») où le premier argument n'est pas un nombre exploitable
+% par \setcounter. Par défaut, on suppose que #1 est un entier et on
+% l'utilise directement.
+\newcommand{\seance}[3][]{%
   \clearpage
+  \def\seancenum{\ifx\\#1\\#2\else#1\fi}%
+  \setcounter{section}{\numexpr\seancenum-1\relax}%
+  \refstepcounter{section}%
   \phantomsection
-  \addcontentsline{toc}{section}{Séance #1 --- #2}%
+  \addcontentsline{toc}{section}{Séance #2 : #3}%
   \thispagestyle{empty}
   \vspace*{\fill}
   \begin{tcolorbox}[
@@ -101,14 +113,17 @@
     halign=center,
     left=20pt, right=20pt, top=30pt, bottom=30pt
   ]
-  Séance #1\\[12pt]{\LARGE\mdseries #2}
+  Séance #2\\[12pt]{\LARGE\mdseries #3}
   \end{tcolorbox}
   \vspace*{\fill}
   \clearpage
 }
 
-% Variante : bandeau de section spéciale (énoncé, annexes, etc.) sans
-% numéro de séance, mais avec le même style graphique.
+% Variante : bandeau de section spéciale (énoncé, synthèse) sans
+% numéro de séance, mais avec le même style graphique. Ces sections
+% n'ont pas de \subsection numérotée à l'intérieur, donc on
+% n'incrémente pas le compteur de section : la numérotation des
+% séances suit ainsi 1, 2, ..., 10 sans décalage.
 % Usage : \sectionspeciale{Énoncé du projet}
 \newcommand{\sectionspeciale}[1]{%
   \clearpage
