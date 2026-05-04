@@ -7,7 +7,11 @@
 
 L'étude porte sur la \textbf{poutre principale 30\,$\times$\,70~cm} située au niveau $-2{,}70$~m (plancher du 1\textsuperscript{er} sous-sol), \textbf{file~B}. La poutre est continue et l'on s'intéresse particulièrement à la travée comprise entre la file~1 et la file~2.
 
-\figureplaceholder{poutre-etudiee-vue-plan}{Vue en plan de la poutre étudiée (file~B, travée 1-2) et schéma des charges supportées}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.65\linewidth]{s56-fig01-poutre-vue-plan.png}
+  \caption{Vue en plan de la poutre étudiée : poutre principale au droit de la file B, située entre les files 1 et 2 (portée 6,00~m). De part et d'autre, surfaces afférentes triangulaires (3,25~m de demi-largeur). Une poutre secondaire transversale portant des poutrelles est représentée}
+  \label{fig:s56-poutre-vue-plan}
+\end{figure}
 
 Cette poutre supporte deux types de charges (FDP~18-717 §5.1.3(1)) :
 \begin{itemize}
@@ -18,6 +22,11 @@ Cette poutre supporte deux types de charges (FDP~18-717 §5.1.3(1)) :
 \subsection{Bilan des charges}
 
 \subsubsection{Charges concentrées (poutrelle)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.8\linewidth]{s56-fig02-schema-statique-concentre.png}
+  \caption{Schéma statique des charges concentrées : la poutre secondaire transmet à mi-portée de la travée B1-B2 un effort vertical concentré $G$ (poids propre) et $Q$ (charges d'exploitation)}
+  \label{fig:s56-charges-concentrees}
+\end{figure}
 
 \paragraph{Charges permanentes (G).}
 \[
@@ -46,6 +55,11 @@ Avec le coefficient de continuité 1,15 :
 \]
 
 \subsubsection{Charges uniformément réparties (poutre + dalle)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig03-charges-reparties-linearisation.png}
+  \caption{Charges réparties supportées par la poutre principale : la dalle transmet une charge initialement triangulaire (haut) qui est linéarisée en charge uniformément répartie équivalente (bas) pour simplifier les calculs}
+  \label{fig:s56-linearisation}
+\end{figure}
 
 \paragraph{Charges permanentes (g).}
 \[
@@ -69,13 +83,22 @@ Avec le coefficient de continuité 1,15 :
   q = 3 + 15{,}25 = \mathbf{18{,}3~\text{kN/ml}}
 \]
 
-\figureplaceholder{poutre-schema-charges}{Schéma statique global de la poutre continue avec charges concentrées $G$, $Q$ et charges réparties $g$, $q$}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig06-schema-statique-final.png}
+  \caption{Schéma statique final de la poutre principale --- travée B1-B2 ($L = 6{,}10$~m) : combinaison de la charge concentrée centrée ($G = 64$~kN, $Q = 164$~kN, transmise par la poutre secondaire) et des charges réparties ($g = 9{,}82$~kN/ml, $q = 18{,}3$~kN/ml issues du poids propre et de la dalle)}
+  \label{fig:s56-schema-final}
+\end{figure}
 
 \subsection{Calcul des sollicitations --- Méthode de Caquot}
 
 La poutre étant continue sur plusieurs appuis et soumise à des charges concentrées intenses, la \textbf{méthode forfaitaire} n'est pas applicable. On utilise la \textbf{méthode de Caquot} (NF~EN~1992-1-1 + AN + FDP~18-717~§5.6).
 
 \subsubsection{Longueurs de calcul Caquot}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig10-caquot-lw-le.png}
+  \caption{Application de la méthode de Caquot --- réduction de la travée de rive : les longueurs de calcul $\ell_w' = \ell_w$ et $\ell_e' = 0{,}8\,\ell_e$ sont utilisées pour le calcul du moment sur l'appui B2}
+  \label{fig:s56-caquot-lwle}
+\end{figure}
 
 Pour la travée étudiée B1-B2-B3 :
 \begin{itemize}
@@ -115,6 +138,12 @@ Trois cas de chargement sont étudiés pour rechercher les extrémums :
   \item \textbf{Cas 3} : charges permanentes partout + charges d'exploitation sur travée B2-B3
 \end{itemize}
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig07-caquot-cas1.png}
+  \caption{Cas 1 de la méthode de Caquot --- toutes les travées chargées : les charges permanentes $G$ et réparties $g$ sont appliquées simultanément sur les deux travées B1-B2 et B2-B3, ce qui conduit à un moment maximal sur l'appui B2}
+  \label{fig:s56-caquot-cas1}
+\end{figure}
+
 \paragraph{Cas 1 --- Charges permanentes seules.}
 
 \textit{Contribution de la charge répartie} (sur les deux travées) :
@@ -141,6 +170,12 @@ Trois cas de chargement sont étudiés pour rechercher les extrémums :
 \textit{Total Cas 1 :}
 \encadre{$M_{B_2}^{(1)} = 35{,}5 + 38{,}73 + 19{,}89 = \mathbf{94{,}1~\text{kN}\cdot\text{m}}$}
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig08-caquot-cas2.png}
+  \caption{Cas 2 --- charges d'exploitation appliquées uniquement sur la travée B1-B2 : configuration recherchée pour maximiser le moment sur l'appui B2 du côté de cette travée}
+  \label{fig:s56-caquot-cas2}
+\end{figure}
+
 \paragraph{Cas 2 --- Charges d'exploitation sur travée B1-B2.}
 
 \textit{Charge répartie d'exploitation côté gauche :}
@@ -157,6 +192,12 @@ Trois cas de chargement sont étudiés pour rechercher les extrémums :
 
 \textit{Total Cas 2 :}
 \encadre{$M_{B_2}^{(2)} = 45{,}16 + 99{,}87 \approx \mathbf{145~\text{kN}\cdot\text{m}}$}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig09-caquot-cas3.png}
+  \caption{Cas 3 --- charges d'exploitation appliquées uniquement sur la travée B2-B3 : configuration recherchée pour maximiser le moment sur l'appui B2 du côté de cette travée}
+  \label{fig:s56-caquot-cas3}
+\end{figure}
 
 \paragraph{Cas 3 --- Charges d'exploitation sur travée B2-B3.}
 
@@ -216,11 +257,20 @@ Pour le moment minimum (qui peut éventuellement être négatif et nécessiter d
 
 Le moment minimum reste positif : pas d'armatures supérieures dimensionnantes en travée.
 
-\figureplaceholder{poutre-courbe-enveloppe}{Courbe enveloppe des moments fléchissants sur les deux travées B1-B2 et B2-B3}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s56-fig14-combinaison-charges.png}
+  \caption{Combinaison à l'ELU de la travée B1-B2 : application simultanée des charges concentrées ($G = 64$~kN, $Q = 165$~kN au milieu) et des charges uniformément réparties ($g = 9{,}82$~kN/ml, $q = 18{,}3$~kN/ml). C'est cette combinaison qui sert au calcul des moments fléchissants extrêmes et à la construction de la courbe enveloppe}
+  \label{fig:s56-combinaison}
+\end{figure}
 
 \subsection{Calcul des armatures longitudinales}
 
 \subsubsection{Sur appui B2 --- Section rectangulaire 30\texorpdfstring{$\times$}{x}70}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.30\linewidth]{s56-fig18-section-appui-B2.png}
+  \caption{Section de la poutre sur l'appui B2 : 30$\times$70~cm, avec armatures supérieures (6~HA~25 répartis sur 2 lits) reprenant le moment négatif}
+  \label{fig:s56-section-appui}
+\end{figure}
 
 Pour le calcul des armatures sur appui, on considère la section comme \textbf{rectangulaire} (30\,$\times$\,70~cm) car le béton tendu (en haut) ne participe pas à la résistance. La hauteur utile est $d = 0{,}63$~m (enrobage et lit d'armatures supérieurs).
 
@@ -244,6 +294,11 @@ Comme $\mu < 0{,}372$, le diagramme est en pivot~A et $\sigma_s = f_{yd} = 500/1
 \encadre{Choix : 6\,HA\,25 = 29{,}45~cm$^2$}
 
 \subsubsection{En travée B1-B2 --- Section rectangulaire (béton tendu en bas)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.30\linewidth]{s56-fig19-section-travee.png}
+  \caption{Section de la poutre en travée B1-B2 : 30$\times$70~cm, avec armatures inférieures (6~HA~25) reprenant le moment positif}
+  \label{fig:s56-section-travee}
+\end{figure}
 
 En travée, le béton tendu étant en bas, on calcule également en \textbf{section rectangulaire} avec $b_w = 0{,}30$~m et $d = 0{,}63$~m.
 
@@ -349,6 +404,13 @@ Au droit de l'appui de rive B1, on doit reprendre un moment résiduel correspond
 
 \encadre{Choix : 1\,HA\,25 = $4{,}91$~cm$^2$}
 
+\begin{figure}[H]\centering
+  \includegraphics[width=0.45\linewidth]{s56-fig20-equilibre-1er-lit.png}\hfill
+  \includegraphics[width=0.40\linewidth]{s56-fig21-equilibre-2eme-lit.png}
+  \caption{Schémas d'équilibre des lits d'armatures sur l'appui B2 : à gauche, équilibre du 1\textsuperscript{er} lit ($A_s = 14{,}73$~cm$^2$, force $F_s$ équilibrée par $F_c$ avec bras de levier $z$) ; à droite, configuration finale à deux lits ($A_{s,total} = 29{,}45$~cm$^2$)}
+  \label{fig:s56-equilibre-lits}
+\end{figure}
+
 \subsubsection{Décalage de la courbe enveloppe}
 
 L'épure d'arrêt des barres se construit en décalant la courbe enveloppe des moments d'une distance $a_l$ donnée par :
@@ -373,11 +435,20 @@ Pour les HA\,25 :
   l_{bd} = 0{,}7 \times 40 \times 25 = 700~\text{mm} = 70~\text{cm}
 \]
 
-\figureplaceholder{poutre-epure-arret-barres}{Épure d'arrêt des barres --- courbes enveloppes décalées de $a_l = 0{,}28$~m et schéma de ferraillage en élévation}
-
 \subsection{Effort tranchant}
 
 \subsubsection{Calcul de \texorpdfstring{$V_{Ed}$}{V_Ed} isostatique}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig15-effort-tranchant-reparti.png}
+  \caption{Calcul de l'effort tranchant sous charges uniformément réparties ($g = 9{,}82$~kN/ml, $q = 18{,}3$~kN/ml) sur les deux travées B1-B2 et B2-B3}
+  \label{fig:s56-vt-reparti}
+\end{figure}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig16-effort-tranchant-concentre.png}
+  \caption{Calcul de l'effort tranchant sous charges concentrées ($G = 64$~kN, $Q = 165$~kN) appliquées au milieu de chaque travée}
+  \label{fig:s56-vt-concentre}
+\end{figure}
 
 L'effort tranchant isostatique sur l'appui résulte de la superposition des charges réparties et concentrées.
 
@@ -459,11 +530,21 @@ avec $z = 0{,}547$~m (bras de levier en appui, calculé précédemment).
 
 \encadre{Choix : 3\,brins HA\,12, $e = 35$~cm $\to$ $A_{sw}/s_w = 9{,}6$~cm$^2$/ml}
 
-\figureplaceholder{poutre-coupe-section}{Coupes de la section en appui B1, en travée et en appui B2 avec disposition des armatures longitudinales et des cadres}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig22-coupes-ferraillage-transversal.png}
+  \caption{Coupes de ferraillage transversal de la poutre 30$\times$70 : Coupe sur appui B1 (gauche) avec armatures supérieures (3~HA~12) et cadres ; Coupe sur appui B2 (droite) avec armatures supérieures et cadres dimensionnés à l'effort tranchant}
+  \label{fig:s56-coupes-ferraillage}
+\end{figure}
 
 \subsection{Vérifications complémentaires}
 
 \subsubsection{Vérification des bielles d'about}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s56-fig23-bielles-about.png}
+  \caption{Vérification des bielles d'about : géométrie de l'épure de bielles inclinées d'angle $\theta$ depuis le poteau gauche (largeur 0,20~m) jusqu'au poteau intermédiaire (0,60~m). La distance horizontale $z\,\cot\theta$ définit la zone d'about, avec $z$ le bras de levier interne}
+  \label{fig:s56-bielles-about}
+\end{figure}
 
 La vérification de la bielle d'about consiste à s'assurer que la condition $\sigma_b \leq \sigma_{R,\max}$ est satisfaite, où :
 \[
@@ -567,8 +648,6 @@ La poutrelle s'appuie sur la poutre principale en partie médiane de la travée.
 \]
 
 \encadre{$A_{suspentes} \approx 8~\text{cm}^2$}
-
-\figureplaceholder{poutre-suspentes}{Schéma des armatures de suspente au droit de l'appui de la poutrelle sur la poutre principale}
 
 \subsubsection{Synthèse du ferraillage}
 

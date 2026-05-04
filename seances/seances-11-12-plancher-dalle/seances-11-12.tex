@@ -22,8 +22,6 @@ Le \textbf{plancher-dalle} est un plancher constitué d'une dalle d'épaisseur u
   \item nécessité de vérifier soigneusement la stabilité au feu et la flèche.
 \end{itemize}
 
-\figureplaceholder{plancher-dalle-vue-3d}{Vue d'ensemble du plancher-dalle étudié}
-
 \subsection{Hypothèses de travail}
 
 Le calcul du plancher-dalle s'appuie sur les hypothèses suivantes :
@@ -42,7 +40,17 @@ Le calcul du plancher-dalle s'appuie sur les hypothèses suivantes :
 
 La méthode forfaitaire est applicable si elle respecte sept critères, dont le fait que les poteaux ne fonctionnent pas en portiques. Si ce n'était pas le cas, il faudrait recourir à la méthode de Caquot, à la méthode générale (RDM) ou à la méthode des éléments finis (MEF). On note également que la \textbf{charge de façade en bout de console} n'est pas prise en compte.
 
-\figureplaceholder{plancher-dalle-vue-en-plan}{Vue en plan du plancher-dalle, file 2 dans le sens $y$, portées et console}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.85\linewidth]{s11-fig01-vue-plan.png}
+  \caption{Vue en plan du plancher-dalle : 9 poteaux organisés en 3$\times$3 (files A, B, C en sens $x$ ; axes 1, 2, 3 en sens $y$), portées de 6,5~m en sens $x$ et 6,0~m en sens $y$, console de 1,2~m côté gauche. Sections des poteaux : 30$\times$50~cm (axe 1), 50$\times$50~cm (axe 2), 40$\times$50~cm (axe 3)}
+  \label{fig:s11-vue-plan}
+\end{figure}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.95\linewidth]{s11-fig02-schema-statique.png}
+  \caption{Schéma statique de la file 2 dans le sens $y$ : poutre continue avec console à gauche (1,2~m) et 2 travées de 6~m, soumise à la charge répartie ELU $p_u$. Les appuis A, B et C correspondent aux 3 files de poteaux}
+  \label{fig:s11-schema-statique}
+\end{figure}
 
 \paragraph{Vérification des conditions d'application}~
 
@@ -174,7 +182,11 @@ La répartition retenue est la suivante :
   \item Sur \textbf{appuis} : $35\%$ du moment sur les bandes sur poteaux et $15\%$ sur les bandes centrales.
 \end{itemize}
 
-\figureplaceholder{plancher-dalle-repartition-bandes}{Répartition des moments en bandes (sur poteaux et centrales)}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s11-fig03-repartition-moments.png}
+  \caption{Répartition des moments fléchissants en bandes selon la méthode des plaques de l'Eurocode 2 : bandes sur poteau (largeur $b/4$, coefficients 0,75 sur appuis et 0,80 en travée) et bande centrale (largeur $b/2$, coefficients 0,25 sur appuis et 0,40 en travée)}
+  \label{fig:s11-repartition-moments}
+\end{figure}
 
 \paragraph{Travée AB ($M_{t,AB} = 365$ kN.m) :}
 
@@ -281,7 +293,11 @@ b_t = 1{,}75~\text{m} : \quad A_{S,min} = 0{,}26 \times \frac{2{,}6}{500} \times
 \end{tabularx}
 \end{center}
 
-\figureplaceholder{plancher-dalle-armatures-final}{Schéma de répartition des sections d'aciers retenues, par bande}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.7\linewidth]{s11-fig04-armatures-repartition.png}
+  \caption{Schéma de répartition des sections d'armatures retenues par bande (en cm$^2$) : bande sur poteau (1,66 sur appui, 3,02 en travée) et bande centrale (7,04 sur appui, 10,7 en travée)}
+  \label{fig:s11-armatures-repartition}
+\end{figure}
 
 \subsection{Partie B --- Vérification au cisaillement (poinçonnement)}
 
@@ -414,7 +430,17 @@ avec :
 f_{ywd,ef} = \min\big(250 + 0{,}25\,d \,;\, f_{yd}\big) = 250 + 0{,}25 \times 240 = \mathbf{310~\text{MPa}}
 \]
 
-\figureplaceholder{poinconnement-contour-controle}{Contour de contrôle $u_1$ et zone d'armatures de poinçonnement}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s11-fig05-poinconnement-controle.png}
+  \caption{Contour de contrôle $u_1$ au poinçonnement : tracé à la distance $2d$ du nu du poteau (poteau central 0,50$\times$0,50~m), avec arcs de cercle aux quatre angles. L'effort tranchant $V_{Ed}$ s'applique au droit du poteau}
+  \label{fig:s11-poinconnement-controle}
+\end{figure}
+
+\begin{figure}[H]\centering
+  \includegraphics[width=0.55\linewidth]{s11-fig06-poinconnement-uout.png}
+  \caption{Contour limite $u_{out}$ au-delà duquel les armatures de poinçonnement ne sont plus nécessaires : tracé à la distance $1{,}5d$ du contour $u_1$. La distance $x$ correspond à la zone à armer en cisaillement}
+  \label{fig:s11-poinconnement-uout}
+\end{figure}
 
 \paragraph{Calcul à $0{,}56$~m du nu du poteau}~
 
